@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Supply;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Store extends Model
+class Category extends Model
 {
     protected $guarded = ['id'];
 }

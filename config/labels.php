@@ -13,4 +13,7 @@ return [
     'admins-menu' => 'ادمین',
     'list-admins' => 'لیست ادمین',
     'create-admins' => 'ثبت ادمین',
+    'categories-menu' => 'دسته بندی',
+    'list-categories'=>'ثبت دسته بندی',
+    'create-categories'=>'ثبت دسته بندی',
 ];

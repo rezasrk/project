@@ -26,6 +26,26 @@
                         <p>{{ $labels['profile'] }}</p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->is('managerpanel/categories*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-bars"></i>
+                        <p>
+                            {{ $labels['categories-menu'] }}
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ">
+                        @can('categories-menu')
+                            <li class="nav-item">
+                                <a href="{{ route('categories.index') }}"
+                                   class="nav-link {{ request()->url() == route('categories.index') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ $labels['categories-menu'] }}</p>
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
 
                 @can('settings-menu')
                     <li class="nav-item {{ request()->is('managerpanel/settings*') ? 'menu-open' : '' }}">

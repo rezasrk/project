@@ -88,6 +88,33 @@ class PermissionTableSeeder extends Seeder
                 'status' => 1,
                 'guard_name' => 'web',
             ],
+            [
+                'id' => 17,
+                'name' => 'categories-menu',
+                'title' => $permissionTitle['categories-menu'],
+                'family' => 'category',
+                'is_parent' => 1,
+                'status' => 1,
+                'guard_name' => 'web',
+            ],
+            [
+                'id' => 18,
+                'name' => 'list-categories',
+                'title' => $permissionTitle['list-categories'],
+                'family' => 'category',
+                'is_parent' => 1,
+                'status' => 1,
+                'guard_name' => 'web',
+            ],
+            [
+                'id' => 19  ,
+                'name' => 'create-categories',
+                'title' => $permissionTitle['create-categories'],
+                'family' => 'category',
+                'is_parent' => 1,
+                'status' => 1,
+                'guard_name' => 'web',
+            ],
         ]);
         DB::unprepared('SET FOREIGN_KEY_CHECKS=1;');
     }
