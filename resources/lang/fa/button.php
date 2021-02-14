@@ -27,7 +27,7 @@ return [
     'new-equipment' => 'ایجاد تجهیزات جدید',
     'edit' => 'ویرایش',
     'edit-equipment-property' => 'ویرایش ویژگی تجهیزات',
-    'create-user' => 'ثبت کاربر جدید',
+    'create-user' => 'ثبت ادمین جدید',
     'send-request' => 'ارسال درخواست',
     'request-supply' => 'ثبت درخواست تامین',
     'request-receive' => 'ثبت درخواست تحویل',
@@ -40,5 +40,5 @@ return [
     'create-request'=>'ثبت درخواست',
     'edit-request'=>'ویرایش درخواست',
     'reject'=>'رد کردن',
-    'assign'=>'اضافه کردن  درخواست به کاربر',
+    'assign'=>'اضافه کردن  درخواست به ادمین',
 ];

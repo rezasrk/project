@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use \Spatie\Permission\Models\Role;
 use \Spatie\Permission\Models\Permission;
-use App\Models\User;
+use App\Models\Admin;
 
 class ProgrammerPermissions extends Seeder
 {
@@ -14,7 +14,7 @@ class ProgrammerPermissions extends Seeder
      */
     public function run()
     {
-        $user = User::query()->find(1);
+        $user = Admin::query()->find(1);
         $role = Role::query()->find(1);
         $user->assignRole($role->name);
         $permissions = Permission::all();

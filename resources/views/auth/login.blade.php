@@ -25,15 +25,6 @@
                     <input class="form-control text-left" type="password" name="password" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label class="control-label">{{ trans('validation.attributes.project_id') }}</label>
-                    <select class="form-control text-left" type="password" name="project_id" autocomplete="off">
-                        <option value>انتخاب نمایید...</option>
-                        @foreach($projects as $project)
-                            <option value="{{ $project->id }}">{{ $project->project_title }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
                     <label>{{ trans('validation.attributes.captcha') }}</label>
                     <i class="fa fa-refresh text-danger" onclick="refreshCaptcha()"></i>
                     <input type="text" name="captcha" autocomplete="off" class="form-control text-left">

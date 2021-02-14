@@ -8,7 +8,7 @@ return [
     'coding-title' => 'کدینگ',
     'category-title' => 'کدینگ',
     'equipment-title' => 'تجهیزات',
-    'user-title' => 'کاربران',
+    'user-title' => 'ادمین',
     'send-request' => 'ارسال درخواست',
     'list-request' => 'لیست درخواست',
     'list-warehouse' => 'انبار',

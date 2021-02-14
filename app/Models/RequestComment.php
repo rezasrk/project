@@ -16,7 +16,7 @@ class RequestComment extends Model
 
     public function creator(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'creator_id');
+        return $this->belongsTo(Admin::class, 'creator_id');
     }
 
     public function getCreatedAtJalaliAttribute(): string

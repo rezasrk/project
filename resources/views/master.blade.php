@@ -56,24 +56,7 @@
 @include('layouts.footer')
 
 @yield('script')
-<script>
-    $(document).on('change', '.switch-project', function () {
-        $.post("{{ route('project.switch') }}", {project_id: $(this).find(':selected').val()}, function (response) {
-            if (parseInt(response.status) == 200) {
-                swal(response.msg);
-                setTimeout(function () {
-                    window.location.reload();
-                }, 2000)
-            } else {
-                swal({
-                    title: "",
-                    text: response.msg,
-                    icon: "error",
-                });
-            }
-        });
-    });
-</script>
+
 </body>
 
 </html>

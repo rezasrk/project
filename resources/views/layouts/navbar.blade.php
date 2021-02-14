@@ -7,12 +7,4 @@
     <div class="col-md-4">
 
     </div>
-    <div class="col-md-4">
-        <select style="background-color: #9999ff;color: #ffffff" class="form-control switch-project" name="project">
-            @foreach(getProjects() as $project)
-                <option @if(projectInf()->id == $project->id) selected
-                        @endif value="{{ $project->id  }}">{{  $project->project_title }}</option>
-            @endforeach
-        </select>
-    </div>
 </nav>

@@ -26,7 +26,6 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'required',
             'password' => 'required',
-            'project_id' => 'required',
             'captcha' => 'required|captcha'
         ];
     }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Project;
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,9 +21,9 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
 
-        $projects = Project::query()->get();
 
-        return view('auth.login',compact('projects'));
+
+        return view('auth.login');
     }
 
     public function login(LoginRequest $request): JsonResponse
@@ -56,28 +56,21 @@ class LoginController extends Controller
     private function attempt($request): bool
     {
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            return $this->checkUser('email', $request->email, $request->password, $request->project_id);
+            return $this->checkUser('email', $request->email, $request->password);
         } else {
-            return $this->checkUser('username', $request->email, $request->password, $request->project_id);
+            return $this->checkUser('username', $request->email, $request->password);
         }
     }
 
     /*
      * Check user exists
      */
-    public function checkUser(string  $typeUser = "",string  $username = "",string  $password = "",string  $project = ""): bool
+    public function checkUser(string  $typeUser = "",string  $username = "",string  $password = ""): bool
     {
-        $user = User::query()->where($typeUser, '=', $username)->first();
-        $projectInformation = null;
+        $user = Admin::query()->where($typeUser, '=', $username)->first();
         if (Hash::check($password, $user->password)) {
-
-            if ($projectInformation = $user->projects()->where('id', '=', $project)->first()) {
                 Auth::loginUsingId($user->id);
-                session(['projectInformation'=>$projectInformation]);
                 return true;
-            } else {
-                return false;
-            }
         } else {
             return false;
         }

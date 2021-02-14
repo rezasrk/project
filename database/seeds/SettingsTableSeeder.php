@@ -12,19 +12,8 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('settings')->insertOrIgnore([
-            [
-                'key' => 'start_project',
-                'value' => now()->timestamp
-            ],
-            [
-                'key'=>'limit_complete_tile_recursive',
-                'value'=>13,
-            ],
-            [
-                'key'=>'show_unit_requester',
-                'value'=>'false',
-            ]
-        ]);
+        // DB::table('settings')->insertOrIgnore([
+
+        // ]);
     }
 }

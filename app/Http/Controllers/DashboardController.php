@@ -11,8 +11,8 @@ use Illuminate\View\View;
 class DashboardController extends Controller
 {
 
-    public function __invoke(Request $request,DashboardService $dashboardService)
+    public function __invoke(Request $request)
     {
-        return view('dashboard',compact('dashboardService'));
+        return view('dashboard');
     }
 }
