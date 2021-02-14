@@ -1,0 +1,35 @@
+
+.publishers__card {
+    display: flex;
+    flex-direction: column;
+    border: solid 2px #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    min-height: 270px;
+
+    &_image {
+        img {
+            max-width: 100%;
+            width: 55%;
+            margin: 0 auto;
+            display: block;
+            padding: 20px 0;
+        }
+    }
+
+    &_title {
+        text-align: center;
+        a {
+            color: $primary-color-dark;
+            font-size: 18px;
+            
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+
+    &_options {
+        color: $primary-color;
+    }
+}

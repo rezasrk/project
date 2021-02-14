@@ -1,0 +1,79 @@
+.category-slider .swiper-slide {
+  text-align: center;
+}
+
+.baner-slider {
+  .swiper-slide {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.journals-slider {
+
+    .swiper-slide {
+        color: $white-color;
+        text-align: center;
+    }
+}
+
+.journals-card {
+        text-align: center;
+
+        &__img {
+            width: 100%;
+        }
+
+        &__title {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid $light-color;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: $white-color;
+        }
+}
+
+.brand-slider {
+    .swiper-slide {
+        text-align: center;
+
+        h4 {
+            color: $dark-color;
+        }
+    }
+}   
+
+
+.swiper-button-next, .swiper-button-prev {
+  width: 30px;
+  height: 30px;
+  border: solid 1px $primary-color-dark;
+  border-radius: 50%;
+
+  &::after {
+    font-size: 18px;
+    color: $primary-color-dark;
+  }
+}
+
+.slider-two .swiper-slide {
+  text-align: center;
+
+  a {
+    h4 {
+      font-size: 15px;
+      margin-top: 15px;
+      font-weight: bold;
+      color: $primary-color;
+    }
+  }
+
+  ul {
+    color: $primary-color;
+  }
+}

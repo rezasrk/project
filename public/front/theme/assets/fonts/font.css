@@ -1,0 +1,16 @@
+@font-face {
+    font-family: isans;
+    src: url('at9.eot'),
+         url('at9.woff2') format('woff2'),
+         url('at9.woff') format('woff'),
+         url('at9.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: nastaliq;
+    src: url('IranNastaliq.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

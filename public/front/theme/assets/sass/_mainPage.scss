@@ -1,0 +1,140 @@
+.section-main-categorise {
+  padding: 50px 0;
+  background-color: $white-color;
+}
+
+.section-category {
+  padding: 50px 0;
+  text-align: center;
+
+  &__title {
+    border-bottom: 1px solid $primary-color;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    color: $primary-color;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__item {
+    text-align: center;
+    margin: 5px;
+    padding: 10px 16px;
+    box-shadow: 0px 0px 3px -1px $dark-color;
+    position: relative;
+    transition: all 0.3s;
+
+    &_head {
+      h4 {
+        color: $primary-color;
+        font-size: 15px;
+      }
+    }
+
+    &_info {
+      position: absolute;
+      width: 100%;
+      top: 70%;
+      right: 0;
+      background: $white-color;
+      transition: all 0.3s;
+      z-index: -1;
+      opacity: 0;
+      box-shadow: 0px 2px 3px -1px $dark-color;
+      visibility: hidden;
+
+      li {
+        font-size: 11px;
+        padding: 3px 0;
+      }
+    }
+
+    &:hover &_info {
+      visibility: visible;
+      z-index: 5;
+      top: 98%;
+      opacity: 1;
+      transition: all 0.3s;
+    }
+  }
+}
+
+.section-baner {
+  padding: 50px 0;
+  background: $dark-color;
+}
+
+.section-journals {
+  padding: 50px 0;
+  background: url(../images/pr-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__title {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+}
+
+.section-brand {
+    background: $white-color;
+    padding: 50px 0;
+}
+
+.cateqory-main {
+
+  &__head {
+    text-align: center;
+    position: relative;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+
+    &::before {
+      content: "";
+      width: 70%;
+      height: 2px;
+      background-color: $primary-color;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    h3 {
+      color: $primary-color;
+      font-size: 19px;
+      font-weight: bold;
+    }
+  }
+
+  &_items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &_item {
+
+    a {
+      display: block;
+      margin: 5px;
+    }
+  }
+}
+
+.section-blog {
+  margin-top: 40px;
+}
+
+.section-authors {
+  margin-top: 40px;
+
+}

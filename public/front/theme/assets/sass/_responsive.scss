@@ -1,0 +1,51 @@
+@media (max-width: 992px) {
+  .header__logo1 {
+    display: none;
+  }
+
+  .header__form {
+    width: 100%;
+    margin-bottom: 53px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__form {
+    margin-top: 30px;
+  }
+
+  .header__title h1 {
+    font-size: 46px;
+    line-height: 90px;
+  }
+}
+
+@media (max-width: 550px) {
+  .header__form {
+    &_search {
+      flex-direction: column;
+      height: auto;
+
+      &__select {
+        height: 35px;
+        width: 95%;
+        margin: 8px 12px;
+      }
+
+      &__input {
+        height: 40px;
+        border-radius: 30px;
+      }
+    }
+  }
+
+}
+
+
+
+@media (min-width: 576px) {
+
+  .modal-dialog {
+    max-width: 360px;
+  }
+}

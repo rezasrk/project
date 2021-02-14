@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'Auth\LoginController@loginForm');
 
 Route::get('img_captcha', 'Controller@captcha');
 
 Route::prefix('managerpanel')->group(function () {
+    Route::get('/', 'Auth\LoginController@loginForm');
     Route::post('login', 'Auth\LoginController@login')->name('login');
     Route::get('dashboard', 'DashboardController')->name('dashboard')->middleware('auth');
     /*------------------------------------------------------------------------------------------------------------------------------------------------------
