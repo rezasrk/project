@@ -3,363 +3,311 @@
 @section('front-title-page','صفحه ی اصلی')
 
 @section('front-content')
-<header class="header">
-    <div class="container">
+    <header class="header">
+        <div class="container">
 
-        <div class="header__top">
-            <div class="header__top_logo">
-                <img src="{{ asset('/assets/images/474.png') }}" alt="">
-            </div>
-
-            <div class="header__top_btn">
-                <button class="button-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAuth">
-                    عضویت / ورود
-                </button>
-            </div>
-        </div>
-
-        <div class="header__grid">
-
-
-            <div class="header__form">
-                <div class="header__title">
-                    <h1>پرتال جامع فلسفه علوم طبیعی و فناوری</h1>
+            <div class="header__top">
+                <div class="header__top_logo">
+                    <img src="{{ asset('/assets/images/474.png') }}" alt="">
                 </div>
 
-                <div class="header__form_search">
-                    <select name="" id="" class="header__form_search__select">
-                        <option value="0">عنوان مطلب</option>
-                        <option value="1">مجلات</option>
-                        <option value="2">پدیدآورندگان</option>
-                        <option value="3">حوزه تخصصی </option>
-                        <option value="4">ناشران </option>
-                    </select>
-                    <div class="header__form_grid">
+                <div class="header__top_btn">
+                    <button class="button-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAuth">
+                        عضویت / ورود
+                    </button>
+                </div>
+            </div>
 
-                        <input type="text" class="header__form_search__input" placeholder="جستجو">
-                        <button class="header__form_search__btn">
-                            <i class="fa fa-search"></i>
-                        </button>
+            <div class="header__grid">
+
+
+                <div class="header__form">
+                    <div class="header__title">
+                        <h1>پرتال جامع فلسفه علوم طبیعی و فناوری</h1>
                     </div>
 
-                    <a href="#" class="header__form_search__advance-search">جستجوی پیشرفته</a>
+                    <div class="header__form_search">
+                        <select name="" id="" class="header__form_search__select">
+                            <option value="0">عنوان مطلب</option>
+                            <option value="1">مجلات</option>
+                            <option value="2">پدیدآورندگان</option>
+                            <option value="3">حوزه تخصصی</option>
+                            <option value="4">ناشران</option>
+                        </select>
+                        <div class="header__form_grid">
+
+                            <input type="text" class="header__form_search__input" placeholder="جستجو">
+                            <button class="header__form_search__btn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+
+                        <a href="#" class="header__form_search__advance-search">جستجوی پیشرفته</a>
+                    </div>
+                </div>
+
+                <div class="header__cat">
+
+                    <ul class="header__cat_items">
+                        <li class="header__cat_item">
+                            <a href="#">حوضه های تخصصی</a>
+                        </li>
+                        <li class="header__cat_item">
+                            <a href="#">پدیدآورندگان</a>
+                        </li>
+                        <li class="header__cat_item">
+                            <a href="#">مجلات</a>
+                        </li>
+                        <li class="header__cat_item">
+                            <a href="#">مجلات</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+    </header>
 
-            <div class="header__cat">
+    <section class="section-main-categorise">
+        <div class="container">
 
-                <ul class="header__cat_items">
-                    <li class="header__cat_item">
-                        <a href="#">حوضه های تخصصی</a>
-                    </li>
-                    <li class="header__cat_item">
-                        <a href="#">پدیدآورندگان</a>
-                    </li>
-                    <li class="header__cat_item">
-                        <a href="#">مجلات</a>
-                    </li>
-                    <li class="header__cat_item">
-                        <a href="#">مجلات</a>
-                    </li>
+            <div class="cateqory-main">
+                <div class="cateqory-main__head">
+                    <h3>دسته بندی موضوعی</h3>
+                </div>
+                <ul class="cateqory-main_items">
+                    @foreach($subjectCategories as $subjectCategory)
+                        <li class="cateqory-main_item">
+                            <a href="#" class="button-1">{{ $subjectCategory->title }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
-    </div>
-</header>
+    </section>
 
-<section class="section-main-categorise">
-    <div class="container">
+    <section class="section-Publishers">
 
-        <div class="cateqory-main">
-            <div class="cateqory-main__head">
-                <h3>دسته بندی موضوعی</h3>
+        <div class="container">
+            <div class="section-head">
+                <h3>ناشران</h3>
+                <a href="#">مشاهده بیشتر</a>
             </div>
-            <ul class="cateqory-main_items">
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">ادبیات</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">تاریخ</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">هندسه</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">ریاضی</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">فیزیک</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">شیمی</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">تخصصی</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">عمومی</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">ادبیات</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">تاریخ</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">هندسه</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">ریاضی</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">فیزیک</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">عمومی</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">ادبیات</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">تاریخ</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">شیمی</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">تخصصی</a>
-                </li>
-                <li class="cateqory-main_item">
-                    <a href="#" class="button-1">عمومی</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
 
-<section class="section-Publishers">
-
-    <div class="container">
-        <div class="section-head">
-            <h3>ناشران</h3>
-            <a href="#">مشاهده بیشتر</a>
-        </div>
-
-        <div class="swiper-container publishers-slider" dir="rtl">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide publishers__card">
-                    <a href="#" class="publishers__card_image">
-                        <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                    </a>
-                    <h4 class="publishers__card_title">
-                        <a href="#">
-                            کتابخانه مرکزی پژوهشگاه
+            <div class="swiper-container publishers-slider" dir="rtl">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide publishers__card">
+                        <a href="#" class="publishers__card_image">
+                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
                         </a>
-                    </h4>
-                    <ul class="publishers__card_options">
-                        <li>مجلات: 2</li>
-                        <li>مقالات: 2</li>
-                        <li>شمارگان: 10</li>
-                    </ul>
-                </div>
-                <div class="swiper-slide publishers__card">
-                    <a href="#" class="publishers__card_image">
-                        <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                    </a>
-                    <h4 class="publishers__card_title">
-                        <a href="#">
-                            کتابخانه مرکزی پژوهشگاه
+                        <h4 class="publishers__card_title">
+                            <a href="#">
+                                کتابخانه مرکزی پژوهشگاه
+                            </a>
+                        </h4>
+                        <ul class="publishers__card_options">
+                            <li>مجلات: 2</li>
+                            <li>مقالات: 2</li>
+                            <li>شمارگان: 10</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide publishers__card">
+                        <a href="#" class="publishers__card_image">
+                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
                         </a>
-                    </h4>
-                    <ul class="publishers__card_options">
-                        <li>مجلات: 2</li>
-                        <li>مقالات: 2</li>
-                        <li>شمارگان: 10</li>
-                    </ul>
-                </div>
-                <div class="swiper-slide publishers__card">
-                    <a href="#" class="publishers__card_image">
-                        <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                    </a>
-                    <h4 class="publishers__card_title">
-                        <a href="#">
-                            کتابخانه مرکزی پژوهشگاه
+                        <h4 class="publishers__card_title">
+                            <a href="#">
+                                کتابخانه مرکزی پژوهشگاه
+                            </a>
+                        </h4>
+                        <ul class="publishers__card_options">
+                            <li>مجلات: 2</li>
+                            <li>مقالات: 2</li>
+                            <li>شمارگان: 10</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide publishers__card">
+                        <a href="#" class="publishers__card_image">
+                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
                         </a>
-                    </h4>
-                    <ul class="publishers__card_options">
-                        <li>مجلات: 2</li>
-                        <li>مقالات: 2</li>
-                        <li>شمارگان: 10</li>
-                    </ul>
-                </div>
-                <div class="swiper-slide publishers__card">
-                    <a href="#" class="publishers__card_image">
-                        <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                    </a>
-                    <h4 class="publishers__card_title">
-                        <a href="#">
-                            کتابخانه مرکزی پژوهشگاه
+                        <h4 class="publishers__card_title">
+                            <a href="#">
+                                کتابخانه مرکزی پژوهشگاه
+                            </a>
+                        </h4>
+                        <ul class="publishers__card_options">
+                            <li>مجلات: 2</li>
+                            <li>مقالات: 2</li>
+                            <li>شمارگان: 10</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide publishers__card">
+                        <a href="#" class="publishers__card_image">
+                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
                         </a>
-                    </h4>
-                    <ul class="publishers__card_options">
-                        <li>مجلات: 2</li>
-                        <li>مقالات: 2</li>
-                        <li>شمارگان: 10</li>
-                    </ul>
-                </div>
-                <div class="swiper-slide publishers__card">
-                    <a href="#" class="publishers__card_image">
-                        <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                    </a>
-                    <h4 class="publishers__card_title">
-                        <a href="#">
-                            کتابخانه مرکزی پژوهشگاه
+                        <h4 class="publishers__card_title">
+                            <a href="#">
+                                کتابخانه مرکزی پژوهشگاه
+                            </a>
+                        </h4>
+                        <ul class="publishers__card_options">
+                            <li>مجلات: 2</li>
+                            <li>مقالات: 2</li>
+                            <li>شمارگان: 10</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide publishers__card">
+                        <a href="#" class="publishers__card_image">
+                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
                         </a>
-                    </h4>
-                    <ul class="publishers__card_options">
-                        <li>مجلات: 2</li>
-                        <li>مقالات: 2</li>
-                        <li>شمارگان: 10</li>
-                    </ul>
+                        <h4 class="publishers__card_title">
+                            <a href="#">
+                                کتابخانه مرکزی پژوهشگاه
+                            </a>
+                        </h4>
+                        <ul class="publishers__card_options">
+                            <li>مجلات: 2</li>
+                            <li>مقالات: 2</li>
+                            <li>شمارگان: 10</li>
+                        </ul>
+                    </div>
                 </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+
         </div>
-
-    </div>
-</section>
+    </section>
 
 
-<section class="section-blog">
+    <section class="section-blog">
 
-    <div class="container">
-        <div class="section-head">
-            <h3>مجلات</h3>
-            <a href="#">مشاهده بیشتر</a>
-        </div>
-
-        <div class="swiper-container publishers-slider" dir="rtl">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide publishers__card">
-                    <a href="#" class="publishers__card_image">
-                        <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                    </a>
-                    <h4 class="publishers__card_title">
-                        <a href="#">
-                            حسابداری ارزشی و اسلامی
-                        </a>
-                    </h4>
-                    <ul class="publishers__card_options">
-                        <li>موضوع: حسابداری</li>
-                        <li>ناشر: خوارزمی</li>
-                        <li>اخرین شماره: دستاورد های حسابداری</li>
-                    </ul>
-                </div>
-
+        <div class="container">
+            <div class="section-head">
+                <h3>مجلات</h3>
+                <a href="#">مشاهده بیشتر</a>
             </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+
+            <div class="swiper-container publishers-slider" dir="rtl">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide publishers__card">
+                        <a href="#" class="publishers__card_image">
+                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
+                        </a>
+                        <h4 class="publishers__card_title">
+                            <a href="#">
+                                حسابداری ارزشی و اسلامی
+                            </a>
+                        </h4>
+                        <ul class="publishers__card_options">
+                            <li>موضوع: حسابداری</li>
+                            <li>ناشر: خوارزمی</li>
+                            <li>اخرین شماره: دستاورد های حسابداری</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
         </div>
-
-    </div>
-</section>
+    </section>
 
 
-<section class="section-authors">
-    <div class="container">
-        <div class="section-head">
-            <h3>پدید آورندگان</h3>
-            <a href="#">مشاهده بیشتر</a>
-        </div>
-        <div class="swiper-container slider-two" dir="rtl">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a href="#">
-                        <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
-                        <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                    </a>
-                    <ul>
-                        <li>تعداد مقالات: (11)</li>
-                        <li>تعداد مقالات تخصصی: (5)</li>
-                    </ul>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#">
-                        <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
-                        <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                    </a>
-                    <ul>
-                        <li>تعداد مقالات: (11)</li>
-                        <li>تعداد مقالات تخصصی: (5)</li>
-                    </ul>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#">
-                        <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
-                        <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                    </a>
-                    <ul>
-                        <li>تعداد مقالات: (11)</li>
-                        <li>تعداد مقالات تخصصی: (5)</li>
-                    </ul>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#">
-                        <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
-                        <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                    </a>
-                    <ul>
-                        <li>تعداد مقالات: (11)</li>
-                        <li>تعداد مقالات تخصصی: (5)</li>
-                    </ul>
+    <section class="section-authors">
+        <div class="container">
+            <div class="section-head">
+                <h3>پدید آورندگان</h3>
+                <a href="#">مشاهده بیشتر</a>
+            </div>
+            <div class="swiper-container slider-two" dir="rtl">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
+                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
+                        </a>
+                        <ul>
+                            <li>تعداد مقالات: (11)</li>
+                            <li>تعداد مقالات تخصصی: (5)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
+                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
+                        </a>
+                        <ul>
+                            <li>تعداد مقالات: (11)</li>
+                            <li>تعداد مقالات تخصصی: (5)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
+                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
+                        </a>
+                        <ul>
+                            <li>تعداد مقالات: (11)</li>
+                            <li>تعداد مقالات تخصصی: (5)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
+                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
+                        </a>
+                        <ul>
+                            <li>تعداد مقالات: (11)</li>
+                            <li>تعداد مقالات تخصصی: (5)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</section>
+    </section>
 
-<section class="section-authors">
-    <div class="container">
-        <div class="section-head">
-            <h3>همکاران</h3>
-            <a href="#">مشاهده بیشتر</a>
-        </div>
-        <div class="swiper-container slider-two" dir="rtl">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a href="#">
-                        <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
-                        <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                    </a>
+    <section class="section-authors">
+        <div class="container">
+            <div class="section-head">
+                <h3>همکاران</h3>
+                <a href="#">مشاهده بیشتر</a>
+            </div>
+            <div class="swiper-container slider-two" dir="rtl">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
+                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
+                        </a>
 
-                </div>
-                <div class="swiper-slide">
-                    <a href="#">
-                        <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
-                        <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                    </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
+                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
+                        </a>
 
-                </div>
-                <div class="swiper-slide">
-                    <a href="#">
-                        <img src="{{ asset('front/theme/assets/images/icon/brand1.png') }}" alt="">
-                        <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                    </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="{{ asset('front/theme/assets/images/icon/brand1.png') }}" alt="">
+                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
+                        </a>
 
-                </div>
-                <div class="swiper-slide">
-                    <a href="#">
-                        <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
-                        <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                    </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
+                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
+                        </a>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</section>
+    </section>
 
 @endsection

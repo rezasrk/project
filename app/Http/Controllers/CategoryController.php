@@ -76,7 +76,7 @@ class CategoryController extends Controller
 
         $category->update([
             'title' => $request->input('title'),
-            'parent_id' => $request->input('parent_id', 0),
+            'parent_id' => $request->input('parent_id') ?: 0,
             'type_id' => $request->input('type_id')
         ]);
 
