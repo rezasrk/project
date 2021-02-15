@@ -16,4 +16,5 @@ return [
     'categories-menu' => 'دسته بندی',
     'list-categories'=>'ثبت دسته بندی',
     'create-categories'=>'ثبت دسته بندی',
+    'edit-categories'=>'ویرایش دسته بندی',
 ];

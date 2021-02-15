@@ -15,7 +15,12 @@
             <td>{{ $category->title }}</td>
             <td>{{ optional($category->type)->value }}</td>
             <td>{{ optional($category->parent)->title }}</td>
-            <td></td>
+            <td>
+                @can('edit-categories')
+                    <a class="fa fa-pencil-alt text-dark pointer edit-category"
+                       data-url="{{ route('categories.edit',$category->id) }}"></a>
+                @endcan
+            </td>
         </tr>
     @endforeach
     </tbody>

@@ -115,6 +115,15 @@ class PermissionTableSeeder extends Seeder
                 'status' => 1,
                 'guard_name' => 'web',
             ],
+            [
+                'id' => 20  ,
+                'name' => 'edit-categories',
+                'title' => $permissionTitle['edit-categories'],
+                'family' => 'category',
+                'is_parent' => 1,
+                'status' => 1,
+                'guard_name' => 'web',
+            ],
         ]);
         DB::unprepared('SET FOREIGN_KEY_CHECKS=1;');
     }

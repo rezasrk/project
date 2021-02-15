@@ -19,7 +19,7 @@
        .modal-2xlg{
            max-width: 1400px;
        }
-
+        .pointer {cursor: pointer;}
     </style>
 </head>
 

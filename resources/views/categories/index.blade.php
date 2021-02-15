@@ -31,7 +31,7 @@
         $(document).on('click', '.add-category', function () {
             httpGetRequest("{{ route('categories.create') }}").done(function (response) {
                 showModal({
-                    title: 'دسته بندی',
+                    title: 'ثبت دسته بندی',
                     body: response.data
                 });
                 removeContentLoading()
@@ -43,6 +43,9 @@
             httpFormPostRequest($(this)).done(function (response) {
                 if (response.status === 200) {
                     successAlert(response.msg);
+                    setTimeout(function(){
+                        window.location.reload()
+                    },2000);
                 }
                 removeModalLoading();
             });
@@ -54,6 +57,16 @@
                 $('.category-parent').html(response.data);
                 removeModalLoading()
             });
+        });
+
+        $(document).on('click', '.edit-category', function () {
+            httpGetRequest($(this).attr('data-url')).done(function (response) {
+                showModal({
+                    body: response.data,
+                    title: 'ویرایش دسته بندی'
+                });
+                removeModalLoading()
+            })
         });
     </script>
 @endsection
