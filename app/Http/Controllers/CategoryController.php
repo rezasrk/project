@@ -20,7 +20,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-        return view('categories.index');
+        $categories =  Category::query()->with(['type','parent'])->paginate(30);
+
+        return view('categories.index',compact('categories'));
     }
 
     public function create(): Json

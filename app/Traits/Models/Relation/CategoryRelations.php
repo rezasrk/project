@@ -7,44 +7,16 @@ use App\Models\Baseinfo;
 use App\Models\Supply\Category;
 use App\Models\Supply\Equipment;
 use App\Models\Supply\StoreDetail;
-
+use \Illuminate\Database\Eloquent\Relations\BelongsTo;
 trait CategoryRelations
 {
-    /**
-     * Relation by Category
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function child()
-    {
-        return $this->hasMany(Category::class, 'category_parent_id', 'id');
-    }
+   public function type(): BelongsTo
+   {
+       return $this->belongsTo(Baseinfo::class,'type_id');
+   }
 
-    /**
-     * Relation by Baseinfo
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function unit()
-    {
-        return $this->belongsTo(Baseinfo::class, 'unit_id', 'id');
-    }
-    /**
-     * Relation by discipline
-     *
-     * @return belongsTo
-     */
-    public function discipline()
-    {
-        return $this->belongsTo(Baseinfo::class, 'discipline_id', 'id');
-    }
-    /**
-     * Relation by StoreDetail
-     *
-     * @return HasMany
-     */
-    public function storeDetails()
-    {
-        return $this->hasMany(StoreDetail::class, 'category_id');
-    }
+   public function parent(): BelongsTo
+   {
+       return $this->belongsTo(self::class,'parent_id');
+   }
 }

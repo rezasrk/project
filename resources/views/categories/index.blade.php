@@ -10,13 +10,17 @@
             <div class="card-body">
                 <div class="row">
                     @can('create-categories')
-                    <div class="col">
-                        <button class="btn btn-success add-category">ثبت دسته بندی</button>
-                    </div>
+                        <div class="col">
+                            <button class="btn btn-success add-category">ثبت دسته بندی</button>
+                        </div>
                     @endcan
                 </div>
                 <hr>
-                @include('categories.partials.category')
+                @if($categories->count() > 0)
+                    @include('categories.partials.category')
+                @else
+                    @include('partials.empty_table')
+                @endif
             </div>
         </div>
     </section>
