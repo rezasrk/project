@@ -39,4 +39,13 @@ Route::prefix('managerpanel')->group(function () {
         Route::resource('categories', 'CategoryController');
         Route::get('get_parent','CategoryController@getParentCategory')->name('category.parent');
     });
+
+
+    /*---------------------------------------------------------------------------------------------------------------------------------
+    *                                          User Section
+    *-----------------------------------------------------------------------------------------------------------------------------------
+    */
+    Route::middleware('auth')->group(function(){
+        Route::get('users','UserController@index')->name('users.index');
+    });
 });

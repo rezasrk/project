@@ -46,7 +46,28 @@
                         @endcan
                     </ul>
                 </li>
-
+                @can('users-menu')
+                    <li class="nav-item {{ request()->is('managerpanel/users*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-users"></i>
+                            <p>
+                                {{ $labels['users-menu'] }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            @can('list-users')
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}"
+                                       class="nav-link {{ request()->url() == route('users.index') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>{{ $labels['list-users'] }}</p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
                 @can('settings-menu')
                     <li class="nav-item {{ request()->is('managerpanel/settings*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link">
