@@ -27,7 +27,6 @@
     </div>
 
 
-
     <!-- Modal -->
     <div class="modal fade modal-auth" id="modalAuth" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -47,55 +46,8 @@
                     </ul>
 
                     <div class="tab-content auth-content">
-                        <div class="tab-pane fade show active auth-content__login" id="login" role="tabpanel"
-                             aria-labelledby="login-tab">
-                            <h3 class="auth-content__title">
-                                اگر حساب کاربری ندارید، عضو شوید
-                            </h3>
-
-                            <form class="auth-content__form">
-                                <div class="auth-content__text-input">
-                                    <label for="loginEmailAddress">ایمیل خود را وارد کنید</label>
-                                    <input type="text" id="loginEmailAddress">
-                                </div>
-                                <div class="auth-content__text-input">
-                                    <label for="loginPassword">گذرواژه ی خود را وارد کنید</label>
-                                    <input type="password" id="loginPassword">
-                                </div>
-
-                                <button class="auth-content__form_btn">ورود</button>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade auth-content__signup" id="signup" role="tabpanel"
-                             aria-labelledby="signup-tab">
-                            <h3 class="auth-content__title">
-                                اگر حساب کاربری دارید، وارد شوید
-                            </h3>
-
-                            <form class="auth-content__form">
-                                <div class="auth-content__text-input">
-                                    <label for="signupUserName">نام و نام خانوادگی</label>
-                                    <input type="text" id="signupUserName">
-                                </div>
-                                <div class="auth-content__text-input">
-                                    <label for="signupEmailAddress">ایمیل خود را وارد کنید</label>
-                                    <input type="text" id="signupEmailAddress">
-                                </div>
-                                <div class="auth-content__text-input">
-                                    <label for="signupPassword">گذرواژه ی خود را وارد کنید</label>
-                                    <input type="password" id="signupPassword">
-                                </div>
-                                <div class="form-check" style="margin-bottom: 10px;">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        <a href="#">قوانین</a> و <a href="#">مقررات</a> سایت را می پذیرم
-                                    </label>
-                                </div>
-
-                                <button class="auth-content__form_btn">عضویت</button>
-                            </form>
-                        </div>
-
+                        @include('front.user.login')
+                        @include('front.user.register')
                     </div>
                 </div>
 
@@ -109,6 +61,8 @@
 <script src="{{ asset('front/theme/assets/js/bootstrap.bundle.min.js')  }}"></script>
 <script src="{{ asset('front/theme/assets/font-awesome/all.min.js')  }}"></script>
 <script src="{{ asset('front/theme/assets/js/swiper-bundle.min.js') }}"></script>
+
+@include('layouts.script')
 
 <script>
     var swiper = new Swiper('.category-slider', {

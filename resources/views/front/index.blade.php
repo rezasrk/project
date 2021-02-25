@@ -69,19 +69,20 @@
 
     <section class="section-main-categorise">
         <div class="container">
-
-            <div class="cateqory-main">
-                <div class="cateqory-main__head">
-                    <h3>دسته بندی موضوعی</h3>
+            @if($subjectCategories->count() > 0)
+                <div class="cateqory-main">
+                    <div class="cateqory-main__head">
+                        <h3>دسته بندی موضوعی</h3>
+                    </div>
+                    <ul class="cateqory-main_items">
+                        @foreach($subjectCategories as $subjectCategory)
+                            <li class="cateqory-main_item">
+                                <a href="#" class="button-1">{{ $subjectCategory->title }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
-                <ul class="cateqory-main_items">
-                    @foreach($subjectCategories as $subjectCategory)
-                        <li class="cateqory-main_item">
-                            <a href="#" class="button-1">{{ $subjectCategory->title }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+            @endif
         </div>
     </section>
 
@@ -310,4 +311,16 @@
 
     </section>
 
+@endsection
+
+@section('front-script')
+    <script>
+        $(document).on('click', '.register', function () {
+            httpFormPostRequest($(this)).done(function (response) {
+                if (response.status === 200) {
+                    successAlert(response.msg);
+                }
+            });
+        });
+    </script>
 @endsection

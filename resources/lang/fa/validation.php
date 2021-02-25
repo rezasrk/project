@@ -147,6 +147,7 @@ return array(
         'is_product' => 'نام اصلی کالا',
         'date_request' => 'تاریخ درخواست',
         'amount' => 'مقدار',
-        'date' => 'تاریخ'
+        'date' => 'تاریخ',
+        'accept_rules'=>'قوانین'
     ]
 );
