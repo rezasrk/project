@@ -32,8 +32,9 @@ a {
 
 .footer {
   background: $primary-color;
-  padding: 10px 0;
-  margin-top: 30px;
+  padding: 4px 0;
+  margin-top: 50px;
+  padding-bottom: 10px;
 
   &__nav {
     background: $white-color;
@@ -100,4 +101,12 @@ a {
     margin-right: -1.5em;
     margin-left: 0;
   }
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+hr {
+  opacity: 1;
 }

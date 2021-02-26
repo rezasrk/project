@@ -1,0 +1,376 @@
+.header-user {
+  padding: 20px 0;
+
+  // &__grid {
+  //   border-bottom: solid 2px $primary-color;
+  // }
+
+  &__logo {
+    &_img {
+      width: 100px;
+      height: 80px;
+    }
+  }
+
+  &__form {
+    &_box {
+      width: 350px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    &_input {
+      width: 100%;
+      height: 40px;
+      border-radius: 20px;
+      border: solid 1px $primary-color;
+      box-shadow: $box-shadow-input;
+      padding-right: 15px;
+      padding-left: 35px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &_btn {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: none;
+      border: none;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $primary-color;
+      opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $primary-color;
+    }
+
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: $primary-color;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: flex-end;
+
+    &_panel {
+      position: relative;
+
+      &__btn {
+        border: solid 1px $primary-color;
+        background: $white-color;
+        padding: 5px 10px;
+        border-radius: 20px;
+        color: $primary-color;
+        box-shadow: $box-shadow-input;
+        display: flex;
+        align-items: center;
+        transition: 0.3s;
+
+        svg {
+          border: solid 1px $primary-color;
+          border-radius: 20px;
+          padding: 2px;
+          font-size: 20px;
+          line-height: 0;
+          height: 20px;
+          width: 20px !important;
+          margin-right: 5px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          background: rgba($primary-color, 0.1);
+        }
+      }
+
+      &__items {
+        position: absolute;
+        left: 0;
+        top: 120%;
+        background: $white-color;
+        width: 150px;
+        border-radius: 10px;
+        border: solid 1px $primary-color;
+        box-shadow: $box-shadow-input;
+        padding: 10px 0;
+        display: none;
+
+        li {
+          a {
+            color: $dark-color;
+            display: block;
+            padding: 3px 13px;
+
+            &:hover {
+              color: $primary-color;
+              background: rgba($primary-color, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.user-page {
+  min-height: 80vh;
+
+  &__nav {
+    .nav {
+      border: solid 1px $primary-color;
+      box-shadow: $box-shadow-input;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    &_link {
+      background: $white-color;
+      color: $primary-color;
+      border: none;
+      padding: 6px 12px;
+
+      &.active {
+        background: $primary-color !important;
+        color: $white-color !important;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        background: rgba($primary-color, 0.1);
+        color: $primary-color;
+      }
+    }
+
+    &_last {
+      flex-grow: 1;
+      text-align: left;
+    }
+  }
+
+  .tab-content {
+    padding: 20px;
+  }
+}
+
+.user-image {
+  margin-bottom: 30px;
+  margin-top: 23px;
+  position: relative;
+
+  &__image {
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    border: solid 1px $primary-color;
+    z-index: 2;
+    position: relative;
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    border: solid 1px #237957;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $white-color;
+    color: #ccc;
+  }
+
+  &__label {
+    // width: 150px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    border-radius: 40px;
+    padding: 6px 10px;
+    padding-right: 60px;
+    background: $primary-color;
+    z-index: 1;
+    color: $white-color;
+    cursor: pointer;
+  }
+
+  &__file {
+    display: none;
+  }
+}
+
+.Journals-panel {
+
+  
+  &__image {
+    border-radius: 5px;
+    overflow: hidden;
+    border: solid 1px $primary-color;
+    cursor: pointer;
+    margin-top: 40px;
+
+    &_grid {
+      display: flex;
+      justify-content: center;
+    }
+
+    &_i {
+      background-color: #ddd;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+      &__icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      &__img {
+        max-width: 100%;
+      }
+    }
+
+    &_label {
+      background: $primary-color;
+      color: $white-color;
+      text-align: center;
+      font-size: 14px;
+      padding: 4px;
+    }
+
+    &_file {
+      display: none;
+    }
+  }
+}
+
+.Journals__list,
+.articles__list,
+.magazines__list {
+  overflow-x: auto;
+
+  .table {
+    min-width: 550px;
+  }
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: $white-color;
+}
+
+.bootstrap-filestyle .form-control {
+  border: none;
+  border-radius: 20px !important;
+  padding: 0 10px !important;
+}
+
+.bootstrap-filestyle.input-group {
+  border: 1px solid $primary-color;
+  padding: 3px;
+  border-radius: 30px;
+}
+
+.group-span-filestyle.input-group-btn {
+  border-radius: 20px !important;
+  overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
+
+  .btn-secondary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  .buttonText {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 2px 9px;
+  }
+
+ 
+}
+
+.td-button {
+  padding: 4px !important;
+  
+  button {
+      width: 100%;
+      height: 100%;
+      padding: 18px;
+      border: none;
+      background: $primary-color;
+      color: #fff;
+      border-radius: 10px;
+      transition: .3s;
+
+      &:hover {
+        background: $primary-color-dark2;
+      }
+
+      &:focus {
+        outline: none;
+      }
+  }
+}
+
+.td-input {
+  padding: 4px !important; 
+
+  input {
+    width: 100%;
+    padding: 18px 10px;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  ::placeholder {
+    color: $primary-color;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $primary-color;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $primary-color;
+  }
+}

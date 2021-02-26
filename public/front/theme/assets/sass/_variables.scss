@@ -1,6 +1,7 @@
 
 $primary-color: #237957;
 $primary-color-dark: #092f27;
+$primary-color-dark2: #125231;
 $primary-blue: #448ccb;
 
 $white-color: #fff;
@@ -10,3 +11,5 @@ $light-color: #ddd;
 
 $btn-back-1: linear-gradient(0deg, $primary-color-dark 0%, $primary-color 99%);
 $btn-back-2: linear-gradient(0deg, $primary-color 0%,  $primary-color-dark 99%);
+
+$box-shadow-input: 0 0 5px -1px $primary-color;

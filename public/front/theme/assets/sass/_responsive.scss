@@ -18,6 +18,10 @@
     font-size: 46px;
     line-height: 90px;
   }
+
+  .header-user__form {
+    margin-top: 30px;
+  }
 }
 
 @media (max-width: 550px) {
@@ -39,13 +43,21 @@
     }
   }
 
+  .header-user__form_box {
+    width: 100%;
+  }
+
+  .modal-auth .modal-content {
+    padding: 40px 20px;
+  }
+
+  .user-page .tab-content {
+    padding: 20px 0px;
+  }
 }
 
-
-
 @media (min-width: 576px) {
-
   .modal-dialog {
-    max-width: 360px;
+    max-width: 400px;
   }
 }

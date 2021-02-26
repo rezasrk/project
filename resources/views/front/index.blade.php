@@ -12,9 +12,15 @@
                 </div>
 
                 <div class="header__top_btn">
-                    <button class="button-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAuth">
-                        عضویت / ورود
-                    </button>
+                    @if(auth()->guard('front')->check())
+                        <a href="#" class="button-1">
+                           داشبورد
+                        </a>
+                    @else
+                        <button class="button-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAuth">
+                            عضویت / ورود
+                        </button>
+                    @endif
                 </div>
             </div>
 
@@ -322,5 +328,19 @@
                 }
             });
         });
+
+        $(document).on('click', '.login', function () {
+            httpFormPostRequest($(this)).done(function (response) {
+                if (response.status === 200) {
+                    successAlert(response.msg)
+                    setTimeout(function () {
+                        window.location.href = response.url;
+                    }, 2000)
+                } else {
+                    errorAlert(response.msg)
+                }
+            })
+
+        })
     </script>
 @endsection

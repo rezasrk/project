@@ -3,7 +3,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 600px;
-  background-position: center;
+  background-position: center bottom;
 
   &__top {
     display: flex;
@@ -12,9 +12,8 @@
     align-items: center;
 
     &_logo {
-
       img {
-        width: auto;
+        width: 100px;
         height: 80px;
       }
     }
@@ -22,12 +21,11 @@
 
   &__title {
     font-family: nastaliq;
-    color: $primary-color;
 
     h1 {
-      font-size: 60px;
-    text-align: center;
-
+      color: $primary-color-dark2;
+      font-size: 90px;
+      text-align: center;
     }
   }
 
@@ -82,7 +80,9 @@
       margin-top: 100px;
       background: $white-color;
       border-radius: 30px;
-
+      max-width: 555px;
+      margin-right: auto;
+      margin-left: auto;
       display: flex;
       height: 45px;
       position: relative;
@@ -178,13 +178,15 @@
       a {
         background: $btn-back-1;
         color: $white-color;
-        padding: 3px 10px;
+        padding: 5px 14px;
         border-radius: 20px;
         margin: 5px;
-        transition: all .3s;
+        transition: all 0.3s;
         display: block;
+        font-size: 20px;
+        min-width: 147px;
+        text-align: center;
 
-        
         &:hover {
           background: $btn-back-2;
         }
