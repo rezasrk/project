@@ -13,8 +13,8 @@
 
                 <div class="header__top_btn">
                     @if(auth()->guard('front')->check())
-                        <a href="#" class="button-1">
-                           داشبورد
+                        <a href="{{ route('front.profile','user') }}" class="button-1">
+                            داشبورد
                         </a>
                     @else
                         <button class="button-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAuth">

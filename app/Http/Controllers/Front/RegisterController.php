@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\VerifyEmail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -45,9 +46,14 @@ class RegisterController extends Controller
         $verify = VerifyEmail::query()->where('token', '=', $token)->firstOrFail();
 
         if ((now()->timestamp - $verify->created_at->timestamp) / 60 < 60) {
+
             $verify->user()->update(['email_verified_at' => now()]);
-            return redirect()->to('/');
+
+            Auth::guard('front')->loginUsingId($verify->user->id);
+
+            return redirect()->route('front.profile', 'user');
         }
+
         return abort(404);
     }
 }
