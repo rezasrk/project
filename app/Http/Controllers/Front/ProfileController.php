@@ -31,17 +31,18 @@ class ProfileController extends Controller
 
     protected function infoStore(InfoRequest $request): JsonResponse
     {
-        $imagePath = '';
-        if($request->has('image')){
-            $imagePath = $request->file('image')->store('profile','public');
-        }
         auth()->user()->update([
             'name' => $request->input('name'),
             'degree' => $request->input('degree'),
             'website' => $request->input('website'),
             'email' => $request->input('email'),
-            'image'=>$imagePath
         ]);
+
+        if($request->has('image')){
+            $imagePath = $request->file('image')->store('profile','public');
+            auth()->user()->update([ 'image'=>$imagePath]);
+        }
+
 
         return response()->json([
             'status' => JsonResponse::HTTP_OK,
