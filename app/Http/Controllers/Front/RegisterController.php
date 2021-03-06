@@ -45,7 +45,7 @@ class RegisterController extends Controller
     {
         $verify = VerifyEmail::query()->where('token', '=', $token)->firstOrFail();
 
-        if ((now()->timestamp - $verify->created_at->timestamp) / 60 < 60) {
+        if ((now()->timestamp - $verify->created_at->timestamp) / 60 < 2880) {
 
             $verify->user()->update(['email_verified_at' => now()]);
 

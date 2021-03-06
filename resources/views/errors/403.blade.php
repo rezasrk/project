@@ -21,9 +21,9 @@
                 <div class="error-content">
                     <h3><i class="fas fa-exclamation-triangle text-danger"></i>خطا</h3>
 
-                    <p>
-                        شما به این قسمت دسترسی ندارید !!
-                    </p>
+                    <h2 class="text-danger">
+                        {!! $exception->getMessage() !!}
+                    </h2>
                 </div>
             </div>
         </section>

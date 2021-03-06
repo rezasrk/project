@@ -18,14 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique('unique_users_email')->nullable();
             $table->string('name')->nullable();
             $table->unsignedBigInteger('degree')->default(1);
-            $table->unsignedBigInteger('scientific_rank')->default(1);
+            $table->string('website')->nullable();
+            $table->string('image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('degree')->references('id')->on('baseinfos');
-            $table->foreign('scientific_rank')->references('id')->on('baseinfos');
         });
     }
 

@@ -4,6 +4,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
     /*
     * Show Custom Modal
     */
@@ -104,6 +105,9 @@
         }).fail(function (xhr) {
             removeModalLoading();
             removeContentLoading();
+            if(htmlButton != ""){
+                buttonRemoveLoading(targetButtonLoading)
+            }
             if (xhr.status == 422) {
                 errorAlert('خطاهای فرم رو برطرف کنید');
                 var errors = JSON.parse(xhr.responseText).errors
@@ -230,6 +234,18 @@
         while (rgx.test(y))
             y = y.replace(rgx, '$1' + ',' + '$2');
         return y + z;
+    }
+
+    htmlButton = '';
+    targetButtonLoading = ''
+    function buttonLoading(targetElement) {
+        htmlButton = targetElement.html();
+        targetButtonLoading = targetElement;
+        targetElement.html(" <i class='fa fa-spinner fa-spin'></i>لطفا منتظر بمانید...");
+    }
+
+    function buttonRemoveLoading(targetElement){
+        targetElement.html(htmlButton)
     }
 
 </script>

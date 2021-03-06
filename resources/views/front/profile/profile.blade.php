@@ -25,12 +25,22 @@
         </div>
     </div>
 </section>
-
-@include('front.profile.partials.footer')
+@include('front.layouts.footer')
+@include('layouts.script')
 </body>
 <script>
-    $(document).on('click','.edit-profile',function(){
-
+    $(document).on('click', '.edit-profile', function () {
+        targetElement = $(this);
+        buttonLoading(targetElement);
+        httpFormPostRequest($(this)).done(function (response) {
+            if (response.status === 200) {
+                successAlert(response.msg);
+                setTimeout(function(){
+                    window.location.reload()
+                },2000);
+            }
+            buttonRemoveLoading(targetElement);
+        });
     });
 </script>
 </html>

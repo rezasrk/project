@@ -7,14 +7,17 @@ use Closure;
 class VerifyEmailMiddleware
 {
     /**
-     * Handle an incoming request.
+     * check user verify email
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param $request
+     * @param Closure $next
+     * @return mixed|void
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(auth('front')->user()->email_verified_at){
+            return $next($request);
+        }
+        return abort(403,'لطفا ابتدا ایمیل خود را تایید نمایید .');
     }
 }

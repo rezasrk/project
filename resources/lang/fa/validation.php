@@ -148,6 +148,8 @@ return array(
         'date_request' => 'تاریخ درخواست',
         'amount' => 'مقدار',
         'date' => 'تاریخ',
-        'accept_rules'=>'قوانین'
+        'accept_rules'=>'قوانین',
+        'degree'=>'مدرک تحصیلی',
+        'scientific_rank'=>'رتبه ی علمی',
     ]
 );

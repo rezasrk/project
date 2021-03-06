@@ -3,33 +3,50 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Front\InfoRequest;
 use App\Models\Baseinfo;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __construct()
     {
-        $type = ($request->route()->parameter('type'));
-
-        $data = $this->$type();
-
-        return view('front.profile.profile', $data);
+        $this->middleware(['auth:front','verify_email']);
     }
 
-    protected function user(): array
+    public function info()
     {
-        return [
-            'type' => 'user',
+        $data = [
+            'type' => 'info',
             'info' => auth()->guard('front')->user(),
             'degree' => Baseinfo::type('degree'),
             'scientific_rank' => Baseinfo::type('scientific_rank')
         ];
+
+        return view('front.profile.profile', $data);
     }
 
-    protected function journals()
-    {
 
+    protected function infoStore(InfoRequest $request): JsonResponse
+    {
+        $imagePath = '';
+        if($request->has('image')){
+            $imagePath = $request->file('image')->store('profile','public');
+        }
+        auth()->user()->update([
+            'name' => $request->input('name'),
+            'degree' => $request->input('degree'),
+            'website' => $request->input('website'),
+            'email' => $request->input('email'),
+            'image'=>$imagePath
+        ]);
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-store'),
+        ]);
     }
 
 

@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'required_ajax_request' => \App\Http\Middleware\RequiredAjaxRequest::class,
+        'verify_email' => \App\Http\Middleware\VerifyEmailMiddleware::class
     ];
 }
