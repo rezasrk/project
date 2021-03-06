@@ -151,5 +151,17 @@ return array(
         'accept_rules'=>'قوانین',
         'degree'=>'مدرک تحصیلی',
         'scientific_rank'=>'رتبه ی علمی',
+        'journal_title'=>'عنوان نشریه',
+        'owner_journal'=>'صاحب امتیاز نشریه',
+        'requester'=>'تقاضا کننده',
+        'rank_requester'=>'سمت تقاضا کننده',
+        'degree_journal'=>'درجه ی علمی نشریه',
+        'license_from'=>'دارای مجوز از',
+        'journal_phone'=>'شماره تماس',
+        'journal_email'=>' پست الکترونیکی',
+        'journal_logo'=>'نامه ی درخواست',
+        'journal_license_image'=>'تصویر مجوز انتشار',
+        'journal_letter'=>'نامه ی درخواست',
+        'journal_web_site'=>'ادرس سامانه نشریه',
     ]
 );

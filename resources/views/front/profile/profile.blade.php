@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="tab-content" id="pills-tabContent">
-                    @include('front.profile.partials.'.$type)
+                    @include('front.profile.sections.'.$type)
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
     $(document).on('click', '.edit-profile', function () {
         targetElement = $(this);
         buttonLoading(targetElement);
-        httpFormPostRequest($(this)).done(function (response) {
+        httpFormPostRequest(targetElement).done(function (response) {
             if (response.status === 200) {
                 successAlert(response.msg);
                 setTimeout(function(){
@@ -42,5 +42,19 @@
             buttonRemoveLoading(targetElement);
         });
     });
+
+     $(document).on('click','.journal-store',function(){
+         targetElement = $(this);
+         buttonLoading(targetElement);
+         httpFormPostRequest(targetElement).done(function(response){
+             if (response.status === 200) {
+                 successAlert(response.msg);
+                 setTimeout(function(){
+                     window.location.reload()
+                 },2000);
+             }
+             buttonRemoveLoading(targetElement);
+         });
+     });
 </script>
 </html>
