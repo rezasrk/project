@@ -59,6 +59,7 @@
 
 <script src="{{ asset('front/theme/assets/js/jquery-3.5.1.min.js') }}"></script>
 <script src="{{ asset('front/theme/assets/js/bootstrap.bundle.min.js')  }}"></script>
+<script src="{{ asset('front/theme/assets/js/main.js')  }}"></script>
 <script src="{{ asset('front/theme/assets/font-awesome/all.min.js')  }}"></script>
 <script src="{{ asset('front/theme/assets/js/swiper-bundle.min.js') }}"></script>
 

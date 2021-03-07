@@ -43,11 +43,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 <ul class="header-user__btns_panel__items">
-                    <li><a href="#">
-                            پنل کاربری
-                        </a>
-                    </li>
-                    <li><a href="#">
+                    <li><a href="{{ route('front.logout') }}">
                             خروج
                         </a>
                     </li>
