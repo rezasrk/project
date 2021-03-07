@@ -21,7 +21,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => JsonResponse::HTTP_OK,
                 'msg' => 'اطلاعات وارد شده تایید شد لطفا منتظر بمانید .',
-                'url' => route('home')
+                'url' => route('front.profile')
             ]);
         }
 

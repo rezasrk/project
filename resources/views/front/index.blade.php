@@ -322,14 +322,19 @@
 @section('front-script')
     <script>
         $(document).on('click', '.register', function () {
+            var targetElement = $(this);
+            buttonLoading(targetElement)
             httpFormPostRequest($(this)).done(function (response) {
                 if (response.status === 200) {
                     successAlert(response.msg);
                 }
+                buttonRemoveLoading(targetElement);
             });
         });
 
         $(document).on('click', '.login', function () {
+            var targetElement = $(this);
+            buttonLoading(targetElement);
             httpFormPostRequest($(this)).done(function (response) {
                 if (response.status === 200) {
                     successAlert(response.msg)
@@ -339,6 +344,7 @@
                 } else {
                     errorAlert(response.msg)
                 }
+                buttonRemoveLoading(targetElement);
             })
 
         })
