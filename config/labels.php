@@ -17,6 +17,8 @@ return [
     'list-categories'=>'ثبت دسته بندی',
     'create-categories'=>'ثبت دسته بندی',
     'edit-categories'=>'ویرایش دسته بندی',
-    'users-menu'=>'منو کاربران',
+    'users-menu'=>'کاربران',
     'list-users'=>'لیست کاربران',
+    'journals-menu'=>'نشریات',
+    'list-journal'=>'لیست نشریات',
 ];

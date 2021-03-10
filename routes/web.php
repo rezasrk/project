@@ -37,7 +37,7 @@ Route::prefix('managerpanel')->group(function () {
      */
     Route::middleware('auth')->group(function () {
         Route::resource('categories', 'CategoryController');
-        Route::get('get_parent','CategoryController@getParentCategory')->name('category.parent');
+        Route::get('get_parent', 'CategoryController@getParentCategory')->name('category.parent');
     });
 
 
@@ -45,7 +45,17 @@ Route::prefix('managerpanel')->group(function () {
     *                                          User Section
     *-----------------------------------------------------------------------------------------------------------------------------------
     */
-    Route::middleware('auth')->group(function(){
-        Route::get('users','UserController@index')->name('users.index');
+    Route::middleware('auth')->group(function () {
+        Route::get('users', 'UserController@index')->name('users.index');
+    });
+
+
+    /*-------------------------------------------------------------------------------------------------------------------------------
+     *                                         Journal Section
+     ------------------------------------------------------------------------------------------------------------------------------*/
+    Route::middleware('auth')->group(function () {
+        Route::get('journals', 'JournalController@index')->name('journals.index');
+        Route::get('journals/accept', 'JournalController@accept')->name('journals.accept');
+        Route::get('journals/normal', 'JournalController@normal')->name('journals.normal');
     });
 });

@@ -22,7 +22,7 @@
                 <li class="nav-item">
                     <a href="{{ route('profile.show') }}"
                        class="nav-link {{ request()->is('managerpanel/profile*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fa fa-id-card"></i>
                         <p>{{ $labels['profile'] }}</p>
                     </a>
                 </li>
@@ -62,6 +62,28 @@
                                        class="nav-link {{ request()->url() == route('users.index') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>{{ $labels['list-users'] }}</p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                @can('journals-menu')
+                    <li class="nav-item {{ request()->is('managerpanel/journals*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-users"></i>
+                            <p>
+                                {{ $labels['journals-menu'] }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            @can('list-journal')
+                                <li class="nav-item">
+                                    <a href="{{ route('journals.index') }}"
+                                       class="nav-link {{ request()->url() == route('journals.index') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>{{ $labels['list-journal'] }}</p>
                                     </a>
                                 </li>
                             @endcan

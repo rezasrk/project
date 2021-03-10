@@ -129,7 +129,7 @@ class PermissionTableSeeder extends Seeder
                 'name' => 'users-menu',
                 'title' => $permissionTitle['users-menu'],
                 'family' => 'users',
-                'is_parent' => 0,
+                'is_parent' => 1,
                 'status' => 1,
                 'guard_name' => 'web',
             ],
@@ -142,6 +142,25 @@ class PermissionTableSeeder extends Seeder
                 'status' => 1,
                 'guard_name' => 'web',
             ],
+            [
+                'id' => 23,
+                'name' => 'journals-menu',
+                'title' => $permissionTitle['journals-menu'],
+                'family' => 'users',
+                'is_parent' => 1,
+                'status' => 1,
+                'guard_name' => 'web',
+            ],
+            [
+                'id' => 24,
+                'name' => 'list-journal',
+                'title' => $permissionTitle['list-journal'],
+                'family' => 'users',
+                'is_parent' => 0,
+                'status' => 1,
+                'guard_name' => 'web',
+            ],
+
         ]);
         DB::unprepared('SET FOREIGN_KEY_CHECKS=1;');
     }
