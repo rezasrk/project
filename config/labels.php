@@ -19,6 +19,6 @@ return [
     'edit-categories'=>'ویرایش دسته بندی',
     'users-menu'=>'کاربران',
     'list-users'=>'لیست کاربران',
-    'journals-menu'=>'نشریات',
-    'list-journal'=>'لیست نشریات',
+    'publisher-menu'=>'نشریات',
+    'list-publisher'=>'لیست نشریات',
 ];

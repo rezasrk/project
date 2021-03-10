@@ -43,7 +43,7 @@
         });
     });
 
-     $(document).on('click','.journal-store',function(){
+     $(document).on('click','.publisher-store',function(){
          targetElement = $(this);
          buttonLoading(targetElement);
          httpFormPostRequest(targetElement).done(function(response){

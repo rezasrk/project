@@ -144,8 +144,8 @@ class PermissionTableSeeder extends Seeder
             ],
             [
                 'id' => 23,
-                'name' => 'journals-menu',
-                'title' => $permissionTitle['journals-menu'],
+                'name' => 'publisher-menu',
+                'title' => $permissionTitle['publisher-menu'],
                 'family' => 'users',
                 'is_parent' => 1,
                 'status' => 1,
@@ -153,8 +153,8 @@ class PermissionTableSeeder extends Seeder
             ],
             [
                 'id' => 24,
-                'name' => 'list-journal',
-                'title' => $permissionTitle['list-journal'],
+                'name' => 'list-publisher',
+                'title' => $permissionTitle['list-publisher'],
                 'family' => 'users',
                 'is_parent' => 0,
                 'status' => 1,

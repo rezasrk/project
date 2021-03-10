@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJournalsTable extends Migration
+class CreatePublisherTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,26 @@ class CreateJournalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('journals', function (Blueprint $table) {
+        Schema::create('publishers', function (Blueprint $table) {
             $table->id();
-            $table->string('journal_title')->nullable();
-            $table->string('owner_journal')->nullable();
+            $table->string('publisher_title')->nullable();
+            $table->string('owner_publisher')->nullable();
             $table->string('requester')->nullable();
-            $table->string('journal_phone')->nullable();
-            $table->string('journal_email')->nullable();
-            $table->string('journal_logo')->nullable();
-            $table->string('journal_license_image')->nullable();
-            $table->string('journal_letter')->nullable();
-            $table->string('journal_web_site')->nullable();
+            $table->string('publisher_phone')->nullable();
+            $table->string('publisher_email')->nullable();
+            $table->string('publisher_logo')->nullable();
+            $table->string('publisher_license_image')->nullable();
+            $table->string('publisher_letter')->nullable();
+            $table->string('publisher_web_site')->nullable();
             $table->boolean('status')->default(0);
             $table->unsignedBigInteger('creator_id');
             $table->unsignedBigInteger('rank_requester');
-            $table->unsignedBigInteger('degree_journal');
+            $table->unsignedBigInteger('degree_publisher');
             $table->unsignedBigInteger('license_from');
 
             $table->foreign('creator_id')->references('id')->on('users');
             $table->foreign('rank_requester')->references('id')->on('baseinfos');
-            $table->foreign('degree_journal')->references('id')->on('baseinfos');
+            $table->foreign('degree_publisher')->references('id')->on('baseinfos');
             $table->foreign('license_from')->references('id')->on('baseinfos');
 
             $table->timestamps();
@@ -46,6 +46,6 @@ class CreateJournalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('journals');
+        Schema::dropIfExists('publishers');
     }
 }

@@ -15,7 +15,7 @@ Route::namespace('Front')->group(function () {
      ------------------------------------------------------------------------------------------------------*/
     Route::get('profile/info', 'ProfileController@info')->name('front.profile');
     Route::post('profile/info', 'ProfileController@infoStore')->name('front.info.store');
-    Route::get('profile/journal', 'ProfileController@journal')->name('front.journal');
-    Route::post('profile/journal','ProfileController@journalStore')->name('front.journal.store');
+    Route::get('profile/publisher', 'ProfileController@publisher')->name('front.publisher');
+    Route::post('profile/publisher','ProfileController@publisherStore')->name('front.publisher.store');
 });
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class JournalRequest extends FormRequest
+class PublisherRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,18 @@ class JournalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'journal_title'=>['required'],
-            'owner_journal'=>['required'],
+            'publisher_title'=>['required'],
+            'owner_publisher'=>['required'],
             'requester'=>['required'],
             'rank_requester'=>['required'],
-            'degree_journal'=>['required'],
+            'degree_publisher'=>['required'],
             'license_from'=>['required'],
-            'journal_phone'=>['required'],
-            'journal_email'=>['required'],
-            'journal_web_site'=>['required'],
-            'journal_logo'=>['nullable'],
-            'journal_license_image'=>['nullable'],
-            'journal_letter'=>['nullable'],
+            'publisher_phone'=>['required'],
+            'publisher_email'=>['required'],
+            'publisher_web_site'=>['required'],
+            'publisher_logo'=>['nullable'],
+            'publisher_license_image'=>['nullable'],
+            'publisher_letter'=>['nullable'],
         ];
     }
 }

@@ -153,7 +153,7 @@ class BaseinfoTableSeeder extends Seeder
              ],
              [
                  'id' => 16,
-                 'type' => 'degree_journal',
+                 'type' => 'degree_publisher',
                  'value' => 'درجه علمی نشریه',
                  'parent_id' => 0,
                  'user_can_add' => 1,
@@ -162,7 +162,7 @@ class BaseinfoTableSeeder extends Seeder
              ],
              [
                  'id' => 17,
-                 'type' => 'degree_journal',
+                 'type' => 'degree_publisher',
                  'value' => 'درجه ی علمی 1',
                  'parent_id' => 16,
                  'user_can_add' => 1,
@@ -171,7 +171,7 @@ class BaseinfoTableSeeder extends Seeder
              ],
              [
                  'id' => 18,
-                 'type' => 'degree_journal',
+                 'type' => 'degree_publisher',
                  'value' => 'درجه ی علمی 2',
                  'parent_id' => 16,
                  'user_can_add' => 1,

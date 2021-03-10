@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\InfoRequest;
-use App\Http\Requests\JournalRequest;
+use App\Http\Requests\Front\PublisherRequest;
 use App\Models\Baseinfo;
-use App\Models\Journal;
+use App\Models\Publisher;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -52,46 +52,46 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function journal()
+    public function publisher()
     {
         $data = [
-            'type' => 'journal',
-            'journal' => Journal::query()->where('creator_id', auth()->id())->first(),
+            'type' => 'publisher',
+            'publisher' => Publisher::query()->where('creator_id', auth()->id())->first(),
             'rank_requester' => Baseinfo::type('rank_requester'),
-            'degree_journal' => Baseinfo::type('degree_journal'),
+            'degree_publisher' => Baseinfo::type('degree_publisher'),
             'license_from' => Baseinfo::type('license_from'),
         ];
         return view('front.profile.profile', $data);
     }
 
-    public function journalStore(JournalRequest $request): JsonResponse
+    public function publisherStore(PublisherRequest $request): JsonResponse
     {
-        $journal = Journal::query()->updateOrCreate([
-            'id' => $request->journal_id,
+        $publisher = Publisher::query()->updateOrCreate([
+            'id' => $request->publisher_id,
             'creator_id' => auth()->id()
         ], [
-            'journal_title' => $request->input('journal_title'),
-            'owner_journal' => $request->input('owner_journal'),
+            'publisher_title' => $request->input('publisher_title'),
+            'owner_publisher' => $request->input('owner_publisher'),
             'requester' => $request->input('requester'),
             'rank_requester' => $request->input('rank_requester'),
-            'degree_journal' => $request->input('degree_journal'),
+            'degree_publisher' => $request->input('degree_publisher'),
             'license_from' => $request->input('license_from'),
-            'journal_phone' => $request->input('journal_phone'),
-            'journal_email' => $request->input('journal_email'),
-            'journal_web_site' => $request->input('journal_web_site'),
+            'publisher_phone' => $request->input('publisher_phone'),
+            'publisher_email' => $request->input('publisher_email'),
+            'publisher_web_site' => $request->input('publisher_web_site'),
             'creator_id' => auth('front')->id()
         ]);
-        if ($request->has('journal_logo')) {
-            $journal_logo_path = $request->file('journal_logo')->store('journal', 'public');
-            $journal->update(['journal_logo' => $journal_logo_path]);
+        if ($request->has('publisher_logo')) {
+            $publisher_logo_path = $request->file('publisher_logo')->store('publisher', 'public');
+            $publisher->update(['publisher_logo' => $publisher_logo_path]);
         }
-        if ($request->has('journal_license_image')) {
-            $journal_license_image_path = $request->file('journal_license_image')->store('journal', 'public');
-            $journal->update(['journal_license_image' => $journal_license_image_path]);
+        if ($request->has('publisher_license_image')) {
+            $publisher_license_image_path = $request->file('publisher_license_image')->store('publisher', 'public');
+            $publisher->update(['publisher_license_image' => $publisher_license_image_path]);
         }
-        if ($request->has('journal_letter')) {
-            $journal_letter_path = $request->file('journal_letter')->store('journal', 'public');
-            $journal->update(['journal_letter' => $journal_letter_path]);
+        if ($request->has('publisher_letter')) {
+            $publisher_letter_path = $request->file('publisher_letter')->store('publisher', 'public');
+            $publisher->update(['publisher_letter' => $publisher_letter_path]);
         }
 
         return response()->json([
