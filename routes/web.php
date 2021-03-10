@@ -54,8 +54,8 @@ Route::prefix('managerpanel')->group(function () {
      *                                         Journal Section
      ------------------------------------------------------------------------------------------------------------------------------*/
     Route::middleware('auth')->group(function () {
-        Route::get('publishers', 'JournalController@index')->name('publishers.index');
-        Route::get('publishers/accept', 'JournalController@accept')->name('publishers.accept');
-        Route::get('publishers/normal', 'JournalController@normal')->name('journals.normal');
+        Route::get('publishers', 'PublisherController@index')->name('publisher.index');
+        Route::get('publishers/accept', 'PublisherController@accept')->name('publisher.accept');
+        Route::get('publishers/normal', 'PublisherController@normal')->name('publisher.normal');
     });
 });

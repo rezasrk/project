@@ -68,22 +68,22 @@
                         </ul>
                     </li>
                 @endcan
-                @can('journals-menu')
-                    <li class="nav-item {{ request()->is('managerpanel/journals*') ? 'menu-open' : '' }}">
+                @can('publisher-menu')
+                    <li class="nav-item {{ request()->is('managerpanel/publisher*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link">
                             <i class="fa fa-users"></i>
                             <p>
-                                {{ $labels['journals-menu'] }}
+                                {{ $labels['publisher-menu'] }}
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview ">
-                            @can('list-journal')
+                            @can('list-publisher')
                                 <li class="nav-item">
-                                    <a href="{{ route('journals.index') }}"
-                                       class="nav-link {{ request()->url() == route('journals.index') ? 'active' : '' }}">
+                                    <a href="{{ route('publisher.index') }}"
+                                       class="nav-link {{ request()->url() == route('publisher.index') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>{{ $labels['list-journal'] }}</p>
+                                        <p>{{ $labels['list-publisher'] }}</p>
                                     </a>
                                 </li>
                             @endcan

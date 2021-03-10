@@ -10,10 +10,10 @@
             </div>
             <div class="card-body">
 
-                @include('journals.partials.filter')
+                @include('publishers.partials.filter')
                 <div class="row">
                     <div class="col-md-12">
-                        @include('journals.partials.journals')
+                        @include('publishers.partials.publishers')
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
 
 @section('script')
     <script>
-        $(document).on('change', '.status-journal', function () {
+        $(document).on('change', '.status-publisher', function () {
             httpGetRequest($(this).attr('data-url'));
             removeContentLoading();
         });

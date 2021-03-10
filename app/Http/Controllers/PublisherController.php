@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Journal;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,20 +10,20 @@ class PublisherController extends Controller
 {
     public function index(Request $request)
     {
-        $journals = Journal::query()->with(['rankRequester']);
+        $publishers = Publisher::query()->with(['rankRequester']);
 
-        if($request->filled('journal_title')){
-            $journals->where('journal_title',$request->query('journal_title'));
+        if($request->filled('publisher_title')){
+            $publishers->where('publisher_title',$request->query('publisher_title'));
         }
-        $journals = $journals->paginate(20);
+        $publishers = $publishers->paginate(20);
 
-        return view('journals.index', compact('journals'));
+        return view('publishers.index', compact('publishers'));
     }
 
     public function accept(Request $request)
     {
         DB::beginTransaction();
-        Journal::query()
+        publisher::query()
             ->findOrFail($request->input('id'))
             ->update(['status' => 1]);
         DB::commit();
@@ -32,7 +32,7 @@ class PublisherController extends Controller
     public function normal(Request $request)
     {
         DB::beginTransaction();
-        Journal::query()
+        Publisher::query()
             ->findOrFail($request->input('id'))
             ->update(['status' => 0]);
         DB::commit();
