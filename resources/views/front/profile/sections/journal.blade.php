@@ -82,10 +82,13 @@
             </div>
         </div>
         <div class="row">
+
             <div class="col-md-4">
                 <div class="text-input">
-                    <label>لوگو نشریه</label>
-                    <input type="file" name="journal_logo">
+                    <div class="text-input__grid">
+                        <label class="text-input__label">لوگو نشریه</label>
+                    </div>
+                    <input name="journal_logo" type="file" class="text-input__file">
                     @if(optional($journal)->journal_logo)
                         <img class="mt-3" width="100px" height="100px"
                              src="{{ url('storage/'.optional($journal)->journal_logo) }}">
@@ -94,8 +97,10 @@
             </div>
             <div class="col-md-4">
                 <div class="text-input">
-                    <label>تصویر مجوز انتشار</label>
-                    <input type="file" name="journal_license_image">
+                    <div class="text-input__grid">
+                        <label class="text-input__label">تصویر مجوز انتشار</label>
+                    </div>
+                    <input name="journal_license_image" type="file" class="text-input__file">
                     @if(optional($journal)->journal_license_image)
                         <img class="mt-3" width="100px" height="100px"
                              src="{{ url('storage/'.optional($journal)->journal_license_image) }}">
@@ -104,8 +109,10 @@
             </div>
             <div class="col-md-4">
                 <div class="text-input">
-                    <label>نامه ی درخواست</label>
-                    <input type="file" name="journal_letter">
+                    <div class="text-input__grid">
+                        <label class="text-input__label">نامه ی درخواست</label>
+                    </div>
+                    <input name="journal_letter" type="file" class="text-input__file">
                     @if(optional($journal)->journal_letter)
                         <a class="mt-3"
                            href="{{ route('simple.download').'?path='.optional($journal)->journal_letter }}">
