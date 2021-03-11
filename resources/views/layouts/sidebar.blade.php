@@ -71,7 +71,7 @@
                 @can('publisher-menu')
                     <li class="nav-item {{ request()->is('managerpanel/publisher*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-file"></i>
                             <p>
                                 {{ $labels['publisher-menu'] }}
                                 <i class="right fas fa-angle-left"></i>
@@ -84,6 +84,28 @@
                                        class="nav-link {{ request()->url() == route('publisher.index') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>{{ $labels['list-publisher'] }}</p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                @can('journal-menu')
+                    <li class="nav-item {{ request()->is('managerpanel/journal*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-newspaper"></i>
+                            <p>
+                                {{ $labels['journal-menu'] }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            @can('list-journal')
+                                <li class="nav-item">
+                                    <a href="{{ route('journal.index') }}"
+                                       class="nav-link {{ request()->url() == route('journal.index') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>{{ $labels['list-journal'] }}</p>
                                     </a>
                                 </li>
                             @endcan

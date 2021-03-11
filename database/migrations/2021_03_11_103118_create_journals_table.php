@@ -36,6 +36,7 @@ class CreateJournalsTable extends Migration
             $table->string('website')->nullable();
             $table->string('image')->nullable();
             $table->unsignedBigInteger('creator_id');
+            $table->boolean('status')->default(0);
 
 
             $table->foreign('publisher_id')->references('id')->on('publishers');

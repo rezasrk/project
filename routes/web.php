@@ -51,11 +51,19 @@ Route::prefix('managerpanel')->group(function () {
 
 
     /*-------------------------------------------------------------------------------------------------------------------------------
-     *                                         Journal Section
+     *                                         Publisher Section
      ------------------------------------------------------------------------------------------------------------------------------*/
     Route::middleware('auth')->group(function () {
         Route::get('publishers', 'PublisherController@index')->name('publisher.index');
         Route::get('publishers/accept', 'PublisherController@accept')->name('publisher.accept');
         Route::get('publishers/normal', 'PublisherController@normal')->name('publisher.normal');
+    });
+
+    /*----------------------------------------------------------------------------------------------------------------------------
+     *                                          Journal section
+     ---------------------------------------------------------------------------------------------------------------------------*/
+
+    Route::middleware('auth')->group(function(){
+        Route::get('journals','JournalController@index')->name('journal.index');
     });
 });

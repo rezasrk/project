@@ -21,4 +21,6 @@ return [
     'list-users'=>'لیست کاربران',
     'publisher-menu'=>'نشریات',
     'list-publisher'=>'لیست نشریات',
+    'journal-menu'=>'مجله',
+    'list-journal'=>'لیست مجله',
 ];
