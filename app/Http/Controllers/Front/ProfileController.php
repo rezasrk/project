@@ -4,18 +4,23 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\InfoRequest;
+use App\Http\Requests\Front\JournalRequest;
 use App\Http\Requests\Front\PublisherRequest;
 use App\Models\Baseinfo;
+use App\Models\Category;
+use App\Models\Journal;
 use App\Models\Publisher;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
     public function __construct()
     {
         $this->middleware(['auth:front', 'verify_email']);
+        $this->middleware(['check_status_publisher'])->only(['journal', 'journalStore']);
     }
 
     public function info()
@@ -100,5 +105,62 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function journal(Request $request)
+    {
+        /** @var User $user */
+        $user = auth()->user();
+        $data = [
+            'type' => 'journals',
+            'publishers' => Baseinfo::type('publisher'),
+            'categories' => Category::query()->where('type_id', '=', 3)
+                ->where('parent_id', '=', 0)
+                ->get(),
+            'degrees' => Baseinfo::type('degree_publisher'),
+            'period_publisher' => Baseinfo::type('period_publisher'),
+            'journal' => Journal::query()->where('publisher_id',$user->publisher->id)->find($request->query('journal_id'))
+        ];
+
+        return view('front.profile.profile', $data);
+    }
+
+    public function journalStore(JournalRequest $request): JsonResponse
+    {
+        DB::beginTransaction();
+
+        $journal = Journal::query()->create([
+            'journal_title' => $request->input('journal_title'),
+            'publisher_id' => auth()->user()->publisher->id,
+            'publisher' => $request->input('publisher'),
+            'category_id' => $request->input('category_id'),
+            'degree' => $request->input('degree'),
+            'period_journal' => $request->input('period_journal'),
+            'about_journal' => $request->input('about_journal'),
+            'owner_journal' => $request->input('owner_journal'),
+            'manager' => $request->input('manager'),
+            'chief_editor' => $request->input('chief_editor'),
+            'editorial_board' => $request->input('editorial_board'),
+            'p_issn' => $request->input('p_issn'),
+            'e_issn' => $request->input('e_issn'),
+            'post_code' => $request->input('post_code'),
+            'address' => $request->input('address'),
+            'phone' => $request->input('phone'),
+            'fax' => $request->input('fax'),
+            'email' => $request->input('email'),
+            'website' => $request->input('website'),
+            'creator_id' =>auth()->id(),
+        ]);
+
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('journal','public');
+            $journal->update(['image' => $path]);
+        }
+
+        DB::commit();
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-store')
+        ]);
+    }
 
 }

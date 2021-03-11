@@ -7,7 +7,7 @@ use \Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-
+use \Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -20,8 +20,8 @@ class User extends Authenticatable
         return $this->hasMany(VerifyEmail::class, 'user_id')->latest('created_at');
     }
 
-    public function journals(): HasMany
+    public function publisher(): HasOne
     {
-        return $this->hasMany(Journal::class, 'creator_id');
+        return $this->hasOne(Publisher::class, 'creator_id');
     }
 }

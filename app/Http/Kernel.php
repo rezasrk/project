@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'required_ajax_request' => \App\Http\Middleware\RequiredAjaxRequest::class,
-        'verify_email' => \App\Http\Middleware\VerifyEmailMiddleware::class
+        'verify_email' => \App\Http\Middleware\VerifyEmailMiddleware::class,
+        'check_status_publisher'=>\App\Http\Middleware\Front\CheckStatusPublisher::class
     ];
 }

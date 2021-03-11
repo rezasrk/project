@@ -7,6 +7,9 @@
         <li class="nav-item" role="presentation">
             <a href="{{ route('front.publisher') }}" class="user-page__nav_link {{ (route('front.publisher')) == request()->url()  ? 'active' : '' }}" type="button">ثبت اطلاعات نشریه</a>
         </li>
+        <li class="nav-item" role="presentation">
+            <a href="{{ route('front.journal') }}" class="user-page__nav_link {{ (route('front.journal')) == request()->url()  ? 'active' : '' }}" type="button">ثبت مجله</a>
+        </li>
     </ul>
 
 </div>

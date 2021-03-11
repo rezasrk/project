@@ -35,26 +35,41 @@
         httpFormPostRequest(targetElement).done(function (response) {
             if (response.status === 200) {
                 successAlert(response.msg);
-                setTimeout(function(){
+                setTimeout(function () {
                     window.location.reload()
-                },2000);
+                }, 2000);
             }
             buttonRemoveLoading(targetElement);
         });
     });
 
-     $(document).on('click','.publisher-store',function(){
-         targetElement = $(this);
-         buttonLoading(targetElement);
-         httpFormPostRequest(targetElement).done(function(response){
-             if (response.status === 200) {
-                 successAlert(response.msg);
-                 setTimeout(function(){
-                     window.location.reload()
-                 },2000);
-             }
-             buttonRemoveLoading(targetElement);
-         });
-     });
+    $(document).on('click', '.publisher-store', function () {
+        targetElement = $(this);
+        buttonLoading(targetElement);
+        httpFormPostRequest(targetElement).done(function (response) {
+            if (response.status === 200) {
+                successAlert(response.msg);
+                setTimeout(function () {
+                    window.location.reload()
+                }, 2000);
+            }
+            buttonRemoveLoading(targetElement);
+        });
+    });
+
+
+    $(document).on('click', '.store-journal', function () {
+        targetElement = $(this);
+        buttonLoading(targetElement);
+        httpFormPostRequest(targetElement).done(function (response) {
+            if (response.status === 200) {
+                successAlert(response.msg);
+                setTimeout(function () {
+                    window.location.reload();
+                }, 2000)
+            }
+            buttonRemoveLoading(targetElement);
+        })
+    });
 </script>
 </html>
