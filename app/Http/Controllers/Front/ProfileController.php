@@ -117,7 +117,8 @@ class ProfileController extends Controller
                 ->get(),
             'degrees' => Baseinfo::type('degree_publisher'),
             'period_publisher' => Baseinfo::type('period_publisher'),
-            'journal' => Journal::query()->where('publisher_id',$user->publisher->id)->find($request->query('journal_id'))
+            'journals' => Journal::query()->where('publisher_id', $user->publisher->id)->paginate(20),
+            'journal' => Journal::query()->where('publisher_id', $user->publisher->id)->find($request->query('journal_id'))
         ];
 
         return view('front.profile.profile', $data);
@@ -127,7 +128,9 @@ class ProfileController extends Controller
     {
         DB::beginTransaction();
 
-        $journal = Journal::query()->create([
+        $journal = Journal::query()->updateOrCreate([
+            'id'=>$request->input('journal_id')
+        ],[
             'journal_title' => $request->input('journal_title'),
             'publisher_id' => auth()->user()->publisher->id,
             'publisher' => $request->input('publisher'),
@@ -147,11 +150,11 @@ class ProfileController extends Controller
             'fax' => $request->input('fax'),
             'email' => $request->input('email'),
             'website' => $request->input('website'),
-            'creator_id' =>auth()->id(),
+            'creator_id' => auth()->id(),
         ]);
 
         if ($request->has('image')) {
-            $path = $request->file('image')->store('journal','public');
+            $path = $request->file('image')->store('journal', 'public');
             $journal->update(['image' => $path]);
         }
 

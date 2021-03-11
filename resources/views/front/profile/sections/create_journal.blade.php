@@ -1,5 +1,6 @@
 <form action="{{ route('front.journal.store') }}" method="POST">
     @csrf
+    <input type="hidden" name="journal_id" value="{{ optional($journal)->id }}">
     <div class="row">
         <div class="col-12 col-md-8">
             <div class="text-input">
@@ -59,7 +60,7 @@
                 <select type="text" class="text-input__input" name="degree">
                     <option value>انتخاب نمایید...</option>
                     @foreach($degrees as $degreeKey=>$degreeValue)
-                        <option @if($degreeKey == optional($journal)->id) selected
+                        <option @if($degreeKey == optional($journal)->degree) selected
                                 @endif value="{{ $degreeKey }}">{{ $degreeValue }}</option>
                     @endforeach
                 </select>
@@ -74,7 +75,7 @@
                 <select type="text" class="text-input__input" name="period_journal">
                     <option value>انتخاب نمایید...</option>
                     @foreach($period_publisher as $keyPeriodPublish=>$valuePeriodPublish)
-                        <option @if($keyPeriodPublish == optional($journal)->period_publisher) selected @endif value="{{ $keyPeriodPublish }}">{{ $valuePeriodPublish }}</option>
+                        <option @if($keyPeriodPublish == optional($journal)->period_journal) selected @endif value="{{ $keyPeriodPublish }}">{{ $valuePeriodPublish }}</option>
                     @endforeach
                 </select>
             </div>
