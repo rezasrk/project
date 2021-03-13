@@ -12,7 +12,7 @@ class CheckStatusPublisher
     {
         /** @var User $user */
         $user = auth()->user();
-        if($user->publisher->status){
+        if(optional($user->publisher)->status){
             return $next($request);
         }
         return abort('403','حساب نشریه ی شما توسط ادمین تایید نشده ');
