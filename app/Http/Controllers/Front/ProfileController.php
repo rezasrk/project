@@ -117,16 +117,22 @@ class ProfileController extends Controller
     {
         /** @var User $user */
         $user = auth('front')->user();
+        $accessPublish = $user->publisher()->get()->pluck('id')->toArray();
+
         $data = [
             'type' => 'journals',
-            'publishers' => Publisher::query()->where('creator_id',$user->id)->get(),
+            'publishers' => Publisher::query()->where('creator_id', $user->id)->get(),
             'categories' => Category::query()->where('type_id', '=', 3)
                 ->where('parent_id', '=', 0)
                 ->get(),
             'degrees' => Baseinfo::type('degree_publisher'),
             'period_publisher' => Baseinfo::type('period_publisher'),
-            'journals' => Journal::query()->with(['publish'])->where('publisher_id', $user->publisher->id)->paginate(20),
-            'journal' => Journal::query()->where('publisher_id', $user->publisher->id)->find($request->query('journal_id')),
+            'journals' => Journal::query()->with(['publish'])
+                ->whereIn('publisher_id', $accessPublish)
+                ->paginate(20),
+            'journal' => Journal::query()
+                ->whereIn('publisher_id', $accessPublish)
+                ->find($request->query('journal_id')),
             'journalNumbers' => JournalNumber::query()->where('journal_id', $request->query('journal_id'))->get(),
             'numberJr' => JournalNumber::query()->find($request->query('journal_number')),
         ];
@@ -142,8 +148,7 @@ class ProfileController extends Controller
             'id' => $request->input('journal_id')
         ], [
             'journal_title' => $request->input('journal_title'),
-            'publisher_id' => auth()->user()->publisher->id,
-            'publisher' => $request->input('publisher'),
+            'publisher_id' => $request->input('publisher'),
             'category_id' => $request->input('category_id'),
             'degree' => $request->input('degree'),
             'period_journal' => $request->input('period_journal'),

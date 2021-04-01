@@ -15,11 +15,6 @@ class Journal extends Model
 
     protected $appends = ['create_date'];
 
-    public function publisherTitle(): BelongsTo
-    {
-        return $this->belongsTo(Baseinfo::class, 'publisher');
-    }
-
     public function publish(): BelongsTo
     {
         return $this->belongsTo(Publisher::class, 'publisher_id');

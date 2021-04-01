@@ -17,7 +17,6 @@ class CreateJournalsTable extends Migration
             $table->id();
             $table->string('journal_title')->nullable();
             $table->unsignedBigInteger('publisher_id');
-            $table->unsignedBigInteger('publisher');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('degree');
             $table->unsignedBigInteger('period_journal');
@@ -40,7 +39,6 @@ class CreateJournalsTable extends Migration
 
 
             $table->foreign('publisher_id')->references('id')->on('publishers');
-            $table->foreign('publisher')->references('id')->on('baseinfos');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('degree')->references('id')->on('baseinfos');
             $table->foreign('period_journal')->references('id')->on('baseinfos');

@@ -20,8 +20,8 @@ class User extends Authenticatable
         return $this->hasMany(VerifyEmail::class, 'user_id')->latest('created_at');
     }
 
-    public function publisher(): HasOne
+    public function publisher(): HasMany
     {
-        return $this->hasOne(Publisher::class, 'creator_id');
+        return $this->hasMany(Publisher::class, 'creator_id');
     }
 }
