@@ -119,13 +119,13 @@ class ProfileController extends Controller
         $user = auth('front')->user();
         $data = [
             'type' => 'journals',
-            'publishers' => Baseinfo::type('publisher'),
+            'publishers' => Publisher::query()->where('creator_id',$user->id)->get(),
             'categories' => Category::query()->where('type_id', '=', 3)
                 ->where('parent_id', '=', 0)
                 ->get(),
             'degrees' => Baseinfo::type('degree_publisher'),
             'period_publisher' => Baseinfo::type('period_publisher'),
-            'journals' => Journal::query()->where('publisher_id', $user->publisher->id)->paginate(20),
+            'journals' => Journal::query()->with(['publish'])->where('publisher_id', $user->publisher->id)->paginate(20),
             'journal' => Journal::query()->where('publisher_id', $user->publisher->id)->find($request->query('journal_id')),
             'journalNumbers' => JournalNumber::query()->where('journal_id', $request->query('journal_id'))->get(),
             'numberJr' => JournalNumber::query()->find($request->query('journal_number')),

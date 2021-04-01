@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Models\Publisher;
 use Illuminate\Foundation\Http\FormRequest;
 
 class JournalRequest extends FormRequest
@@ -25,7 +26,14 @@ class JournalRequest extends FormRequest
     {
         return [
             'journal_title' => ['required'],
-            'publisher' => ['required'],
+            'publisher' => ['required', function ($attr, $value, $fail) {
+                $publisher = Publisher::query()
+                    ->where('creator_id',auth('front')->id())
+                    ->where('id', $value)->where('status', 1)->first();
+                if (!$publisher) {
+                    return $fail('این نشریه توسط ادمین تایید نشده است!');
+                }
+            }],
             'category_id' => ['required'],
             'degree' => ['required'],
             'period_journal' => ['required'],

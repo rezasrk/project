@@ -19,9 +19,9 @@
                 </div>
                 <select type="text" class="text-input__input" name="publisher">
                     <option value>انتخاب کنید...</option>
-                    @foreach($publishers as $keyPublisher=>$valuePublisher)
-                        <option @if(optional($journal)->publisher == $keyPublisher) selected
-                                @endif value="{{ $keyPublisher }}">{{ $valuePublisher }}</option>
+                    @foreach($publishers as $publish)
+                        <option @if(optional($journal)->publisher == $publish->id) selected
+                                @endif value="{{ $publish->id }}">{{ $publish->publisher_title }}</option>
                     @endforeach
                 </select>
             </div>

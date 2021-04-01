@@ -35,7 +35,7 @@
                     <tr>
                         <td>{{ ($journals->currentPage() - 1) * $journals->perPage() + $loop->iteration }}</td>
                         <td>{{ $jrn->journal_title }}</td>
-                        <td>{{ optional($jrn->publisherTitle)->value }}</td>
+                        <td>{{ optional($jrn->publish)->publisher_title }}</td>
                         <td>
                             <a href="{{ route('front.journal').'?type=create&journal_id='.$jrn->id }}"
                                class="btn btn-info"
