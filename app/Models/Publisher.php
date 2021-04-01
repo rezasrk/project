@@ -25,7 +25,10 @@ class Publisher extends Model
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
-
+public function journals()
+{
+    return $this->hasMany(Journal::class,'publisher_id');
+}
     public function getCreatedDateAttribute(): string
     {
         /** @var Morilog $jdate */

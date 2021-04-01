@@ -23,7 +23,7 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware(['auth:front', 'verify_email']);
-        $this->middleware(['check_status_publisher'])->only(['journal', 'journalStore']);
+        $this->middleware(['check_status_publisher'])->only(['journal', 'journalStore','journalNumberStore','article']);
     }
 
     public function info()
@@ -41,7 +41,7 @@ class ProfileController extends Controller
 
     protected function infoStore(InfoRequest $request): JsonResponse
     {
-        auth()->user()->update([
+        auth('front')->user()->update([
             'name' => $request->input('name'),
             'degree' => $request->input('degree'),
             'website' => $request->input('website'),
@@ -111,7 +111,7 @@ class ProfileController extends Controller
     public function journal(Request $request)
     {
         /** @var User $user */
-        $user = auth()->user();
+        $user = auth('front')->user();
         $data = [
             'type' => 'journals',
             'publishers' => Baseinfo::type('publisher'),
@@ -192,10 +192,13 @@ class ProfileController extends Controller
 
     public function article()
     {
+        /** @var User $user */
+        $user = auth('front')->user();
         $data = [
             'type' => 'article',
             'articles' => Article::query()->paginate(20),
-            'degrees' => Baseinfo::type('degree_article')
+            'degrees' => Baseinfo::type('degree_article'),
+            'journals' =>$user->publisher()->journa
         ];
 
         return view('front.profile.profile', $data);
