@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\InfoRequest;
 use App\Http\Requests\Front\JournalRequest;
 use App\Http\Requests\Front\PublisherRequest;
+use App\Http\Requests\JournalNumberRequest;
+use App\Models\Article;
 use App\Models\Baseinfo;
 use App\Models\Category;
 use App\Models\Journal;
+use App\Models\JournalNumber;
 use App\Models\Publisher;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -118,7 +121,9 @@ class ProfileController extends Controller
             'degrees' => Baseinfo::type('degree_publisher'),
             'period_publisher' => Baseinfo::type('period_publisher'),
             'journals' => Journal::query()->where('publisher_id', $user->publisher->id)->paginate(20),
-            'journal' => Journal::query()->where('publisher_id', $user->publisher->id)->find($request->query('journal_id'))
+            'journal' => Journal::query()->where('publisher_id', $user->publisher->id)->find($request->query('journal_id')),
+            'journalNumbers' => JournalNumber::query()->where('journal_id', $request->query('journal_id'))->get(),
+            'numberJr' => JournalNumber::query()->find($request->query('journal_number')),
         ];
 
         return view('front.profile.profile', $data);
@@ -129,8 +134,8 @@ class ProfileController extends Controller
         DB::beginTransaction();
 
         $journal = Journal::query()->updateOrCreate([
-            'id'=>$request->input('journal_id')
-        ],[
+            'id' => $request->input('journal_id')
+        ], [
             'journal_title' => $request->input('journal_title'),
             'publisher_id' => auth()->user()->publisher->id,
             'publisher' => $request->input('publisher'),
@@ -164,6 +169,36 @@ class ProfileController extends Controller
             'status' => JsonResponse::HTTP_OK,
             'msg' => trans('message.success-store')
         ]);
+    }
+
+    public function journalNumberStore(JournalNumberRequest $request): JsonResponse
+    {
+
+        /** @var Journal $journal */
+
+        $journal = Journal::query()->find($request->input('journal_id'));
+
+        $journal->journalNumbers()->updateOrCreate(['id' => $request->journal_number_id, 'journal_id' => $request->journal_id], [
+            'title' => $request->input('title'),
+            'number' => $request->input('number'),
+            'year' => $request->input('year')
+        ]);
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-store')
+        ]);
+    }
+
+    public function article()
+    {
+        $data = [
+            'type' => 'article',
+            'articles' => Article::query()->paginate(20),
+            'degrees' => Baseinfo::type('degree_article')
+        ];
+
+        return view('front.profile.profile', $data);
     }
 
 }

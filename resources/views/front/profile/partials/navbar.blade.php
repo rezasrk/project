@@ -10,6 +10,9 @@
         <li class="nav-item" role="presentation">
             <a href="{{ route('front.journal') }}" class="user-page__nav_link {{ (route('front.journal')) == request()->url()  ? 'active' : '' }}" type="button">مجله ها</a>
         </li>
+        <li class="nav-item" role="presentation">
+            <a href="{{ route('front.article') }}" class="user-page__nav_link {{ (route('front.article')) == request()->url()  ? 'active' : '' }}" type="button">مقاله ها</a>
+        </li>
     </ul>
 
 </div>
