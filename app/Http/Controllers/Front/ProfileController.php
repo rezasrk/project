@@ -23,7 +23,6 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware(['auth:front', 'verify_email']);
-        $this->middleware(['check_status_publisher'])->only(['journal', 'journalStore','journalNumberStore','article']);
     }
 
     public function info()
@@ -60,11 +59,17 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function publisher()
+    public function publisher(Request $request)
     {
         $data = [
             'type' => 'publisher',
-            'publisher' => Publisher::query()->where('creator_id', auth()->id())->first(),
+            'publisher' => Publisher::query()
+                ->where('creator_id', auth()->id())
+                ->find($request->query('publisher_id')),
+            'publishers' => Publisher::query()
+                ->withCount('journals as journalCount')
+                ->where('creator_id', auth()->id())
+                ->paginate(20),
             'rank_requester' => Baseinfo::type('rank_requester'),
             'degree_publisher' => Baseinfo::type('degree_publisher'),
             'license_from' => Baseinfo::type('license_from'),
@@ -198,7 +203,7 @@ class ProfileController extends Controller
             'type' => 'article',
             'articles' => Article::query()->paginate(20),
             'degrees' => Baseinfo::type('degree_article'),
-            'journals' =>$user->publisher()->journa
+            'journals' => $user->publisher()->journa
         ];
 
         return view('front.profile.profile', $data);

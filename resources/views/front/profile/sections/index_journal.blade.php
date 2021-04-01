@@ -17,34 +17,36 @@
     <div class="section-head">
         <h3>لیست مجلات</h3>
     </div>
+    @if($journals->count())
+        <div class="magazines__list">
 
-    <div class="magazines__list">
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th>ردیف</th>
-                <th>عنوان</th>
-                <th>ناشر</th>
-                <th>مدیریت</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            @foreach($journals as $jrn)
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>{{ ($journals->currentPage() - 1) * $journals->perPage() + $loop->iteration }}</td>
-                    <td>{{ $jrn->journal_title }}</td>
-                    <td>{{ optional($jrn->publisherTitle)->value }}</td>
-                    <td>
-                        <a href="{{ route('front.journal').'?type=create&journal_id='.$jrn->id }}" class="btn btn-info"
-                           style="color: #ffffff">ویرایش</a>
-                        <a href="{{ route('front.journal').'?type=numbers&journal_id='.$jrn->id }}"
-                           class="btn btn-success"  style="color: #ffffff">افزودن شماره</a>
-                    </td>
+                    <th>ردیف</th>
+                    <th>عنوان</th>
+                    <th>ناشر</th>
+                    <th>مدیریت</th>
                 </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
+                </thead>
+
+                <tbody>
+                @foreach($journals as $jrn)
+                    <tr>
+                        <td>{{ ($journals->currentPage() - 1) * $journals->perPage() + $loop->iteration }}</td>
+                        <td>{{ $jrn->journal_title }}</td>
+                        <td>{{ optional($jrn->publisherTitle)->value }}</td>
+                        <td>
+                            <a href="{{ route('front.journal').'?type=create&journal_id='.$jrn->id }}"
+                               class="btn btn-info"
+                               style="color: #ffffff">ویرایش</a>
+                            <a href="{{ route('front.journal').'?type=numbers&journal_id='.$jrn->id }}"
+                               class="btn btn-success" style="color: #ffffff">افزودن شماره</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
 </div>
+@endif
