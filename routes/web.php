@@ -60,10 +60,17 @@ Route::prefix('managerpanel')->group(function () {
     });
 
     /*----------------------------------------------------------------------------------------------------------------------------
-     *                                          Journal section
+     *                                          Journal Section
      ---------------------------------------------------------------------------------------------------------------------------*/
+    Route::middleware('auth')->group(function () {
+        Route::get('journals', 'JournalController@index')->name('journal.index');
+    });
 
-    Route::middleware('auth')->group(function(){
-        Route::get('journals','JournalController@index')->name('journal.index');
+
+    /*----------------------------------------------------------------------------------------------------------------------------
+     *                                          Tags Section
+     ---------------------------------------------------------------------------------------------------------------------------*/
+    Route::middleware('auth')->group(function () {
+        Route::resource('tags', 'TagController');
     });
 });

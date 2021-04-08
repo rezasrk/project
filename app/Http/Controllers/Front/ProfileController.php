@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
 use App\Http\Requests\Front\InfoRequest;
 use App\Http\Requests\Front\JournalRequest;
 use App\Http\Requests\Front\PublisherRequest;
@@ -13,6 +14,7 @@ use App\Models\Category;
 use App\Models\Journal;
 use App\Models\JournalNumber;
 use App\Models\Publisher;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -204,14 +206,62 @@ class ProfileController extends Controller
     {
         /** @var User $user */
         $user = auth('front')->user();
+        $accessPublish = $user->publisher()->pluck('id')->toArray();
+
         $data = [
             'type' => 'article',
             'articles' => Article::query()->paginate(20),
             'degrees' => Baseinfo::type('degree_article'),
-            'journals' => $user->publisher()->journa
+            'journals' => Journal::query()->whereIn('publisher_id', $accessPublish)->get(),
+            'writers' => User::query()->where('as_creator', 1)->get(),
+            'tags' => Tag::query()->get(),
+            'categories' => Category::query()
+                ->where('parent_id', '=', 0)
+                ->where('type_id', '3')
+                ->get(),
         ];
-
         return view('front.profile.profile', $data);
+    }
+
+
+    public function articleStore(ArticleRequest $request): JsonResponse
+    {
+        DB::beginTransaction();
+
+        /** @var Article $article */
+        $article = Article::query()->create([
+            'title' => $request->input('title'),
+            'article_degree' => $request->input('article_degree'),
+            'journal_id' => $request->input('journal_id'),
+            'journal_number_id' => $request->input('journal_number_id'),
+            'from_page' => $request->input('from_page'),
+            'to_page' => $request->input('to_page'),
+            'writers' => $request->input('writers'),
+            'key_word' => $request->input('key_word'),
+            'article_summery' => $request->input('article_summery'),
+        ]);
+
+        $article->writers()->sync($request->input('writers'));
+
+        foreach ($request->input('categories_first_id') as $key => $value) {
+            $article->categories()->create([
+                'category_first_id' => $value,
+                'category_second_id' => $request->input('category_second_id.' . $key),
+                'category_third_id' => $request->input('category_third_id.' . $key),
+                'category_forth_id' => $request->input('category_forth_id.' . $key),
+            ]);
+        }
+
+        $file = $request->file('attachment')->store('article', 'public');
+
+        $article->attachments()->create(['path' => $file]);
+
+        DB::commit();
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-store')
+        ]);
     }
 
 }

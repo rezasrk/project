@@ -60,7 +60,6 @@ class CategoryController extends Controller
         $types = Baseinfo::type('categoryType');
 
         $parents = Category::query()
-            ->where('parent_id', '=', '0')
             ->where('type_id', '=', $category->type_id)
             ->get();
 
@@ -90,7 +89,6 @@ class CategoryController extends Controller
     {
         $data = Category::query()
             ->where('type_id', '=', $request->query('type_id'))
-            ->where('parent_id', '=', 0)
             ->get()
             ->pluck('title', 'id');
 

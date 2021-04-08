@@ -58,7 +58,7 @@
     });
 
 
-    $(document).on('click', '.store-journal', function () {
+    $(document).on('click', '.store-info', function () {
         targetElement = $(this);
         buttonLoading(targetElement);
         httpFormPostRequest(targetElement).done(function (response) {
@@ -70,6 +70,41 @@
             }
             buttonRemoveLoading(targetElement);
         })
+    });
+
+    $(document).on('change', '.select-journal', function () {
+        httpGetRequest($(this).find(':selected').attr('data-url')).done(function (response) {
+            if (response.status === 200) {
+                $('.show-number-journal').html(response.data)
+            }
+        })
+    });
+
+    $(document).on('change', '.select-first-category', function () {
+        changeCategory($(this), 'select-second-category')
+    });
+
+    $(document).on('change', '.select-second-category', function () {
+        changeCategory($(this), 'select-third-category')
+    });
+
+    $(document).on('change', '.select-third-category', function () {
+        changeCategory($(this), 'select-firth-category')
+    });
+
+    function changeCategory(targetSelectElelemt, targetClass) {
+        httpGetRequest("{{ route('getCategoryChild').'?parent_id=' }}" + targetSelectElelemt.find(':selected').val()).done(function (response) {
+            if (response.status === 200) {
+                $(targetSelectElelemt).closest('.row').find('.' + targetClass).html(response.data)
+            }
+        })
+    }
+
+    categoryHtml = $('.sample-category').html();
+
+    $(document).on('click', '.add-category-form', function (e) {
+        e.preventDefault();
+        $('.sample-category:last').after("<div class='row sample-category'>" + categoryHtml + "</div>");
     });
 </script>
 </html>

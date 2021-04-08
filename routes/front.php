@@ -19,7 +19,16 @@ Route::namespace('Front')->group(function () {
     Route::post('profile/publisher', 'ProfileController@publisherStore')->name('front.publisher.store');
     Route::get('profile/journal', 'ProfileController@journal')->name('front.journal');
     Route::post('profile/journal', 'ProfileController@journalStore')->name('front.journal.store');
-    Route::post('profile/journal/numbers','ProfileController@journalNumberStore')->name('journalNumberStore');
+    Route::post('profile/journal/numbers', 'ProfileController@journalNumberStore')->name('journalNumberStore');
     Route::get('profile/article', 'ProfileController@article')->name('front.article');
+    Route::post('profile','ProfileController@articleStore')->name('front.article.store');
+
+
 });
+
+/*-------------------------------------------------------------------------------------------------------
+ *                                          General Section
+ -------------------------------------------------------------------------------------------------------*/
+Route::get('get_numbers_journal', 'Controller@getJournalNumbers')->name('getJournalNumbers');
+Route::get('get_category_child', 'Controller@getCategoryChild')->name('getCategoryChild');
 

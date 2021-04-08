@@ -7,20 +7,20 @@
         <div class="col-md-4">
             <div class="form-group">
                 <input type="text" name="title" placeholder="عنوان را وارد کنید::." class="form-control"
-                       value="{{ $numberJr->title }}">
+                       value="{{ optional($numberJr)->title }}">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <input type="hidden" name="journal_id" value="{{ request()->query('journal_id') }}">
                 <input type="hidden" name="journal_number_id" value="{{ request()->query('journal_number') }}">
-                <input type="text" name="year" placeholder="سال::." class="form-control" value="{{ $numberJr->year }}">
+                <input type="text" name="year" placeholder="سال::." class="form-control" value="{{ optional($numberJr)->year }}">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <input type="text" name="number" placeholder="شماره::." class="form-control"
-                       value="{{ $numberJr->number }}">
+                       value="{{ optional($numberJr)->number }}">
             </div>
         </div>
         <div class="col-md-12 mt-4">

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\JournalNumber;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use \Illuminate\Http\JsonResponse;
 
 class Controller extends BaseController
 {
@@ -22,22 +23,29 @@ class Controller extends BaseController
     }
 
 
-    public function projectSwitch(Request $request)
+    public function getJournalNumbers(Request $request): JsonResponse
     {
-        $project = DB::table('projects')
-            ->selectRaw("projects.*")
-            ->join('user_projects', 'user_projects.project_id', '=', 'projects.id')
-            ->join('users', 'user_projects.user_id', '=', 'users.id')
-            ->where('user_id', '=', auth()->user()->id)
-            ->where('project_id', '=', $request->project_id)
-            ->where('projects.is_active', 1)
-            ->first();
+        $data = JournalNumber::query()
+            ->where('journal_id', $request->query('journal_id'))
+            ->get()
+            ->pluck('title', 'id');
 
-        if ($project) {
-            setProjectInf($project);
-            return response()->json(['status' => JsonResponse::HTTP_OK, 'msg' => 'لطفا منتظر بمانید...']);
-        } else {
-            return response()->json(['status' => JsonResponse::HTTP_FORBIDDEN, 'msg' => 'شما دسترسی به این پروژه ندارید !']);
-        }
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'data' => view('partials.options', compact('data'))->render()
+        ]);
+    }
+
+    public function getCategoryChild(Request $request): JsonResponse
+    {
+        $data = Category::query()
+            ->where('parent_id', '=', $request->parent_id)
+            ->get()
+            ->pluck('title', 'id');
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'data' => view('partials.options', compact('data'))->render()
+        ]);
     }
 }
