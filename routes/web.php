@@ -44,6 +44,13 @@ Route::prefix('managerpanel')->group(function () {
         Route::get('get_parent', 'CategoryController@getParentCategory')->name('category.parent');
     });
 
+    /*--------------------------------------------------------------------------------------------------------------------------------
+    *                                         Contact Us Section
+    * --------------------------------------------------------------------------------------------------------------------------------
+    */
+    Route::middleware('auth')->group(function(){
+        Route::get('contact','ContactController@index')->name('contact.index');
+    });
 
     /*---------------------------------------------------------------------------------------------------------------------------------
     *                                          User Section

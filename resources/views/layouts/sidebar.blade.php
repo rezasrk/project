@@ -44,7 +44,24 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="nav-item {{ request()->is('managerpanel/contact*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-ticket-alt"></i>
+                        <p>
+                            پیام ها
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ">
+                        <li class="nav-item">
+                            <a href="{{ route('contact.index') }}"
+                               class="nav-link {{ request()->url() == route('contact.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>لیست پیام ها</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item {{ request()->is('managerpanel/categories*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="fa fa-bars"></i>
