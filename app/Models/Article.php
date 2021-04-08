@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Attach;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use \Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Article extends Model
 {
@@ -14,12 +15,22 @@ class Article extends Model
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'article_categories', 'article_id', 'category_id');
+        return $this->belongsToMany(Category::class, 'article_categories', 'article_id', 'first_category');
     }
 
     public function writers(): BelongsToMany
     {
         return $this->belongsToMany(User::class,'article_writers','article_id','user_id');
+    }
+
+    public function journal(): BelongsTo
+    {
+        return $this->belongsTo(Journal::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class,'article_tags','article_id','tag_id');
     }
 
 }

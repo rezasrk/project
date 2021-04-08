@@ -229,7 +229,7 @@
             </div>
             <div class="col-md-9">
                 <br/>
-                <button type="button" class="button-primary store-journal">ثبت مجله</button>
+                <button type="button" class="button-primary store-info">ثبت مجله</button>
             </div>
         </div>
     </div>

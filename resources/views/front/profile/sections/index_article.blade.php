@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="user-image">
             <!-- <img src="./assets/images/icon/icon-plus.svg" class="user-image__image" alt=""> -->
-            <a href="{{ route('front.article').'?article_id=create' }}">
+            <a href="{{ route('front.article').'?type=create' }}">
                 <div class="user-image__icon">
                     <svg class="svg-inline--fa fa-plus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas"
                          data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
@@ -30,19 +30,16 @@
                         <th>ردیف</th>
                         <th>عنوان</th>
                         <th>مجله</th>
-                        <th>تعداد مجلات</th>
-                        <th>ویرایش</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     @foreach($articles as $article)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $loop->iteration  }}</td>
+                            <td>{{ $article->title }}</td>
+                            <td>{{ optional($article->journal)->journal_title }}</td>
+
                         </tr>
                     @endforeach
                     </tbody>

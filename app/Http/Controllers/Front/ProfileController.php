@@ -207,6 +207,10 @@ class ProfileController extends Controller
         /** @var User $user */
         $user = auth('front')->user();
         $accessPublish = $user->publisher()->pluck('id')->toArray();
+        /** @var Article $artic */
+        $artic = Article::query()->find(request()->query('article_id'));
+
+        $nexCategories = $artic->categories()->get();
 
         $data = [
             'type' => 'article',
@@ -219,6 +223,11 @@ class ProfileController extends Controller
                 ->where('parent_id', '=', 0)
                 ->where('type_id', '3')
                 ->get(),
+            'artic' => $artic,
+            'journal_number' => JournalNumber::query()->where('journal_id', $artic->journal_id)->get(),
+            'selectWriters' => $artic->writers()->get()->pluck('id')->toArray(),
+            'selectTags' => $artic->tags()->get()->pluck('id')->toArray()
+
         ];
         return view('front.profile.profile', $data);
     }
@@ -236,14 +245,13 @@ class ProfileController extends Controller
             'journal_number_id' => $request->input('journal_number_id'),
             'from_page' => $request->input('from_page'),
             'to_page' => $request->input('to_page'),
-            'writers' => $request->input('writers'),
-            'key_word' => $request->input('key_word'),
             'article_summery' => $request->input('article_summery'),
         ]);
 
         $article->writers()->sync($request->input('writers'));
+        $article->tags()->sync($request->input('tags'));
 
-        foreach ($request->input('categories_first_id') as $key => $value) {
+        foreach ($request->input('category_first_id') as $key => $value) {
             $article->categories()->create([
                 'category_first_id' => $value,
                 'category_second_id' => $request->input('category_second_id.' . $key),

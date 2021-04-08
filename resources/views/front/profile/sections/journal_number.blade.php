@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="col-md-12 mt-4">
-            <button type="button" class="btn btn-success store-journal">ثبت شماره مجله</button>
+            <button type="button" class="btn btn-success store-info">ثبت شماره مجله</button>
         </div>
     </div>
 </form>
