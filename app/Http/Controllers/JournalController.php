@@ -9,7 +9,7 @@ class JournalController extends Controller
 {
     public function index()
     {
-        $journals = Journal::query()->with(['publisherTitle'])->paginate(20);
+        $journals = Journal::query()->paginate(20);
 
         return view('journals.index', compact('journals'));
     }
