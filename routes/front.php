@@ -31,4 +31,5 @@ Route::namespace('Front')->group(function () {
  -------------------------------------------------------------------------------------------------------*/
 Route::get('get_numbers_journal', 'Controller@getJournalNumbers')->name('getJournalNumbers');
 Route::get('get_category_child', 'Controller@getCategoryChild')->name('getCategoryChild');
+Route::get('about','Front\AboutController@index');
 
