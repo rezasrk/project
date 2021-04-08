@@ -27,6 +27,8 @@ Route::prefix('managerpanel')->group(function () {
     Route::middleware('auth')->namespace('Settings')->prefix('settings')->group(function () {
         Route::resource('roles', 'RolesController')->except(['show']);
         Route::resource('admins', 'AdminController')->except('show', 'destroy');
+        Route::get('pages', 'PageController@index')->name('page');
+        Route::post('pages', 'PageController@store')->name('pages.store');
     });
 
     Route::get('simple/download', 'DownloadController@simpleDownload')->name('simple.download');

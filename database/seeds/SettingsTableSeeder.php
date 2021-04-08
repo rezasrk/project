@@ -12,9 +12,15 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('settings')->insertOrIgnore([
-            'key'=>'about',
-             'value'=>'جمله ی تستی'
-         ]);
+        DB::table('settings')->insertOrIgnore([
+            [
+                'key' => 'about',
+                'value' => 'جمله ی تستی'
+            ],
+            [
+                'key' => 'rule',
+                'value' => 'قوانین'
+            ],
+        ]);
     }
 }

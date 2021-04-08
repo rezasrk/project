@@ -6,10 +6,13 @@
             <ul class="footer__nav_items">
 
                 <li class="footer__nav_item">
-                    <a href="#">درباره ما</a>
+                    <a href="{{ route('front.about') }}">درباره ما</a>
                 </li>
                 <li class="footer__nav_item">
-                    <a href="#">تماس با ما</a>
+                    <a href="{{ route('front.rule') }}">قوانین</a>
+                </li>
+                <li class="footer__nav_item">
+                    <a href="">تماس با ما</a>
                 </li>
                 <li class="footer__nav_item">
                     <a href="#">راهنمای سایت</a>

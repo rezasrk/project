@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     @include('front.profile.partials.header')
-    <title>درباره ی ما</title>
+    <title>قوانین</title>
 </head>
 <body>
 <header class="header-user">
@@ -24,7 +23,7 @@
                                 <div class="col-12">
                                     <div class="page-style-2">
                                         <div class="page-style-2__title">
-                                            <h3>درباره ما</h3>
+                                            <h3>قوانین</h3>
                                         </div>
                                         <div class="page-style-2__content">
                                             {!! str_replace("\n",'<br>',$description) !!}

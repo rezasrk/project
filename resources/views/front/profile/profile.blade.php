@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-@include('front.profile.partials.header')
-
+<head>
+    @include('front.profile.partials.header')
+    <title>پروفایل</title>
+</head>
 <body>
 <header class="header-user">
 
