@@ -26,6 +26,25 @@
                         <p>{{ $labels['profile'] }}</p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->is('managerpanel/tags*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-tags"></i>
+                        <p>
+                            کلید واژه
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ">
+                            <li class="nav-item">
+                                <a href="{{ route('tags.index') }}"
+                                   class="nav-link {{ request()->url() == route('tags.index') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>کلید واژه </p>
+                                </a>
+                            </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item {{ request()->is('managerpanel/categories*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="fa fa-bars"></i>

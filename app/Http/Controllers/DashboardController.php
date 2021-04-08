@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Supply\Category;
-use App\Services\DashboardService;
+use App\Models\Article;
+use App\Models\Journal;
+use App\Models\Publisher;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
 
     public function __invoke(Request $request)
     {
-        return view('dashboard');
+        $publish = Publisher::query()->count();
+        $user = User::query()->count();
+        $journal = Journal::query()->count();
+        $article = Article::query()->count();
+
+        return view('dashboard',compact('publish','user','journal','article'));
     }
 }
