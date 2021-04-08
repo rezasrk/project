@@ -35,13 +35,13 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview ">
-                            <li class="nav-item">
-                                <a href="{{ route('tags.index') }}"
-                                   class="nav-link {{ request()->url() == route('tags.index') ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>کلید واژه </p>
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="{{ route('tags.index') }}"
+                               class="nav-link {{ request()->url() == route('tags.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>کلید واژه </p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -159,7 +159,20 @@
                                     </a>
                                 </li>
                             @endcan
-
+                            <li class="nav-item">
+                                <a href="{{ route('page') }}"
+                                   class="nav-link {{ request()->url() == route('page') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>صفحات</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('information') }}"
+                                   class="nav-link {{ request()->url() == route('information') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>اطلاعات</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

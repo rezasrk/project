@@ -29,6 +29,8 @@ Route::prefix('managerpanel')->group(function () {
         Route::resource('admins', 'AdminController')->except('show', 'destroy');
         Route::get('pages', 'PageController@index')->name('page');
         Route::post('pages', 'PageController@store')->name('pages.store');
+        Route::get('information', 'InformationController@index')->name('information');
+        Route::post('information', 'InformationController@store')->name('information.store');
     });
 
     Route::get('simple/download', 'DownloadController@simpleDownload')->name('simple.download');

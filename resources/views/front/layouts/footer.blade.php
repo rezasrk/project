@@ -12,7 +12,7 @@
                     <a href="{{ route('front.rule') }}">قوانین</a>
                 </li>
                 <li class="footer__nav_item">
-                    <a href="">تماس با ما</a>
+                    <a href="{{ route('contact') }}">تماس با ما</a>
                 </li>
                 <li class="footer__nav_item">
                     <a href="#">راهنمای سایت</a>

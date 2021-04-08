@@ -21,6 +21,30 @@ class SettingsTableSeeder extends Seeder
                 'key' => 'rule',
                 'value' => 'قوانین'
             ],
+            [
+                'key' => 'address',
+                'value' => 'ادرس'
+            ],
+            [
+                'key' => 'phone',
+                'value' => '021'
+            ],
+            [
+                'key' => 'mobile',
+                'value' => '0912'
+            ],
+            [
+                'key' => 'post_code',
+                'value' => '32'
+            ],
+            [
+                'key' => 'hours',
+                'value' => ''
+            ],
+            [
+                'key' => 'email',
+                'value' => ''
+            ],
         ]);
     }
 }

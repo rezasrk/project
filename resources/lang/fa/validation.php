@@ -180,5 +180,7 @@ return array(
         'fax'=>'فکس',
         'website'=>'وب سایت',
         'image'=>'تصویر',
+        'message'=>'پیام',
+        'mobile'=>'تلفن همراه'
     ]
 );

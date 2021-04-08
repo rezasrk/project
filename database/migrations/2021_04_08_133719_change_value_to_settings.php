@@ -14,7 +14,7 @@ class ChangeValueToSettings extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->text('value')->change();
+            $table->text('value')->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class ChangeValueToSettings extends Migration
     public function down()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->string('value')->change();
+            $table->string('value',1000)->change();
         });
     }
 }

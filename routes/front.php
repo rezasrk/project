@@ -21,7 +21,7 @@ Route::namespace('Front')->group(function () {
     Route::post('profile/journal', 'ProfileController@journalStore')->name('front.journal.store');
     Route::post('profile/journal/numbers', 'ProfileController@journalNumberStore')->name('journalNumberStore');
     Route::get('profile/article', 'ProfileController@article')->name('front.article');
-    Route::post('profile','ProfileController@articleStore')->name('front.article.store');
+    Route::post('profile', 'ProfileController@articleStore')->name('front.article.store');
 
 
 });
@@ -31,6 +31,8 @@ Route::namespace('Front')->group(function () {
  -------------------------------------------------------------------------------------------------------*/
 Route::get('get_numbers_journal', 'Controller@getJournalNumbers')->name('getJournalNumbers');
 Route::get('get_category_child', 'Controller@getCategoryChild')->name('getCategoryChild');
-Route::get('about','Front\PageController@about')->name('front.about');
-Route::get('rule','Front\PageController@rule')->name('front.rule');
+Route::get('about', 'Front\PageController@about')->name('front.about');
+Route::get('rule', 'Front\PageController@rule')->name('front.rule');
+Route::get('contact', 'Front\ContactController@index')->name('contact');
+Route::post('contact', 'Front\ContactController@store')->name('contact.store');
 
