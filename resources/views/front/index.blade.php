@@ -91,99 +91,43 @@
             @endif
         </div>
     </section>
+    @if($publishers->count())
+        <section class="section-Publishers">
 
-    <section class="section-Publishers">
-
-        <div class="container">
-            <div class="section-head">
-                <h3>ناشران</h3>
-                <a href="#">مشاهده بیشتر</a>
-            </div>
-
-            <div class="swiper-container publishers-slider" dir="rtl">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide publishers__card">
-                        <a href="#" class="publishers__card_image">
-                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                        </a>
-                        <h4 class="publishers__card_title">
-                            <a href="#">
-                                کتابخانه مرکزی پژوهشگاه
-                            </a>
-                        </h4>
-                        <ul class="publishers__card_options">
-                            <li>مجلات: 2</li>
-                            <li>مقالات: 2</li>
-                            <li>شمارگان: 10</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide publishers__card">
-                        <a href="#" class="publishers__card_image">
-                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                        </a>
-                        <h4 class="publishers__card_title">
-                            <a href="#">
-                                کتابخانه مرکزی پژوهشگاه
-                            </a>
-                        </h4>
-                        <ul class="publishers__card_options">
-                            <li>مجلات: 2</li>
-                            <li>مقالات: 2</li>
-                            <li>شمارگان: 10</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide publishers__card">
-                        <a href="#" class="publishers__card_image">
-                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                        </a>
-                        <h4 class="publishers__card_title">
-                            <a href="#">
-                                کتابخانه مرکزی پژوهشگاه
-                            </a>
-                        </h4>
-                        <ul class="publishers__card_options">
-                            <li>مجلات: 2</li>
-                            <li>مقالات: 2</li>
-                            <li>شمارگان: 10</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide publishers__card">
-                        <a href="#" class="publishers__card_image">
-                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                        </a>
-                        <h4 class="publishers__card_title">
-                            <a href="#">
-                                کتابخانه مرکزی پژوهشگاه
-                            </a>
-                        </h4>
-                        <ul class="publishers__card_options">
-                            <li>مجلات: 2</li>
-                            <li>مقالات: 2</li>
-                            <li>شمارگان: 10</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide publishers__card">
-                        <a href="#" class="publishers__card_image">
-                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                        </a>
-                        <h4 class="publishers__card_title">
-                            <a href="#">
-                                کتابخانه مرکزی پژوهشگاه
-                            </a>
-                        </h4>
-                        <ul class="publishers__card_options">
-                            <li>مجلات: 2</li>
-                            <li>مقالات: 2</li>
-                            <li>شمارگان: 10</li>
-                        </ul>
-                    </div>
+            <div class="container">
+                <div class="section-head">
+                    <h3>ناشران</h3>
+                    <a href="#">مشاهده بیشتر</a>
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
 
-        </div>
-    </section>
+                <div class="swiper-container publishers-slider" dir="rtl">
+                    @foreach($publishers as $publisher)
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide publishers__card">
+                            @if($publisher->publisher_logo)
+                            <a href="#" class="publishers__card_image">
+                                <img src="{{ asset('storage/'.$publisher->publisher_logo) }}" alt="">
+                            </a>
+                            @endif
+                            <h4 class="publishers__card_title">
+                                <a href="#">
+                                    {{ $publisher->title }}
+                                </a>
+                            </h4>
+                            <ul class="publishers__card_options">
+                                <li>مجلات: {{ optional($publisher->journals())->count() }}</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    @endforeach
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+            </div>
+        </section>
+    @endif
 
 
     <section class="section-blog">

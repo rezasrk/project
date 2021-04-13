@@ -39,4 +39,9 @@ class Publisher extends Model
 
         return $jdate->gregorianToJalali($this->attributes['created_at'], '( %A, %d %B %y ) H:i');
     }
+
+    public function getJournalStatusAttribute()
+    {
+        return '';
+    }
 }

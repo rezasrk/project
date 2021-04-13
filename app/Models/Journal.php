@@ -25,6 +25,11 @@ class Journal extends Model
         return $this->hasMany(JournalNumber::class, 'journal_id');
     }
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
     public function getCreateDateAttribute(): string
     {
         /** @var Morilog $morilog */
