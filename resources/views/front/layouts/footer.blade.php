@@ -4,7 +4,9 @@
         <div class="container">
 
             <ul class="footer__nav_items">
-
+                <li class="footer__nav_item">
+                    <a href="/">خانه</a>
+                </li>
                 <li class="footer__nav_item">
                     <a href="{{ route('front.about') }}">درباره ما</a>
                 </li>
