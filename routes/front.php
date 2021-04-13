@@ -35,4 +35,5 @@ Route::get('about', 'Front\PageController@about')->name('front.about');
 Route::get('rule', 'Front\PageController@rule')->name('front.rule');
 Route::get('contact', 'Front\ContactController@index')->name('contact');
 Route::post('contact', 'Front\ContactController@store')->name('contact.store');
+Route::get('guidance','Front\GuidanceController@index')->name('front.guidance');
 

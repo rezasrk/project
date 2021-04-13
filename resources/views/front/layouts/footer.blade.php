@@ -15,7 +15,7 @@
                     <a href="{{ route('contact') }}">تماس با ما</a>
                 </li>
                 <li class="footer__nav_item">
-                    <a href="#">راهنمای سایت</a>
+                    <a href="{{ route('front.guidance') }}">راهنمای سایت</a>
                 </li>
                 <li class="footer__nav_item">
                     <a href="#">شورای برسی متون</a>
