@@ -31,6 +31,8 @@ Route::prefix('managerpanel')->group(function () {
         Route::post('pages', 'PageController@store')->name('pages.store');
         Route::get('information', 'InformationController@index')->name('information');
         Route::post('information', 'InformationController@store')->name('information.store');
+        Route::get('guidance','GuidanceController@index')->name('guidance');
+        Route::post('guidance','GuidanceController@store')->name('guidance.store');
     });
 
     Route::get('simple/download', 'DownloadController@simpleDownload')->name('simple.download');

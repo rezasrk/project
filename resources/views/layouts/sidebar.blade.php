@@ -190,6 +190,13 @@
                                     <p>اطلاعات</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('guidance') }}"
+                                   class="nav-link {{ request()->url() == route('guidance') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>راهنمای سایت</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
