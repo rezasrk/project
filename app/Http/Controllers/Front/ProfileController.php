@@ -33,7 +33,7 @@ class ProfileController extends Controller
             'type' => 'info',
             'info' => auth()->guard('front')->user(),
             'degree' => Baseinfo::type('degree'),
-            'scientific_rank' => Baseinfo::type('scientific_rank')
+            'scientific_rank' => Baseinfo::type('scientific_rank'),
         ];
 
         return view('front.profile.profile', $data);
@@ -47,6 +47,7 @@ class ProfileController extends Controller
             'degree' => $request->input('degree'),
             'website' => $request->input('website'),
             'email' => $request->input('email'),
+            'as_creator'=>$request->has('as_creator')  ? :0
         ]);
 
         if ($request->has('image')) {

@@ -53,6 +53,12 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
+                    <input type="checkbox" name="as_creator" @if($info->as_creator) checked @endif value="1">
+                    <label>ثبت به عنوان نویسنده</label>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <div class="form-group">
                     <button type="button" class="btn btn-warning edit-profile">ویرایش اطلاعات کاربر</button>
                 </div>
             </div>
