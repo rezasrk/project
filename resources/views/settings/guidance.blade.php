@@ -41,6 +41,8 @@
             @foreach($guidances as $guidance)
                 <div class="row mt-4">
                     <div class="col-md-12 mt-1">
+                        <i class="delete-guide text-danger
+                         fa fa-trash pointer" data-url="{{ route('guidance.destroy',$guidance->id) }}"></i>
                         {{ $loop->iteration.' ) ' }}<label class="form-control">{{ $guidance->subject }}</label>
                     </div>
                     <div class="col-md-12 mt-1">
@@ -71,6 +73,28 @@
                 }, 2000)
 
             })
+        });
+
+        $(document).on('click','.delete-guide',function(){
+        swal({
+            title: "آیا از درخواست خود اطمینان دارید ؟",
+            text: "بعد از حذف این مورد دیگر در دسترس نخواهد بود",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                    $.post($(this).attr('data-url'),{_method:'DELETE'}).done(function(response){
+                        if(response.status === 200){
+                            successAlert(response.msg);
+                            setTimeout(function(){
+                                window.location.reload()
+                            },2000)
+                        }
+                    })
+                }
+            });
         });
     </script>
 @endsection

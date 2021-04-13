@@ -33,6 +33,7 @@ Route::prefix('managerpanel')->group(function () {
         Route::post('information', 'InformationController@store')->name('information.store');
         Route::get('guidance','GuidanceController@index')->name('guidance');
         Route::post('guidance','GuidanceController@store')->name('guidance.store');
+        Route::delete('guidance/{id}','GuidanceController@destroy')->name('guidance.destroy');
     });
 
     Route::get('simple/download', 'DownloadController@simpleDownload')->name('simple.download');
