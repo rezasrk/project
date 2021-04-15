@@ -33,22 +33,19 @@
                     </div>
 
                     <div class="header__form_search">
-                        <select name="" id="" class="header__form_search__select">
-                            <option value="0">عنوان مطلب</option>
-                            <option value="1">مجلات</option>
-                            <option value="2">پدیدآورندگان</option>
-                            <option value="3">حوزه تخصصی</option>
-                            <option value="4">ناشران</option>
+                        <select name="" id="" class="header__form_search__select search select-search">
+                            <option value>عنوان مطلب</option>
+                            <option data-url='{{ route('front.creator') }}' value="2">پدیدآورندگان</option>
                         </select>
                         <div class="header__form_grid">
 
-                            <input type="text" class="header__form_search__input" placeholder="جستجو">
-                            <button class="header__form_search__btn">
+                            <input type="text" class="header__form_search__input search-input-all" placeholder="جستجو">
+                            <button type="button"  class="header__form_search__btn button-search-all">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
 
-                        <a href="#" class="header__form_search__advance-search">جستجوی پیشرفته</a>
+
                     </div>
                 </div>
 
@@ -56,17 +53,9 @@
 
                     <ul class="header__cat_items">
                         <li class="header__cat_item">
-                            <a href="#">حوضه های تخصصی</a>
+                            <a href="{{ route('front.creator') }}">پدیدآورندگان</a>
                         </li>
-                        <li class="header__cat_item">
-                            <a href="#">پدیدآورندگان</a>
-                        </li>
-                        <li class="header__cat_item">
-                            <a href="#">مجلات</a>
-                        </li>
-                        <li class="header__cat_item">
-                            <a href="#">مجلات</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -164,103 +153,6 @@
         </div>
     </section>
 
-
-    <section class="section-authors">
-        <div class="container">
-            <div class="section-head">
-                <h3>پدید آورندگان</h3>
-                <a href="#">مشاهده بیشتر</a>
-            </div>
-            <div class="swiper-container slider-two" dir="rtl">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
-                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                        </a>
-                        <ul>
-                            <li>تعداد مقالات: (11)</li>
-                            <li>تعداد مقالات تخصصی: (5)</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
-                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                        </a>
-                        <ul>
-                            <li>تعداد مقالات: (11)</li>
-                            <li>تعداد مقالات تخصصی: (5)</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
-                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                        </a>
-                        <ul>
-                            <li>تعداد مقالات: (11)</li>
-                            <li>تعداد مقالات تخصصی: (5)</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
-                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                        </a>
-                        <ul>
-                            <li>تعداد مقالات: (11)</li>
-                            <li>تعداد مقالات تخصصی: (5)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <section class="section-authors">
-        <div class="container">
-            <div class="section-head">
-                <h3>همکاران</h3>
-                <a href="#">مشاهده بیشتر</a>
-            </div>
-            <div class="swiper-container slider-two" dir="rtl">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="{{ asset('/front/theme/assets/images/icon/brand1.png') }}" alt="">
-                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                        </a>
-
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
-                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                        </a>
-
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="{{ asset('front/theme/assets/images/icon/brand1.png') }}" alt="">
-                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                        </a>
-
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="{{ asset('/front/theme/assets/images/icon/brand2.png') }}" alt="">
-                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
 @endsection
 
 @section('front-script')
@@ -291,6 +183,22 @@
                 buttonRemoveLoading(targetElement);
             })
 
+        });
+
+        selectSearch = '';
+        $(document).on('change','.select-search',function(){
+            var targetElementSelect = $(this);
+            if(targetElementSelect.find(':selected').val() != ""){
+                selectSearch = targetElementSelect.find(':selected').attr('data-url')
+            }
+        });
+
+        $(document).on('click','.button-search-all',function(){
+            if(selectSearch != '' && $('.search-input-all').val('') != ""){
+                window.location.href = selectSearch + '?title=' + $('.search-input-all').val()
+            }else{
+                window.location.reload()
+            }
         })
     </script>
 @endsection

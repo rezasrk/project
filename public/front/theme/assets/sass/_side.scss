@@ -1,0 +1,104 @@
+.side {
+  &__user-info {
+    &_img {
+      border-radius: 50%;
+      max-width: 100%;
+      border: solid 3px $primary-color-dark2;
+      margin-bottom: 20px;
+    }
+
+    &_title {
+      font-size: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: $primary-color-dark2;
+      margin-bottom: 20px;
+    }
+
+    h4 {
+      margin-bottom: 20px;
+      color: $primary-color-dark2;
+      font-size: 17px;
+    }
+
+    div {
+      margin-bottom: 10px;
+      h4 {
+        color: $primary-color-dark2;
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      h5 {
+        color: $primary-color-dark2;
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  &__options {
+    margin-top: 30px;
+
+    &_title {
+      border-bottom: 1px;
+      position: relative;
+      padding-bottom: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      color: $primary-color;
+      margin-bottom: 20px;
+
+      &::before {
+        content: "";
+        box-shadow: 0 0 4px 0px #237957;
+        background: #237957;
+        // border: solid 1px #237957;
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+      }
+    }
+
+    &_item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 10px;
+        h5 {
+            font-size: 14px;
+            font-weight: 600;
+            
+            a {
+                color: $primary-color-dark2;
+                
+            }
+        }
+
+        span {
+            background: $primary-color-dark2;
+            padding: 2px 10px;
+            color: $white-color;
+            border-radius: 10px;
+            line-height: 18px;
+            font-size: 14px;
+        }
+    }
+
+    &_get-all {
+        display: block;
+        width: 100%;
+        text-align: center;
+        border: solid 1px $primary-color-dark2;
+        box-shadow: 0 0 4px 0px $primary-color;
+        padding: 8px; 
+        margin-top: 30px;
+        color: $primary-color-dark2;
+    }
+  }
+}

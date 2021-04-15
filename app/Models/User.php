@@ -24,4 +24,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Publisher::class, 'creator_id');
     }
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class,'article_writers','user_id','article_id');
+    }
 }

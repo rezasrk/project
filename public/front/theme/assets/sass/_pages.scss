@@ -1,3 +1,7 @@
+.pages {
+  min-height: 80vh;
+}
+
 .page-style-2 {
   &__content {
     box-shadow: 0 0 5px -1px #237957;
@@ -76,5 +80,37 @@
       border: 2px solid $primary-color;
       box-shadow: 0 0 5px -1px $primary-color;
     }
+  }
+}
+
+.main-section {
+  position: relative;
+  padding: 0 20px;
+
+  &::before {
+    content: "";
+    box-shadow: 0 0 4px 0px #237957;
+    background: #237957;
+    // border: solid 1px #237957;
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  &::after {
+    content: "";
+    box-shadow: 0 0 4px 0px #237957;
+    background: #237957;
+    // border: solid 1px #237957;
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    z-index: -1;
   }
 }
