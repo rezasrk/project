@@ -35,7 +35,8 @@
                     <div class="header__form_search">
                         <select name="" id="" class="header__form_search__select search select-search">
                             <option value>عنوان مطلب</option>
-                            <option data-url='{{ route('front.creator') }}' value="2">پدیدآورندگان</option>
+                            <option data-url='{{ route('front.creator') }}'>پدیدآورندگان</option>
+                            <option data-url='{{ route('front.publisher') }}'>نشریات</option>
                         </select>
                         <div class="header__form_grid">
 
@@ -55,7 +56,9 @@
                         <li class="header__cat_item">
                             <a href="{{ route('front.creator') }}">پدیدآورندگان</a>
                         </li>
-
+                        <li class="header__cat_item">
+                            <a href="{{ route('front.publisher') }}">نشریات</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -86,7 +89,7 @@
             <div class="container">
                 <div class="section-head">
                     <h3>ناشران</h3>
-                    <a href="#">مشاهده بیشتر</a>
+                    <a href="{{ route('front.publisher') }}">مشاهده بیشتر</a>
                 </div>
 
                 <div class="swiper-container publishers-slider" dir="rtl">
@@ -195,7 +198,7 @@
         });
 
         $(document).on('click','.button-search-all',function(){
-            if(selectSearch != '' && $('.search-input-all').val('') != ""){
+            if(selectSearch != '' && $('.search-input-all').val() != ""){
                 window.location.href = selectSearch + '?title=' + $('.search-input-all').val()
             }else{
                 window.location.reload()
