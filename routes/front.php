@@ -38,4 +38,5 @@ Route::post('contact', 'Front\ContactController@store')->name('contact.store');
 Route::get('guidance','Front\GuidanceController@index')->name('front.guidance');
 Route::get('creators','Front\CreatorController@index')->name('front.creator');
 Route::get('publishers','Front\PublisherController@index')->name('front.publisher');
+Route::get('journals','Front\JournalController@index')->name('front.journal');
 

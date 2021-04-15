@@ -37,6 +37,7 @@
                             <option value>عنوان مطلب</option>
                             <option data-url='{{ route('front.creator') }}'>پدیدآورندگان</option>
                             <option data-url='{{ route('front.publisher') }}'>نشریات</option>
+                            <option data-url='{{ route('front.journal') }}'>مجلات</option>
                         </select>
                         <div class="header__form_grid">
 
@@ -58,6 +59,9 @@
                         </li>
                         <li class="header__cat_item">
                             <a href="{{ route('front.publisher') }}">نشریات</a>
+                        </li>
+                        <li class="header__cat_item">
+                            <a href="{{ route('front.journal') }}">مجلات</a>
                         </li>
                     </ul>
                 </div>
