@@ -33,4 +33,18 @@ class Article extends Model
         return $this->belongsToMany(Tag::class,'article_tags','article_id','tag_id');
     }
 
+    public function log()
+    {
+        return $this->hasMany(ArticleLog::class,'article_id');
+    }
+
+    public function logDownload()
+    {
+        return $this->hasMany(ArticleLog::class,'article_id')->where('log','download_number');
+    }
+
+    public function logView()
+    {
+        return $this->hasMany(ArticleLog::class,'article_id')->where('log','view_number');
+    }
 }

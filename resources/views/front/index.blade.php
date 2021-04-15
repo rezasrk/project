@@ -36,8 +36,9 @@
                         <select name="" id="" class="header__form_search__select search select-search">
                             <option value>عنوان مطلب</option>
                             <option data-url='{{ route('front.creator') }}'>پدیدآورندگان</option>
-                            <option data-url='{{ route('front.publisher') }}'>نشریات</option>
-                            <option data-url='{{ route('front.journal') }}'>مجلات</option>
+                            <option data-url='{{ route('front.page.publisher') }}'>نشریات</option>
+                            <option data-url='{{ route('front.page.journal') }}'>مجلات</option>
+                            <option data-url='{{ route('front.page.article') }}'>مقالات</option>
                         </select>
                         <div class="header__form_grid">
 
@@ -58,10 +59,13 @@
                             <a href="{{ route('front.creator') }}">پدیدآورندگان</a>
                         </li>
                         <li class="header__cat_item">
-                            <a href="{{ route('front.publisher') }}">نشریات</a>
+                            <a href="{{ route('front.page.publisher') }}">نشریات</a>
                         </li>
                         <li class="header__cat_item">
-                            <a href="{{ route('front.journal') }}">مجلات</a>
+                            <a href="{{ route('front.page.journal') }}">مجلات</a>
+                        </li>
+                        <li class="header__cat_item">
+                            <a href="{{ route('front.page.article') }}">مقالات</a>
                         </li>
                     </ul>
                 </div>

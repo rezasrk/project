@@ -3,7 +3,7 @@
 
 <head>
     @include('front.profile.partials.header')
-    <title>پدید آورندگان</title>
+    <title>مجله ها</title>
 </head>
 <body>
 <header class="header-user">
@@ -29,7 +29,7 @@
 
                             <div class="col-8">
                                 <div class="head-main">
-                                    <h2 class="head-main__title">پدید آورندگان</h2>
+                                    <h2 class="head-main__title"></h2>
                                     <span>
                                         <i class="fas fa-chevron-down"></i>
                                     </span>
@@ -42,7 +42,7 @@
 
                     </div>
                     <div class="col-2">
-                        <aside class="side-right side">
+                        {{-- <aside class="side-right side">
                             <div class="side__options">
                                 <h3 class="side__options_title">حوزه های تخصصی</h3>
                                 <div class="side__options_items">
@@ -54,7 +54,7 @@
                                 </div>
 
                             </div>
-                        </aside>
+                        </aside> --}}
                     </div>
 
                     <div class="col-8">
@@ -70,11 +70,11 @@
                                 <div class="search-box-2__grid">
                                     <p class="search-box-2__text">
                                         نمایش
-                                        <strong>{{ ($users->currentPage() - 1) * $users->perPage() + 1 }}</strong>
+                                        <strong>{{ ($articles->currentPage() - 1) * $articles->perPage() + 1 }}</strong>
                                         تا
-                                        <strong>{{ ($users->currentPage() - 1) * $users->perPage() + $users->total() }}</strong>
+                                        <strong>{{ ($articles->currentPage() - 1) * $articles->perPage() + $articles->total() }}</strong>
                                         مورد از کل
-                                        <strong>{{ $users->total() }}</strong>
+                                        <strong>{{ $articles->total() }}</strong>
                                         مورد
                                     </p>
                                     <div class="search-box-2__links">
@@ -87,23 +87,31 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="articles">
-                                        @foreach ($users as $user)
+                                        @foreach ($articles as $article)
                                         <div class="articles__item">
-                                            @if($user->image)
-                                                <img width="100px" height="100px" src="{{ url('storage/'.$user->image) }}" alt="" class="side__user-info_img">
-                                            @else
-                                                <img width="100px" height="100px" src='{{ asset("front/theme//assets/images/default-avatar.jpg") }}' alt="" class="side__user-info_img">
-                                            @endif
                                             <h3 class="articles__item_title">
-                                                پدید آورنده : <strong>{{ $user->name }}</strong>
+                                              عنوان :  {{ $article->title }}
                                             </h3>
-                                            <h4 class="articles__item_othors">
-                                                <strong>تعداد مقالات : </strong>
-                                            {{ $user->articleCount }}
-                                            </h4>
+                                            <h6> <strong>نویسنده / نویسندگان : </strong>
+                                            @foreach($article->writers as $writer)
+                                                    {{ $writer->name.'/' }}
+                                            @endforeach
+                                            </h5>
+
+
+                                            <div class="articles__item_footer">
+                                                <p class="articles__item_footer__text">
+                                                    <strong>تعداد بازدید:</strong> <span>{{ $article->viewCount }}</span> | <strong>تعداد
+                                                        دانلود</strong> <span>{{ $article->downloadCount }}</span>
+                                                </p>
+                                                <a href="{{ route('article.download')."?article_id={$article->id}&path=".$article->attachments()->first()->path }}" class="articles__item_footer__btn">
+                                                    <img src="{{ asset('front/theme//assets/images/icon/download-icon.svg') }}" />
+                                                    دانلود
+                                                </a>
+                                            </div>
                                         </div>
                                         @endforeach
-                                        {!! $users->appends(request()->query())->render() !!}
+                                    {!! $articles->appends(request()->query())->render() !!}
                                     </div>
                                 </div>
                             </div>

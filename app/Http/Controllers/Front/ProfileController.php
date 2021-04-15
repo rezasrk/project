@@ -208,10 +208,10 @@ class ProfileController extends Controller
         /** @var User $user */
         $user = auth('front')->user();
         $accessPublish = $user->publisher()->pluck('id')->toArray();
+        $accessJournal = Journal::query()->whereIn('id',$accessPublish)->pluck('id')->toArray();
         /** @var Article $artic */
         $artic = Article::query()->find(request()->query('article_id'));
 
-        $nexCategories = $artic->categories()->get();
 
         $data = [
             'type' => 'article',
@@ -225,10 +225,9 @@ class ProfileController extends Controller
                 ->where('type_id', '3')
                 ->get(),
             'artic' => $artic,
-            'journal_number' => JournalNumber::query()->where('journal_id', $artic->journal_id)->get(),
-            'selectWriters' => $artic->writers()->get()->pluck('id')->toArray(),
-            'selectTags' => $artic->tags()->get()->pluck('id')->toArray()
-
+            'journal_number' => JournalNumber::query()->where('journal_id', optional($artic)->journal_id)->get(),
+            'selectWriters' => ($artic) ?  $artic->writers()->get()->pluck('id')->toArray() : [],
+            'selectTags' =>($artic) ? $artic->tags()->get()->pluck('id')->toArray() : []
         ];
         return view('front.profile.profile', $data);
     }
