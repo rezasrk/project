@@ -90,8 +90,9 @@
                 </div>
 
                 <div class="swiper-container publishers-slider" dir="rtl">
-                    @foreach($publishers as $publisher)
                     <div class="swiper-wrapper">
+                    @foreach($publishers as $publisher)
+
                         <div class="swiper-slide publishers__card">
                             @if($publisher->publisher_logo)
                             <a href="#" class="publishers__card_image">
@@ -107,9 +108,45 @@
                                 <li>مجلات: {{ optional($publisher->journals())->count() }}</li>
                             </ul>
                         </div>
-
-                    </div>
                     @endforeach
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                </div>
+
+            </div>
+        </section>
+    @endif
+
+    @if($journals->count())
+        <section class="section-blog">
+
+            <div class="container">
+                <div class="section-head">
+                    <h3>مجلات</h3>
+                    <a href="#">مشاهده بیشتر</a>
+                </div>
+
+                <div class="swiper-container publishers-slider" dir="rtl">
+                    <div class="swiper-wrapper">
+                        @foreach($journals as $journal)
+                            <div class="swiper-slide publishers__card">
+                                <a href="#" class="publishers__card_image">
+                                    <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
+                                </a>
+                                <h4 class="publishers__card_title">
+                                    <a href="#">
+                                        {{ $journal->journal_title }}
+                                    </a>
+                                </h4>
+                                <ul class="publishers__card_options">
+                                    <li>صاحب امتیاز: {{ $journal->owner_journal }}</li>
+                                    <li>ناشر: {{ $journal->publish->publisher_title }}</li>
+                                </ul>
+                            </div>
+                       @endforeach
+                    </div>
+
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
@@ -117,42 +154,6 @@
             </div>
         </section>
     @endif
-
-
-    <section class="section-blog">
-
-        <div class="container">
-            <div class="section-head">
-                <h3>مجلات</h3>
-                <a href="#">مشاهده بیشتر</a>
-            </div>
-
-            <div class="swiper-container publishers-slider" dir="rtl">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide publishers__card">
-                        <a href="#" class="publishers__card_image">
-                            <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
-                        </a>
-                        <h4 class="publishers__card_title">
-                            <a href="#">
-                                حسابداری ارزشی و اسلامی
-                            </a>
-                        </h4>
-                        <ul class="publishers__card_options">
-                            <li>موضوع: حسابداری</li>
-                            <li>ناشر: خوارزمی</li>
-                            <li>اخرین شماره: دستاورد های حسابداری</li>
-                        </ul>
-                    </div>
-
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-
-        </div>
-    </section>
-
 @endsection
 
 @section('front-script')

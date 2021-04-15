@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Journal;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class HomeController extends Controller
 
         $publishers = $this->publishers();
 
-       
-        return view('front.index', compact('subjectCategories','publishers'));
+        $journals = $this->journals();
+
+        return view('front.index', compact('subjectCategories','publishers','journals'));
     }
 
     public function categories()
@@ -34,5 +36,15 @@ class HomeController extends Controller
                 ->where('status',1)
                 ->limit(10)
                 ->get();
+    }
+
+    protected function journals()
+    {
+        return Journal::query()
+            ->with(['publish'=>function($query){
+                $query->where('status',1);
+            }])
+            ->limit(10)
+            ->get();
     }
 }
