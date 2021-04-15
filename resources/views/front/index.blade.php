@@ -8,7 +8,7 @@
 
             <div class="header__top">
                 <div class="header__top_logo">
-                    <img src="{{ asset('/assets/images/474.png') }}" alt="">
+                    <img src="{{ asset('front/theme/assets/images/474.png') }}" alt="">
                 </div>
 
                 <div class="header__top_btn">
