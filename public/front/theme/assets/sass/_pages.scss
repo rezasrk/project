@@ -79,6 +79,7 @@
       margin-bottom: 20px;
       border: 2px solid $primary-color;
       box-shadow: 0 0 5px -1px $primary-color;
+      max-width: 100%;
     }
   }
 }
@@ -112,5 +113,59 @@
     left: 0;
     right: auto;
     z-index: -1;
+  }
+}
+
+.publisher {
+  margin-top: 30px;
+
+  &__item {
+    color: $primary-color-dark2;
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    p {
+      padding-right: 20px;
+    }
+  }
+}
+
+.short-text {
+  box-shadow: 0 0 4px 0px #237957;
+  border: 1px solid #237957;
+
+  &__title {
+    background: #eee;
+    padding: 6px 20px;
+    color: $primary-color-dark2;
+    font-size: 16px;
+    box-shadow: 0 0 4px 0px #237957;
+    border-bottom: 1px solid #237957;
+  }
+
+  &__text {
+    padding: 6px 20px;
+    color: $primary-color-dark2;
+    font-size: 16px;
+  }
+}
+
+.jurnal {
+  &__text {
+    font-size: 16px;
+    color: $primary-color-dark2;
+    margin-bottom: 20px;
+
+    strong {
+      margin-bottom: 10px;
+
+      display: block;
+    }
+
+    span, p {
+      padding-right: 22px;
+    }
   }
 }

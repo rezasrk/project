@@ -95,3 +95,39 @@
 
 
 }
+
+.list-style__2 {
+
+    &_item {
+        box-shadow: 0 0 4px 0px #237957;
+        border: 1px solid #237957;
+        display: flex;
+        margin-bottom: 15px;
+
+        img {
+            box-shadow: 0 0 4px 0px #237957;
+            border-left: 1px solid #237957;
+            width: 150px;
+            height: 150px;
+        }
+
+        &__detail {
+            padding: 15px;
+            color: $primary-color-dark2;
+
+            div {
+                display: flex;
+
+                h4 {
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-left: 10px;
+                }
+
+                h5 {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

@@ -7,6 +7,27 @@
     width: 100%;
     margin-bottom: 53px;
   }
+
+  .order_lg_1 {
+    order: 1 !important;
+  }
+
+  
+  .side__user-info_img {
+    border-radius: 50%;
+    max-width: 170px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .main-section {
+    padding: 0;
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
 }
 
 @media (max-width: 768px) {
