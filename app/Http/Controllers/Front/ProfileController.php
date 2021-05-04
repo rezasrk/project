@@ -174,7 +174,7 @@ class ProfileController extends Controller
             'fax' => $request->input('fax'),
             'email' => $request->input('email'),
             'website' => $request->input('website'),
-            'creator_id' => auth()->id(),
+            'creator_id' => auth('front')->user()->id,
         ]);
 
         if ($request->has('image')) {

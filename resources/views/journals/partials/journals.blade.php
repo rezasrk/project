@@ -14,7 +14,7 @@
                     <tr>
                         <td>{{ ( $journals->currentPage() - 1 ) * $journals->perPage() + $loop->iteration }}</td>
                         <td>{{ $journal->journal_title }}</td>
-                        <td>{{ optional($journal->publish)->publisher_title }}</td>
+                        <td>{{ optional($journal->publish)->title }}</td>
                         <td>{{ $journal->create_date }}</td>
                     </tr>
                 @endforeach

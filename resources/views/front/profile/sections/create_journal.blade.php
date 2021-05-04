@@ -5,7 +5,7 @@
         <div class="col-12 col-md-8">
             <div class="text-input">
                 <div class="text-input__grid">
-                    <label class="text-input__label">عنوان</label>
+                    <label class="text-input__label">عنوان<span class="text-danger">*</span></label>
                 </div>
                 <input type="text" class="text-input__input" name="journal_title"
                        value="{{ optional($journal)->journal_title }}">
@@ -15,13 +15,13 @@
         <div class="col-12 col-md-4">
             <div class="text-input">
                 <div class="text-input__grid">
-                    <label class="text-input__label">انتخاب ناشر</label>
+                    <label class="text-input__label">انتخاب ناشر<span class="text-danger">*</span></label>
                 </div>
                 <select type="text" class="text-input__input" name="publisher">
                     <option value>انتخاب کنید...</option>
                     @foreach($publishers as $publish)
-                        <option @if(optional($journal)->publisher == $publish->id) selected
-                                @endif value="{{ $publish->id }}">{{ $publish->publisher_title }}</option>
+                        <option @if(optional($journal)->publisher_id == $publish->id) selected
+                                @endif value="{{ $publish->id }}">{{ $publish->title }}</option>
                     @endforeach
                 </select>
             </div>
@@ -40,7 +40,7 @@
         <div class="col-12 col-md-4">
             <div class="text-input">
                 <div class="text-input__grid">
-                    <label class="text-input__label">دسته بندی موضوعی</label>
+                    <label class="text-input__label">دسته بندی موضوعی<span class="text-danger">*</span></label>
                 </div>
                 <select type="text" class="text-input__input" name="category_id">
                     <option value>انتخاب نمایید...</option>
@@ -55,7 +55,7 @@
         <div class="col-12 col-md-4">
             <div class="text-input">
                 <div class="text-input__grid">
-                    <label class="text-input__label">درجه علمی</label>
+                    <label class="text-input__label">درجه علمی<span class="text-danger">*</span></label>
                 </div>
                 <select type="text" class="text-input__input" name="degree">
                     <option value>انتخاب نمایید...</option>
@@ -70,9 +70,9 @@
         <div class="col-12 col-md-4">
             <div class="text-input">
                 <div class="text-input__grid">
-                    <label class="text-input__label">دوره انتشار</label>
+                    <label class="text-input__label">دوره انتشار<span class="text-danger">*</span></label>
                 </div>
-                <select type="text" class="text-input__input" name="period_journal">
+                <select type="text" class="text-input__input select2" name="period_journal">
                     <option value>انتخاب نمایید...</option>
                     @foreach($period_publisher as $keyPeriodPublish=>$valuePeriodPublish)
                         <option @if($keyPeriodPublish == optional($journal)->period_journal) selected @endif value="{{ $keyPeriodPublish }}">{{ $valuePeriodPublish }}</option>
