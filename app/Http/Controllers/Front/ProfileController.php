@@ -42,17 +42,22 @@ class ProfileController extends Controller
 
     protected function infoStore(InfoRequest $request): JsonResponse
     {
-        auth('front')->user()->update([
+        /** @var User $user */
+        $user = auth('front')->user();
+
+        $user->update([
             'name' => $request->input('name'),
-            'degree' => $request->input('degree'),
+            'username'=>$request->input('username'),
+            'degree' => $request->input('degree') ? $request->input('degree') : 1 ,
             'website' => $request->input('website'),
             'email' => $request->input('email'),
+            'scientific_rank'=>$request->input('scientific_rank') ? $request->input('scientific_rank') : 1,
             'as_creator'=>$request->has('as_creator')  ? :0
         ]);
 
         if ($request->has('image')) {
             $imagePath = $request->file('image')->store('profile', 'public');
-            auth()->user()->update(['image' => $imagePath]);
+            $user->update(['image' => $imagePath]);
         }
 
 

@@ -23,10 +23,13 @@ class InfoRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user = auth()->guard('front')->id();
         return [
             'name' => ['required','max:100'],
-            'email' => ['required','unique:users,email,'.auth()->id().',id'],
-            'degree' => ['required'],
+            'username'=>['required','max:100','unique:users,username,'.$user.',id'],
+            'email' => ['nullable','unique:users,email,'.$user.',id'],
+            'degree' => ['nullable','exists:baseinfos,id,type,degree'],
+            'scientific_rank'=>['nullable','exists:baseinfos,id,type,scientific_rank']
         ];
     }
 }

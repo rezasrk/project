@@ -17,8 +17,14 @@
 
             <div class="col-12 col-md-5">
                 <div class="text-input">
-                    <label class="text-input__label">نام و نام خانوادگی</label>
+                    <label class="text-input__label">نام و نام خانوادگی <span class="text-danger">*</span></label>
                     <input type="text" class="text-input__input" name="name" value="{{ $info->name }}">
+                </div>
+            </div>
+            <div class="col-12 col-md-5">
+                <div class="text-input">
+                    <label class="text-input__label"> نام کاربری <span class="text-danger">*</span></label>
+                    <input type="text" class="text-input__input" name="username" value="{{ $info->username }}">
                 </div>
             </div>
             <div class="col-12 col-md-5">
@@ -30,6 +36,19 @@
                         <option value>انتخاب نمایید...</option>
                         @foreach($degree as $key=>$value)
                             <option @if($key == $info->degree) selected @endif value="{{ $key }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 col-md-5">
+                <div class="text-input">
+                    <div class="text-input__grid">
+                        <label class="text-input__label">درجه ی علمی</label>
+                    </div>
+                    <select type="text" class="text-input__input" name="scientific_rank">
+                        <option value>انتخاب نمایید...</option>
+                        @foreach($scientific_rank as $raknKey=>$rankValue)
+                            <option @if($raknKey == $info->scientific_rank) selected @endif value="{{ $raknKey }}">{{ $rankValue }}</option>
                         @endforeach
                     </select>
                 </div>
