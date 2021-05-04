@@ -181,6 +181,9 @@ return array(
         'website'=>'وب سایت',
         'image'=>'تصویر',
         'message'=>'پیام',
-        'mobile'=>'تلفن همراه'
+        'mobile'=>'تلفن همراه',
+        'title'=>'عنوان',
+        'license'=>'مجوز',
+        'letter'=>'نامه'
     ]
 );

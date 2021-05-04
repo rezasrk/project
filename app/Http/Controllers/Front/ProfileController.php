@@ -69,50 +69,51 @@ class ProfileController extends Controller
 
     public function publisher(Request $request)
     {
+        /** @var User $user */
+        $user = auth('front')->user();
+
         $data = [
             'type' => 'publisher',
-            'publisher' => Publisher::query()
-                ->where('creator_id', auth()->id())
+            'publish' => Publisher::query()
+                ->where('creator_id', $user->id)
                 ->find($request->query('publisher_id')),
             'publishers' => Publisher::query()
                 ->withCount('journals as journalCount')
-                ->where('creator_id', auth()->id())
+                ->where('creator_id', $user->id)
                 ->paginate(20),
-            'rank_requester' => Baseinfo::type('rank_requester'),
-            'degree_publisher' => Baseinfo::type('degree_publisher'),
-            'license_from' => Baseinfo::type('license_from'),
         ];
         return view('front.profile.profile', $data);
     }
 
     public function publisherStore(PublisherRequest $request): JsonResponse
     {
+        /** @var User $user */
+        $user = auth('front')->user();
+
         $publisher = Publisher::query()->updateOrCreate([
             'id' => $request->publisher_id,
-            'creator_id' => auth()->id()
+            'creator_id' => $user->id
         ], [
-            'publisher_title' => $request->input('publisher_title'),
-            'owner_publisher' => $request->input('owner_publisher'),
-            'requester' => $request->input('requester'),
-            'rank_requester' => $request->input('rank_requester'),
-            'degree_publisher' => $request->input('degree_publisher'),
-            'license_from' => $request->input('license_from'),
-            'publisher_phone' => $request->input('publisher_phone'),
-            'publisher_email' => $request->input('publisher_email'),
-            'publisher_web_site' => $request->input('publisher_web_site'),
-            'creator_id' => auth('front')->id()
+            'title' => $request->input('title'),
+            'address' => $request->input('address'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'web_site' => $request->input('web_site'),
+            'about' => $request->input('about'),
+            'creator_id' => $user->id
         ]);
-        if ($request->has('publisher_logo')) {
-            $publisher_logo_path = $request->file('publisher_logo')->store('publisher', 'public');
-            $publisher->update(['publisher_logo' => $publisher_logo_path]);
+        
+        if ($request->has('image')) {
+            $image_path = $request->file('image')->store('publisher', 'public');
+            $publisher->update(['image' => $image_path]);
         }
-        if ($request->has('publisher_license_image')) {
-            $publisher_license_image_path = $request->file('publisher_license_image')->store('publisher', 'public');
-            $publisher->update(['publisher_license_image' => $publisher_license_image_path]);
+        if ($request->has('license')) {
+            $license_path = $request->file('license')->store('publisher', 'public');
+            $publisher->update(['license' => $license_path]);
         }
-        if ($request->has('publisher_letter')) {
-            $publisher_letter_path = $request->file('publisher_letter')->store('publisher', 'public');
-            $publisher->update(['publisher_letter' => $publisher_letter_path]);
+        if ($request->has('letter')) {
+            $letter_path = $request->file('letter')->store('publisher', 'public');
+            $publisher->update(['letter' => $letter_path]);
         }
 
         return response()->json([

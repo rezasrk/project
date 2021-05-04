@@ -17,10 +17,7 @@ class Publisher extends Model
         'status' => 'bool'
     ];
 
-    public function rankRequester(): BelongsTo
-    {
-        return $this->belongsTo(Baseinfo::class, 'rank_requester');
-    }
+    
 
     public function creator(): BelongsTo
     {
@@ -39,9 +36,5 @@ class Publisher extends Model
 
         return $jdate->gregorianToJalali($this->attributes['created_at'], '( %A, %d %B %y ) H:i');
     }
-
-    public function getJournalStatusAttribute()
-    {
-        return '';
-    }
+    
 }

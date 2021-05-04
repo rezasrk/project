@@ -36,7 +36,7 @@
                     @foreach($publishers as $publish)
                         <tr>
                             <td>{{ ( $publishers->currentPage() - 1 ) * $publishers->perPage()  + $loop->iteration }}</td>
-                            <td>{{ $publish->publisher_title }}</td>
+                            <td>{{ $publish->title }}</td>
                             <td>{{ $publish->journalCount }}</td>
                             <td>
                                 <a href="{{ route('front.publisher').'?type=create&publisher_id='.$publish->id }}"

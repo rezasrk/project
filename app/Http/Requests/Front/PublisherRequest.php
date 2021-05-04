@@ -24,18 +24,15 @@ class PublisherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'publisher_title'=>['required'],
-            'owner_publisher'=>['required'],
-            'requester'=>['required'],
-            'rank_requester'=>['required'],
-            'degree_publisher'=>['required'],
-            'license_from'=>['required'],
-            'publisher_phone'=>['required'],
-            'publisher_email'=>['required'],
-            'publisher_web_site'=>['required'],
-            'publisher_logo'=>['nullable'],
-            'publisher_license_image'=>['nullable'],
-            'publisher_letter'=>['nullable'],
+            'title' => ['required','max:100'],
+            'address' => ['nullable'],
+            'phone' => ['nullable'],
+            'email' => ['nullable'],
+            'web_site' => ['nullable'],
+            'about' => ['nullable'],
+            'license'=>[$this->get('publisher_id') ? '' : 'required'],
+            'letter'=>[$this->get('publisher_id') ? '' : 'required'],
+            'imamge'=>['nullable']
         ];
     }
 }
