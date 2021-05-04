@@ -24,7 +24,7 @@
         <div class="form-check" style="margin-bottom: 10px;">
             <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="accept_rules">
             <label class="form-check-label" for="flexCheckDefault">
-                <a href="#">قوانین</a> و <a href="#">مقررات</a> سایت را می پذیرم
+                <a href="{{ route('front.rule') }}" target="_blank">قوانین و مقررات</a> سایت را می پذیرم
             </label>
         </div>
 
