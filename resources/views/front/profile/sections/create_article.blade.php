@@ -4,7 +4,7 @@
         <div class="col-12 col-md-8">
             <div class="text-input">
                 <div class="form-group">
-                    <label class="text-input__label">عنوان</label>
+                    <label class="text-input__label">عنوان<span class="text-danger">*</span></label>
                 </div>
                 <input type="text" class="form-control" name="title">
             </div>
@@ -13,7 +13,7 @@
         <div class="col-12 col-md-4">
             <div class="text-input">
                 <div class="form-group">
-                    <label class="text-input__label">درجه علمی</label>
+                    <label class="text-input__label">درجه علمی<span class="text-danger">*</span></label>
                 </div>
                 <select type="text" class="form-control" name="article_degree">
                     <option value>انتخاب نمایید...</option>
@@ -28,7 +28,7 @@
         <div class="col-12 col-md-4">
             <div class="text-input">
                 <div class="form-group">
-                    <label class="text-input__label">انتخاب مجله</label>
+                    <label class="text-input__label">انتخاب مجله<span class="text-danger">*</span></label>
                 </div>
                 <select type="text" class="form-control select-journal" name="journal_id">
                     <option value>انتخاب نمایید...</option>
@@ -42,7 +42,7 @@
         <div class="col-12 col-md-4">
             <div class="text-input">
                 <div class="form-group">
-                    <label class="text-input__label">انتخاب شماره</label>
+                    <label class="text-input__label">انتخاب شماره<span class="text-danger">*</span></label>
                 </div>
                 <select type="text" class="form-control show-number-journal" name="journal_number_id">
                     <option value>انتخاب نمایید...</option>
@@ -76,7 +76,7 @@
         <div class="col-12 col-md-12">
             <div class="text-input">
                 <div class="form-group">
-                    <label class="text-input__label">نویسنده یا نویسندگان</label>
+                    <label class="text-input__label">نویسنده یا نویسندگان<span class="text-danger">*</span></label>
                 </div>
                 <select type="text" class="form-control" name="writers" multiple>
                     <option value>انتخاب نمایید...</option>
@@ -90,7 +90,7 @@
         <div class="col-12 col-md-12">
             <div class="text-input">
                 <div class="form-group">
-                    <label class="text-input__label">کلید واژه</label>
+                    <label class="text-input__label">کلید واژه<span class="text-danger">*</span></label>
                 </div>
                 <select type="text" class="form-control" name="key_word" multiple>
                     <option value>انتخاب نمایید...</option>
@@ -110,7 +110,7 @@
                 <div class="col-6 col-md-3">
                     <div class="text-input">
                         <div class="form-group">
-                            <label class="text-input__label">دسته ی موضوع</label>
+                            <label class="text-input__label">دسته ی موضوع<span class="text-danger">*</span></label>
                         </div>
                         <select type="text" class="form-control select-first-category" name="category_first_id[]">
                             <option value>انتخاب نمایید...</option>

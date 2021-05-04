@@ -13,7 +13,10 @@ class ArticleController extends Controller
 {
     public function index(Request $request)
     {
-        $articles = Article::query()->with(['journal'])->withCount(['logDownload as downloadCount','logView as viewCount']);
+        $articles = Article::query()
+                        ->with(['journal'])
+                        ->withCount(['logDownload as downloadCount','logView as viewCount']);
+                        
         $searchPlaceHolder = 'جستجو برای مقاله';
 
         if($request->query('sort')){
