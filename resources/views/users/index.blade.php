@@ -21,7 +21,9 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    @include('users.partials.users')
+                    <div class="col-md-12">
+                        @include('users.partials.users')
+                    </div>
                 </div>
             </div>
         </div>

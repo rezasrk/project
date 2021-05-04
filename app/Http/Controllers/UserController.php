@@ -11,12 +11,16 @@ class UserController extends Controller
     {
         $users = User::query();
 
-        if ($request->filled('name')) {
+        if ($request->query('name')) {
             $users->where('name', 'like', '%' . $request->query('name') . '%');
         }
 
-        if ($request->filled('email')) {
+        if ($request->query('email')) {
             $users->where('email', 'like', '%' . $request->query('email') . '%');
+        }
+
+        if($request->query('username')){
+            $users->where('username','like','%'.$request->query('username').'%');
         }
 
         $users = $users->paginate(20);
