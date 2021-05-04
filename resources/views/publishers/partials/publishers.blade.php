@@ -4,9 +4,6 @@
         <tr class="table-info">
             <th>ردیف</th>
             <th>عنوان نشریه</th>
-            <th>صاحب امتیاز نشریه</th>
-            <th>تقاضا کننده</th>
-            <th>سمت تقاضا کننده</th>
             <th>ثبت شده توسط</th>
             <th>وضعیت</th>
             <th>تاریخ ثبت</th>
@@ -16,10 +13,7 @@
         @foreach($publishers as $publisher)
             <tr>
                 <td>{{ ( $publishers->currentPage() - 1 ) * $publishers->perPage()  + $loop->iteration}}</td>
-                <td>{{ $publisher->publisher_title }}</td>
-                <td>{{ $publisher->owner_publisher }}</td>
-                <td>{{ $publisher->requester }}</td>
-                <td>{{ optional($publisher->rankRequester)->value }}</td>
+                <td>{{ $publisher->title }}</td>
                 <td>{{ optional($publisher->creator)->name }}</td>
                 <td>
                     <input type="checkbox"

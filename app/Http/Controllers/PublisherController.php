@@ -10,9 +10,9 @@ class PublisherController extends Controller
 {
     public function index(Request $request)
     {
-        $publishers = Publisher::query()->with(['rankRequester']);
+        $publishers = Publisher::query();
 
-        if($request->filled('publisher_title')){
+        if($request->query('publisher_title')){
             $publishers->where('publisher_title',$request->query('publisher_title'));
         }
         $publishers = $publishers->paginate(20);
