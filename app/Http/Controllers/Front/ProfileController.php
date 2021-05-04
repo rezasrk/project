@@ -266,9 +266,12 @@ class ProfileController extends Controller
             ]);
         }
 
-        $file = $request->file('attachment')->store('article', 'public');
+        if($request->has('attachment')){
+            $file = $request->file('attachment')->store('article', 'public');
 
-        $article->attachments()->create(['path' => $file]);
+            $article->attachments()->create(['path' => $file]);
+        }
+       
 
         DB::commit();
 
