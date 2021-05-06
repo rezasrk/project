@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <input type="text" name="title" placeholder="عنوان را وارد کنید::." class="form-control"
+                <input type="text" name="title" placeholder="عنوان را وارد کنید::." class="text-input__input"
                        value="{{ optional($numberJr)->title }}">
             </div>
         </div>
@@ -14,12 +14,12 @@
             <div class="form-group">
                 <input type="hidden" name="journal_id" value="{{ request()->query('journal_id') }}">
                 <input type="hidden" name="journal_number_id" value="{{ request()->query('journal_number') }}">
-                <input type="text" name="year" placeholder="سال::." class="form-control" value="{{ optional($numberJr)->year }}">
+                <input type="text" name="year" placeholder="سال::." class="text-input__input" value="{{ optional($numberJr)->year }}">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <input type="text" name="number" placeholder="شماره::." class="form-control"
+                <input type="text" name="number" placeholder="شماره::." class="text-input__input"
                        value="{{ optional($numberJr)->number }}">
             </div>
         </div>

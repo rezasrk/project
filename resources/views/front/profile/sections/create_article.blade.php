@@ -184,7 +184,7 @@
     <div class="col-12 col-md-4">
         <div class="text-input">
             <div class="form-group">
-                <label class="text-input__label">بارگزاری فایل مقاله</label>
+                <label class="text-input__label">بارگزاری فایل مقاله<span class="text-danger">*</span></label>
             </div>
             <input name="attachment" type="file" class="text-input__file" data-buttontext="find"
                    data-placeholder="No file"

@@ -220,7 +220,7 @@ class ProfileController extends Controller
 
         $data = [
             'type' => 'article',
-            'articles' => Article::query()->whereIn('jounal_id',$accessJournal)->paginate(20),
+            'articles' => Article::query()->whereIn('journal_id',$accessJournal)->paginate(20),
             'degrees' => Baseinfo::type('degree_article'),
             'journals' => Journal::query()->whereIn('publisher_id', $accessPublish)->get(),
             'writers' => User::query()->where('as_creator', 1)->get(),
