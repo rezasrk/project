@@ -131,7 +131,7 @@ class ProfileController extends Controller
         $data = [
             'type' => 'journals',
             'publishers' => Publisher::query()->where('creator_id', $user->id)->get(),
-            'categories' => Category::query()->where('type_id', '=', 3)
+            'categories' => Category::query()
                 ->where('parent_id', '=', 0)
                 ->get(),
             'degrees' => Baseinfo::type('degree_publisher'),
