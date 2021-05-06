@@ -11,5 +11,8 @@ class Category extends Model
 
     protected $guarded = ['id'];
 
-
+    public function journals(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Journal::class,'category_id');
+    }
 }
