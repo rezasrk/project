@@ -47,4 +47,6 @@ class Article extends Model
     {
         return $this->hasMany(ArticleLog::class,'article_id')->where('log','view_number');
     }
+
+   
 }

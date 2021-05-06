@@ -3,7 +3,7 @@
 
 <head>
     @include('front.profile.partials.header')
-    <title>مجله ها</title>
+    <title>مقاله ها</title>
 </head>
 <body>
 <header class="header-user">
@@ -96,15 +96,29 @@
                                             @foreach($article->writers as $writer)
                                                     {{ $writer->name.'/' }}
                                             @endforeach
-                                            </h5>
-
-
+                                            </h6>
+                                            <h3 class="articles__item_title">
+                                                <strong>منبع :</strong>‌
+                                            </h3>
+                                            <h6>
+                                                @foreach($article->tags as $tag)
+                                                    {{ $tag->title.'/' }}
+                                                @endforeach
+                                            </h6>
+                                            <h3 class="articles__item_title">
+                                                <strong>حوضه ی تخصصی :</strong>‌
+                                            </h3>
+                                            <h6>
+                                                @foreach($article->categories as $category)
+                                                    {{ optional($category)->title.'/' }}
+                                                @endforeach
+                                            </h6>
                                             <div class="articles__item_footer">
                                                 <p class="articles__item_footer__text">
                                                     <strong>تعداد بازدید:</strong> <span>{{ $article->viewCount }}</span> | <strong>تعداد
                                                         دانلود</strong> <span>{{ $article->downloadCount }}</span>
                                                 </p>
-                                                <a href="{{ route('article.download')."?article_id={$article->id}&path=".$article->attachments()->first()->path }}" class="articles__item_footer__btn">
+                                                <a href="{{ route('article.download')."?article_id={$article->id}&path=".optional($article->attachments()->first())->path }}" class="articles__item_footer__btn">
                                                     <img src="{{ asset('front/theme//assets/images/icon/download-icon.svg') }}" />
                                                     دانلود
                                                 </a>

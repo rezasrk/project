@@ -29,7 +29,8 @@ class ArticleController extends Controller
             $articles->where('title','like','%'.$request->query('title').'%');
         }
 
-        $articles = $articles->paginate(20);
+        $articles = $articles->latest()->paginate(20);
+        
         return view('front.articles.index',compact('searchPlaceHolder','articles'));
     }
 

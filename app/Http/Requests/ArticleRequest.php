@@ -30,14 +30,14 @@ class ArticleRequest extends FormRequest
             'journal_number_id' => ['required'],
             'from_page' => ['nullable'],
             'to_page' => ['nullable'],
-            'writers' => ['nullable'],
+            'writers' => ['required'],
             'key_word' => ['nullable'],
             'category_first_id' => ['nullable'],
             'category_second_id' => ['nullable'],
             'category_third_id' => ['nullable'],
             'category_forth_id' => ['nullable'],
             'article_summery' => ['nullable'],
-            'attachment' => ['nullable'],
+            'attachment' => ['required'],
         ];
     }
 }

@@ -241,6 +241,7 @@ class ProfileController extends Controller
 
     public function articleStore(ArticleRequest $request): JsonResponse
     {
+        
         DB::beginTransaction();
 
         /** @var Article $article */
@@ -255,8 +256,9 @@ class ProfileController extends Controller
         ]);
 
         $article->writers()->sync($request->input('writers'));
-        $article->tags()->sync($request->input('tags'));
+        $article->tags()->sync($request->input('key_word'));
 
+    
         foreach ($request->input('category_first_id') as $key => $value) {
             $article->categories()->create([
                 'category_first_id' => $value,
