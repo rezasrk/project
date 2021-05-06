@@ -128,34 +128,7 @@
                     </div>
 
                     <div class="col-2">
-                        <div class="side__options">
-                            <h3 class="side__options_title">درجه علمی</h3>
-                            <div class="side__options_items">
-
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی ترویجی</a></h5>
-                                    <span>3</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی (دانشگاه آزاد)</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی ترویجی</a></h5>
-                                    <span>3</span>
-                                </div>
-                            </div>
-
-                        </div>
-
+                        @include('front.advertising')
                     </div>
 
                 </div>

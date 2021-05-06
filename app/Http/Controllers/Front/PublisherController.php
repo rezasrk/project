@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Publisher;
+use App\Repository\AdvertisingRepository;
 use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request,AdvertisingRepository $repo)
     {
         $publishers = Publisher::query()
             ->withCount(['journals as journalCount','journalNumbers as nmCount','articles as articleCount'])
@@ -26,6 +27,7 @@ class PublisherController extends Controller
 
         $searchPlaceHolder = 'جستجو برای ناشران';
         $publishers = $publishers->paginate(20);
-        return view('front.publishers.index',compact('searchPlaceHolder','publishers'));
+        $advertisings = $repo->repo();
+        return view('front.publishers.index',compact('searchPlaceHolder','publishers','advertisings'));
     }
 }
