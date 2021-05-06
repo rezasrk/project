@@ -27,7 +27,7 @@
                         <div class="text-input__grid">
                             <label class="text-input__label">تلفن تماس</label>
                         </div>
-                        <input type="text" nam='phone' class="text-input__input" value="{{ optional($publish)->phone }}">
+                        <input type="text" name='phone' class="text-input__input" value="{{ optional($publish)->phone }}">
                     </div>
                 </div>
 

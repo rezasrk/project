@@ -30,4 +30,13 @@ class PublisherController extends Controller
         $advertisings = $repo->repo();
         return view('front.publishers.index',compact('searchPlaceHolder','publishers','advertisings'));
     }
+
+    public function show($id,AdvertisingRepository $repo)
+    {
+        $publisher = Publisher::query()->findOrFail($id);
+        $advertisings = $repo->repo();
+        $journals = $publisher->journalNumbers()->paginate(20);
+    
+        return view('front.publishers.show',compact('advertisings','publisher','journals'));
+    }
 }

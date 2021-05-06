@@ -97,7 +97,7 @@
                                             <div class="list-style__2_item__detail">
                                                 <div>
                                                     <h4>عنوان ناشر: </h4>
-                                                    <h5>{{ $publisher->title }}</h5>
+                                                    <h5><a class="text-green" href="{{ route('front.page.publisher.show',$publisher->id) }}">{{ $publisher->title }}</a></h5>
                                                 </div>
 
                                                 <div>

@@ -7,4 +7,9 @@
 <link rel="stylesheet" href="{{ asset('front/theme/assets/font-awesome/all.min.css') }}">
 <link rel="stylesheet" href="{{ asset('front/theme/assets/css/swiper-bundle.min.css') }}">
 <link rel="stylesheet" href="{{ asset('front/theme/assets/css/style.css') }}">
+<style>
+    .text-green{
+        color: #125231
+    }
+</style>
 
