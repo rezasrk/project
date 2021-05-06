@@ -11,7 +11,7 @@ class PublisherController extends Controller
     public function index(Request $request)
     {
         $publishers = Publisher::query()
-            ->withCount(['journals as journalCount'])
+            ->withCount(['journals as journalCount','journalNumbers as nmCount','articles as articleCount'])
             ->where('status',1);
 
             if($request->query('sort')){

@@ -3,7 +3,7 @@
 
 <head>
     @include('front.profile.partials.header')
-    <title>پدید آورندگان</title>
+    <title>ناشران</title>
 </head>
 <body>
 <header class="header-user">
@@ -88,19 +88,36 @@
                                 <div class="col-12">
                                     <div class="articles">
                                         @foreach ($publishers as $publisher)
-                                        <div class="articles__item mb-4">
-                                            @if($publisher->image)
+                                        <div class="list-style__2_item">
+                                            @if($publisher->image)   
                                                 <img width="100px" height="100px" src="{{ url('storage/'.$publisher->image) }}" alt="">
-                                            @else
-                                                <img width="100px" height="100px" src='{{ asset("front/theme//assets/images/default-avatar.jpg") }}' alt="">
+                                            @else 
+                                                <img src="{{ asset('front/theme/assets/images/mehr.png') }}" alt="">
                                             @endif
-                                            <h3 class="articles__item_title mt-4">
-                                                عنوان ناشر : <strong>{{ $publisher->publisher_title }}</strong>
-                                            </h3>
-                                            <h4 class="articles__item_othors">
-                                                <strong>تعداد مجلات : </strong>
-                                            {{ $publisher->journalCount }}
-                                            </h4>
+                                            <div class="list-style__2_item__detail">
+                                                <div>
+                                                    <h4>عنوان ناشر: </h4>
+                                                    <h5>{{ $publisher->title }}</h5>
+                                                </div>
+
+                                                <div>
+                                                    <h4>تعداد مجلات: </h4>
+                                                    <h5>  {{ $publisher->journalCount }}</h5>
+                                                </div>
+
+                                                <div>
+                                                    <h4>تعداد شماره ها: </h4>
+                                                    <h5>{{ $publisher->nmCount }}</h5>
+                                                </div>
+
+                                                <div>
+                                                    <h4>تعداد کل مقالات: </h4>
+                                                    <h5>{{ $publisher->articleCount }}</h5>
+                                                </div>
+
+
+
+                                            </div>
                                         </div>
                                         @endforeach
                                     {!! $publishers->appends(request()->query())->render() !!}

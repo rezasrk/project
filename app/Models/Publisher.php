@@ -37,4 +37,13 @@ class Publisher extends Model
         return $jdate->gregorianToJalali($this->attributes['created_at'], '( %A, %d %B %y ) H:i');
     }
     
+    public function journalNumbers()
+    {
+        return $this->hasManyThrough(JournalNumber::class,Journal::class,'publisher_id','journal_id','id','id');
+    }
+
+    public function articles()
+    {
+        return $this->hasManyThrough(Article::class,Journal::class,'publisher_id','journal_id','id','id');
+    }
 }
