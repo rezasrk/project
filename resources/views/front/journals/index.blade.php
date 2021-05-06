@@ -121,6 +121,10 @@
                                                         <h4>ناشر :</h4>
                                                         <h5>  {{ optional($journal->publish)->title }}</h5>
                                                     </div>
+                                                    <div>
+                                                        <h4>تعداد مقاله :</h4>
+                                                        <h5>  {{ $journal->articleCount }}</h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
