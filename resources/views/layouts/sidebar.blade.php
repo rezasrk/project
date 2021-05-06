@@ -148,6 +148,24 @@
                         </ul>
                     </li>
                 @endcan
+                <li class="nav-item {{ request()->is('managerpanel/advertising*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-file"></i>
+                            <p>
+                                تبلیغات
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('advertising.index') }}"
+                                       class="nav-link {{ request()->url() == route('advertising.index') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>لیست تبلیغات</p>
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
                 @can('settings-menu')
                     <li class="nav-item {{ request()->is('managerpanel/settings*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link">

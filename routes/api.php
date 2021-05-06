@@ -14,4 +14,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('transfer', 'Api\TransferController@transfer');
