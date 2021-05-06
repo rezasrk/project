@@ -103,8 +103,8 @@
                                     @foreach($journals as $journal)
                                         <div class="list-style__2">
                                             <div class="list-style__2_item">
-                                                @if(optional($journal->journal)->image)
-                                                    <img src="{{ url('storage/'.optional($journal->journal)->image) }}"
+                                                @if($journal->image)
+                                                    <img src="{{ url('storage/'.$journal->image) }}"
                                                          alt="">
                                                 @else
                                                     <img src="{{ asset('front/theme/assets/images/mehr.png') }}" alt="">
@@ -112,11 +112,11 @@
                                                 <div class="list-style__2_item__detail">
                                                     <div>
                                                         <h4>نام مجله: </h4>
-                                                        <h5>{{ optional($journal->journal)->journal_title }}</h5>
+                                                        <h5>{{ $journal->journal_title }}</h5>
                                                     </div>
                                                     <div>
-                                                        <h4>شماره: </h4>
-                                                        <h5>{{ $journal->title }}</h5>
+                                                        <h4>تعداد مقاله: </h4>
+                                                        <h5>{{ $journal->articles()->get()->count() }}</h5>
                                                     </div>
 
                                                 </div>
