@@ -118,7 +118,10 @@
                                                         <h4>تعداد مقاله: </h4>
                                                         <h5>{{ $journal->articles()->get()->count() }}</h5>
                                                     </div>
-
+                                                    <div>
+                                                        <h4>تعداد شمارگان: </h4>
+                                                        <h5>{{ $journal->journalNumbers()->get()->count() }}</h5>
+                                                    </div>
                                                 </div>
                                             </div>
 
