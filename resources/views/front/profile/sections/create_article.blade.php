@@ -6,7 +6,7 @@
                 <div class="form-group">
                     <label class="text-input__label">عنوان<span class="text-danger">*</span></label>
                 </div>
-                <input type="text" class="form-control" name="title">
+                <input type="text" class="text-input__input" name="title">
             </div>
         </div>
 
@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label class="text-input__label">درجه علمی<span class="text-danger">*</span></label>
                 </div>
-                <select type="text" class="form-control" name="article_degree">
+                <select type="text" class="text-input__input" name="article_degree">
                     <option value>انتخاب نمایید...</option>
                     @foreach($degrees as $degreeKey=>$degreeValue)
                         <option value="{{ $degreeKey }}">{{ $degreeValue }}</option>
@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label class="text-input__label">انتخاب مجله<span class="text-danger">*</span></label>
                 </div>
-                <select type="text" class="form-control select-journal" name="journal_id">
+                <select type="text" class="text-input__input select-journal" name="journal_id">
                     <option value>انتخاب نمایید...</option>
                     @foreach($journals as $journal)
                         <option data-url="{{ route('getJournalNumbers').'?journal_id='.$journal->id }}"
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label class="text-input__label">انتخاب شماره<span class="text-danger">*</span></label>
                 </div>
-                <select type="text" class="form-control show-number-journal" name="journal_number_id">
+                <select type="text" class="text-input__input show-number-journal" name="journal_number_id">
                     <option value>انتخاب نمایید...</option>
                 </select>
             </div>
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label class="text-input__label">از صفحه</label>
                         </div>
-                        <input type="text" class="form-control" name="from_page">
+                        <input type="text" class="text-input__input" name="from_page">
                     </div>
                 </div>
                 <div class="col-6 col-md-6">
@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label class="text-input__label">تا صفحه</label>
                         </div>
-                        <input type="text" class="form-control" name="to_page">
+                        <input type="text" class="text-input__input" name="to_page">
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <div class="form-group">
                     <label class="text-input__label">نویسنده یا نویسندگان<span class="text-danger">*</span></label>
                 </div>
-                <select type="text" class="form-control" name="writers[]" multiple>
+                <select type="text" class="text-input__input" name="writers[]" multiple>
                     <option value>انتخاب نمایید...</option>
                     @foreach($writers as $writer)
                         <option value="{{ $writer->id }}">{{ $writer->name }}</option>
@@ -92,7 +92,7 @@
                 <div class="form-group">
                     <label class="text-input__label">کلید واژه<span class="text-danger">*</span></label>
                 </div>
-                <select type="text" class="form-control" name="key_word[]" multiple>
+                <select type="text" class="text-input__input" name="key_word[]" multiple>
                     <option value>انتخاب نمایید...</option>
                     @foreach($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->title }}</option>
@@ -112,7 +112,7 @@
                         <div class="form-group">
                             <label class="text-input__label">دسته ی موضوع<span class="text-danger">*</span></label>
                         </div>
-                        <select type="text" class="form-control select-first-category" name="category_first_id[]">
+                        <select type="text" class="text-input__input select-first-category" name="category_first_id[]">
                             <option value>انتخاب نمایید...</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
@@ -126,7 +126,7 @@
                         <div class="form-group">
                             <label class="text-input__label">مرحله دوم</label>
                         </div>
-                        <select type="text" class="form-control select-second-category" name="category_second_id[]">
+                        <select type="text" class="text-input__input select-second-category" name="category_second_id[]">
                             <option value>انتخاب نمایید...</option>
                         </select>
                     </div>
@@ -137,7 +137,7 @@
                         <div class="form-group">
                             <label class="text-input__label">مرحله سوم</label>
                         </div>
-                        <select type="text" class="form-control select-third-category" name="category_third_id[]">
+                        <select type="text" class="text-input__input select-third-category" name="category_third_id[]">
                             <option value>انتخاب نمایید...</option>
                         </select>
                     </div>
@@ -148,7 +148,7 @@
                         <div class="form-group">
                             <label class="text-input__label">مرحله چهارم</label>
                         </div>
-                        <select type="text" class="form-control select-firth-category" name="category_forth_id[]">
+                        <select type="text" class="text-input__input select-firth-category" name="category_forth_id[]">
                             <option value>انتخاب نمایید...</option>
                         </select>
                     </div>

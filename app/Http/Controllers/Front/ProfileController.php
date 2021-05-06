@@ -218,10 +218,9 @@ class ProfileController extends Controller
         /** @var Article $artic */
         $artic = Article::query()->find(request()->query('article_id'));
 
-
         $data = [
             'type' => 'article',
-            'articles' => Article::query()->paginate(20),
+            'articles' => Article::query()->whereIn('jounal_id',$accessJournal)->paginate(20),
             'degrees' => Baseinfo::type('degree_article'),
             'journals' => Journal::query()->whereIn('publisher_id', $accessPublish)->get(),
             'writers' => User::query()->where('as_creator', 1)->get(),
