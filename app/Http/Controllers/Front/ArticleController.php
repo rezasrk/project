@@ -40,6 +40,22 @@ class ArticleController extends Controller
         return view('front.articles.index',compact('searchPlaceHolder','articles','advertisings','journal','years'));
     }
 
+    public function show($id,Request $request,AdvertisingRepository $repo)
+    {
+        /** @var Article $article */
+        $article = Article::query()->findOrFail($id);
+        $journal =Journal::query()->findOrFail($request->query('journal_id'));
+        $years =  $journal->years()->limit(request()->query('limit',10))->get();
+        $advertisings = $repo->repo();
+        $writers = $article->writers()->get();
+        $num = $journal->journalNumbers()->limit(10)->get();
+        $tags = $article->tags()->get();
+        $categories = $article->categories()->get();
+
+        return view('front.articles.show',compact(
+            'years','advertisings','article','journal','writers','num','tags','categories'
+        ));
+    }
     public function download(Request $request)
     {
         DB::beginTransaction();

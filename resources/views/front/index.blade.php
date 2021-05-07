@@ -64,9 +64,6 @@
                         <li class="header__cat_item">
                             <a href="{{ route('front.page.journal') }}">مجلات</a>
                         </li>
-                        <li class="header__cat_item">
-                            <a href="{{ route('front.page.article') }}">مقالات</a>
-                        </li>
                     </ul>
                 </div>
             </div>
