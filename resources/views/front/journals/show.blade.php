@@ -81,7 +81,7 @@
                                                     <ul>
                                                         @foreach($journal->journalNumbers()->where('year',$year->year)->limit(10)->get() as $number)
                                                             <li>
-                                                                <a href="#">
+                                                                <a href="{{ route('front.page.article').'?journal_id='.$journal->id.'&num='.$number->id }}">
                                                                     {{ $number->title }}
                                                                 </a>
                                                             </li>
