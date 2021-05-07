@@ -40,6 +40,7 @@ Route::get('creators','Front\CreatorController@index')->name('front.creator');
 Route::get('page/publishers','Front\PublisherController@index')->name('front.page.publisher');
 Route::get('page/publishers/{id}','Front\PublisherController@show')->name('front.page.publisher.show');
 Route::get('page/journals','Front\JournalController@index')->name('front.page.journal');
+Route::get('page/journals/{id}','Front\JournalController@show')->name('front.page.journal.show');
 Route::get('page/articles','Front\ArticleController@index')->name('front.page.article');
 Route::get('page/article/download','Front\ArticleController@download')->name('article.download');
 

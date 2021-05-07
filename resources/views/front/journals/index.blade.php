@@ -113,7 +113,7 @@
                                                         <h4>عنوان مجله: </h4>
                                                         <h5>
                                                             <a class="text-green"
-                                                               href="{{ route('front.page.publisher.show',$journal->id) }}">
+                                                               href="{{ route('front.page.journal.show',$journal->id) }}">
                                                                 {{ $journal->journal_title }}
                                                             </a></h5>
                                                     </div>

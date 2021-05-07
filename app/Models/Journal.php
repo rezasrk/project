@@ -30,6 +30,28 @@ class Journal extends Model
         return $this->hasMany(Article::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
+
+    public function degree()
+    {
+        return $this->belongsTo(Baseinfo::class,'degree','id');
+    }
+
+    public function period(): BelongsTo
+    {
+        return $this->belongsTo(Baseinfo::class,'period_journal');
+    }
+
+    public function years(): HasMany
+    {
+        return $this->hasMany(JournalNumber::class, 'journal_id')
+            ->select('year')
+            ->groupBy('year');
+    }
+
     public function getCreateDateAttribute(): string
     {
         /** @var Morilog $morilog */

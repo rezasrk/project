@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Journal;
 use App\Repository\AdvertisingRepository;
+use App\Services\Morilog\Morilog;
 use Illuminate\Http\Request;
 
 class JournalController extends Controller
@@ -38,5 +39,15 @@ class JournalController extends Controller
         return view('front.journals.index', compact(
             'journals', 'searchPlaceHolder', 'advertisings', 'categories'
         ));
+    }
+
+    public function show($id,AdvertisingRepository $repo,Morilog $morilog)
+    {
+        /** @var Journal $journal */
+        $journal = Journal::query()->find($id);
+        $advertisings = $repo->repo();
+        $years =  $journal->years()->limit(request()->query('limit',10))->get();
+
+        return view('front.journals.show',compact('journal','advertisings','years','morilog'));
     }
 }
