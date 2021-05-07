@@ -61,7 +61,7 @@
                             <div class="side__options">
                                 <div class="side__options_head">
                                     <h3 class="side__options_title">آرشیو شماره ها</h3>
-                                    <span class="side__options_head__num">32</span>
+{{--                                    <span class="side__options_head__num">32</span>--}}
                                 </div>
                                 <div class="accordion accordion-side" id="accordionExample">
                                     @foreach($years as $year)

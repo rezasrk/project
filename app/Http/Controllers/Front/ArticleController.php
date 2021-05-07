@@ -5,19 +5,25 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleLog;
+use App\Models\Journal;
+use App\Repository\AdvertisingRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request,AdvertisingRepository $repo)
     {
         $articles = Article::query()
                         ->with(['journal'])
+                        ->where('journal_id',$request->query('journal_id'))
                         ->withCount(['logDownload as downloadCount','logView as viewCount']);
-                        
+
+        $journal =Journal::query()->find($request->query('journal_id'));
+        $years =  $journal->years()->limit(request()->query('limit',10))->get();
         $searchPlaceHolder = 'جستجو برای مقاله';
+        $advertisings = $repo->repo();
 
         if($request->query('sort')){
             $sort = explode('-',$request->query('sort'));
@@ -30,8 +36,8 @@ class ArticleController extends Controller
         }
 
         $articles = $articles->latest()->paginate(20);
-        
-        return view('front.articles.index',compact('searchPlaceHolder','articles'));
+
+        return view('front.articles.index',compact('searchPlaceHolder','articles','advertisings','journal','years'));
     }
 
     public function download(Request $request)

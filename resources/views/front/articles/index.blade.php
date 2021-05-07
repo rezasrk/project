@@ -42,19 +42,65 @@
 
                     </div>
                     <div class="col-2">
-                        {{-- <aside class="side-right side">
-                            <div class="side__options">
-                                <h3 class="side__options_title">حوزه های تخصصی</h3>
-                                <div class="side__options_items">
+                        <aside class="side-right side article-side">
+                            <div class="side__user-info">
+                                <div class="side__user-info_img2">
+                                    <img src="./assets/images/mehr.png" alt="">
+                                </div>
 
-                                    <div class="side__options_item">
-                                        <h5><a href="#">تاریخ</a></h5>
-                                        <span>1</span>
-                                    </div>
+                                <div>
+                                    <h5>عنوان مجله: </h5>
+                                    <h4>{{ $journal->journal_title }}</h4>
                                 </div>
 
                             </div>
-                        </aside> --}}
+
+                            <div class="side__options">
+                                <div class="side__options_head">
+                                    <h3 class="side__options_title">آرشیو شماره ها</h3>
+{{--                                    <span class="side__options_head__num">32</span>--}}
+                                </div>
+                                <div class="accordion accordion-side" id="accordionExample">
+                                    @foreach($years as $year)
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingTwo">
+                                                <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#{{ str_repeat('sss',$loop->iteration) }}"
+                                                        aria-expanded="false" aria-controls="collapseTwo">
+                                                    سال {{ $year->year }}
+                                                </button>
+                                            </h2>
+                                            <div id="{{ str_repeat('sss',$loop->iteration) }}"
+                                                 class="accordion-collapse collapse"
+                                                 aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <ul>
+                                                        @foreach($journal->journalNumbers()->where('year',$year->year)->limit(10)->get() as $number)
+                                                            <li>
+                                                                <a href="#">
+                                                                    {{ $number->title }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                @if(!request()->query('limit') || request()->query('limit') == 10)
+                                    <a href="{{ request()->url().'?limit=20&journal_id='.request()->query('journal_id') }}" class="side__options_get-all">نمایش
+                                        بیشتر</a>
+                                @else
+                                    <a href="{{ request()->url().'?limit=10&journal_id='.request()->query('journal_id') }}" class="side__options_get-all">نمایش
+                                        کمتر</a>
+                                @endif
+                            </div>
+
+
+
+                        </aside>
                     </div>
 
                     <div class="col-8">
@@ -78,8 +124,8 @@
                                         مورد
                                     </p>
                                     <div class="search-box-2__links">
-                                        <a href="{{ request()->url().'?sort=created_at-desc' }}" @if(request()->query('sort') == 'created_at-desc') class='active'  @endif >جدیدترین</a>|
-                                        <a href="{{ request()->url().'?sort=created_at-asc' }}" @if(request()->query('sort') == 'created_at-asc') class='active'  @endif>قدیمی ترین</a>
+                                        <a href="{{ request()->url().'?sort=created_at-desc&journal_id='.request()->query('journal_id') }}" @if(request()->query('sort') == 'created_at-desc') class='active'  @endif >جدیدترین</a>|
+                                        <a href="{{ request()->url().'?sort=created_at-asc&journal_id='.request()->query('journal_id') }}" @if(request()->query('sort') == 'created_at-asc') class='active'  @endif>قدیمی ترین</a>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +144,7 @@
                                             @endforeach
                                             </h6>
                                             <h3 class="articles__item_title">
-                                                <strong>منبع :</strong>‌
+                                                <strong>منبع :</strong>
                                             </h3>
                                             <h6>
                                                 @foreach($article->tags as $tag)
@@ -106,7 +152,7 @@
                                                 @endforeach
                                             </h6>
                                             <h3 class="articles__item_title">
-                                                <strong>حوضه ی تخصصی :</strong>‌
+                                                <strong>حوضه ی تخصصی :</strong>
                                             </h3>
                                             <h6>
                                                 @foreach($article->categories as $category)
@@ -133,34 +179,7 @@
                     </div>
 
                     <div class="col-2">
-                        <div class="side__options">
-                            <h3 class="side__options_title">درجه علمی</h3>
-                            <div class="side__options_items">
-
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی ترویجی</a></h5>
-                                    <span>3</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی (دانشگاه آزاد)</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی ترویجی</a></h5>
-                                    <span>3</span>
-                                </div>
-                            </div>
-
-                        </div>
-
+                        @include('front.advertising')
                     </div>
 
                 </div>
