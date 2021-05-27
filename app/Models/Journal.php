@@ -22,7 +22,7 @@ class Journal extends Model
 
     public function journalNumbers(): HasMany
     {
-        return $this->hasMany(JournalNumber::class, 'journal_id');
+        return $this->hasMany(JournalNumber::class, 'journal_id')->latest();
     }
 
     public function articles()

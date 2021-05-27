@@ -43,7 +43,7 @@
                         <div class="header__form_grid">
 
                             <input type="text" class="header__form_search__input search-input-all" placeholder="جستجو">
-                            <button type="button"  class="header__form_search__btn button-search-all">
+                            <button type="button" class="header__form_search__btn button-search-all">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
@@ -94,32 +94,38 @@
             <div class="container">
                 <div class="section-head">
                     <h3>ناشران</h3>
-                    <a href="{{ route('front.publisher') }}">مشاهده بیشتر</a>
+                    <a href="{{ route('front.page.publisher') }}">مشاهده بیشتر</a>
                 </div>
 
                 <div class="swiper-container publishers-slider" dir="rtl">
                     <div class="swiper-wrapper">
-                    @foreach($publishers as $publisher)
-
-                        <div class="swiper-slide publishers__card">
-                            @if($publisher->publisher_logo)
-                            <a href="#" class="publishers__card_image">
-                                <img src="{{ asset('storage/'.$publisher->publisher_logo) }}" alt="">
-                            </a>
-                            @endif
-                            <h4 class="publishers__card_title">
-                                <a href="#">
-                                    {{ $publisher->title }}
+                        @foreach($publishers as $publisher)
+                            <div class="swiper-slide publishers__card">
+                                <a href="{{ route('front.page.publisher.show',$publisher->id) }}"
+                                   class="publishers__card_image">
+                                    @if($publisher->image)
+                                        <img width="200px" height="200px" src="{{ url('storage/'.$publisher->image)  }}"
+                                             alt="">
+                                    @else
+                                        <img src="{{ asset('front/theme/assets/images/mehr.png') }}" alt="">
+                                    @endif
                                 </a>
-                            </h4>
-                            <ul class="publishers__card_options">
-                                <li>مجلات: {{ optional($publisher->journals())->count() }}</li>
-                            </ul>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                                <h4 class="publishers__card_title">
+                                    <a href="{{ route('front.page.publisher.show',$publisher->id) }}">
+                                        {{ $publisher->title }}
+                                    </a>
+                                </h4>
+                                <ul class="publishers__card_options">
+                                    <li>مجلات: {{ $publisher->journals()->count() }}</li>
+                                    <li>مقالات: {{ $publisher->articles()->count() }}</li>
+                                    <li>شمارگان: {{ $publisher->journalNumbers()->count() }}</li>
+                                </ul>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
 
             </div>
@@ -139,8 +145,14 @@
                     <div class="swiper-wrapper">
                         @foreach($journals as $journal)
                             <div class="swiper-slide publishers__card">
-                                <a href="#" class="publishers__card_image">
-                                    <img src="{{ asset('/front/theme/assets/images/mehr.png') }}" alt="">
+                                <a href="{{ route('front.page.journal.show',$journal->id) }}"
+                                   class="publishers__card_image">
+                                    @if($journal->image)
+                                        <img src="{{ url('storage/'.$journal->image) }}" alt="">
+                                    @else
+                                        <img src="{{ asset('front/theme/assets/images/mehr.png') }}" alt="">
+                                    @endif
+
                                 </a>
                                 <h4 class="publishers__card_title">
                                     <a href="#">
@@ -148,13 +160,13 @@
                                     </a>
                                 </h4>
                                 <ul class="publishers__card_options">
-                                    <li>صاحب امتیاز: {{ $journal->owner_journal }}</li>
-                                    <li>ناشر: {{ $journal->publish->publisher_title }}</li>
+                                    <li>ناشر: {{ $journal->publish->title }}</li>
+                                    <li>اخرین شماره: {{ $journal->journalNumbers()->first()->title }}</li>
                                 </ul>
                             </div>
-                       @endforeach
-                    </div>
+                        @endforeach
 
+                    </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
@@ -162,6 +174,103 @@
             </div>
         </section>
     @endif
+
+    <section class="section-authors">
+        <div class="container">
+            <div class="section-head">
+                <h3>پدید آورندگان</h3>
+                <a href="#">مشاهده بیشتر</a>
+            </div>
+            <div class="swiper-container slider-two" dir="rtl">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="./assets/images/icon/brand1.png" alt="">
+                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
+                        </a>
+                        <ul>
+                            <li>تعداد مقالات: (11)</li>
+                            <li>تعداد مقالات تخصصی: (5)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="./assets/images/icon/brand2.png" alt="">
+                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
+                        </a>
+                        <ul>
+                            <li>تعداد مقالات: (11)</li>
+                            <li>تعداد مقالات تخصصی: (5)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="./assets/images/icon/brand1.png" alt="">
+                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
+                        </a>
+                        <ul>
+                            <li>تعداد مقالات: (11)</li>
+                            <li>تعداد مقالات تخصصی: (5)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="./assets/images/icon/brand2.png" alt="">
+                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
+                        </a>
+                        <ul>
+                            <li>تعداد مقالات: (11)</li>
+                            <li>تعداد مقالات تخصصی: (5)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section-authors">
+        <div class="container">
+            <div class="section-head">
+                <h3>همکاران</h3>
+                <a href="#">مشاهده بیشتر</a>
+            </div>
+            <div class="swiper-container slider-two" dir="rtl">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="./assets/images/icon/brand1.png" alt="">
+                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
+                        </a>
+
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="./assets/images/icon/brand2.png" alt="">
+                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
+                        </a>
+
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="./assets/images/icon/brand1.png" alt="">
+                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
+                        </a>
+
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="./assets/images/icon/brand2.png" alt="">
+                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
 @endsection
 
 @section('front-script')
@@ -195,17 +304,17 @@
         });
 
         selectSearch = '';
-        $(document).on('change','.select-search',function(){
+        $(document).on('change', '.select-search', function () {
             var targetElementSelect = $(this);
-            if(targetElementSelect.find(':selected').val() != ""){
+            if (targetElementSelect.find(':selected').val() != "") {
                 selectSearch = targetElementSelect.find(':selected').attr('data-url')
             }
         });
 
-        $(document).on('click','.button-search-all',function(){
-            if(selectSearch != '' && $('.search-input-all').val() != ""){
+        $(document).on('click', '.button-search-all', function () {
+            if (selectSearch != '' && $('.search-input-all').val() != "") {
                 window.location.href = selectSearch + '?title=' + $('.search-input-all').val()
-            }else{
+            } else {
                 window.location.reload()
             }
         })
