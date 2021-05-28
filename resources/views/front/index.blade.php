@@ -174,60 +174,40 @@
             </div>
         </section>
     @endif
-
-    <section class="section-authors">
-        <div class="container">
-            <div class="section-head">
-                <h3>پدید آورندگان</h3>
-                <a href="#">مشاهده بیشتر</a>
-            </div>
-            <div class="swiper-container slider-two" dir="rtl">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="./assets/images/icon/brand1.png" alt="">
-                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                        </a>
-                        <ul>
-                            <li>تعداد مقالات: (11)</li>
-                            <li>تعداد مقالات تخصصی: (5)</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="./assets/images/icon/brand2.png" alt="">
-                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                        </a>
-                        <ul>
-                            <li>تعداد مقالات: (11)</li>
-                            <li>تعداد مقالات تخصصی: (5)</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="./assets/images/icon/brand1.png" alt="">
-                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                        </a>
-                        <ul>
-                            <li>تعداد مقالات: (11)</li>
-                            <li>تعداد مقالات تخصصی: (5)</li>
-                        </ul>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="./assets/images/icon/brand2.png" alt="">
-                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                        </a>
-                        <ul>
-                            <li>تعداد مقالات: (11)</li>
-                            <li>تعداد مقالات تخصصی: (5)</li>
-                        </ul>
+    @if($creators->count())
+        <section class="section-authors">
+            <div class="container">
+                <div class="section-head">
+                    <h3>پدید آورندگان</h3>
+                    <a href="{{ route('front.creator.index') }}">مشاهده بیشتر</a>
+                </div>
+                <div class="swiper-container slider-two" dir="rtl">
+                    <div class="swiper-wrapper">
+                        @foreach($creators as $creator)
+                            <div class="swiper-slide">
+                                <a href="{{ route('front.creator.show',$creator->id) }}">
+                                    @if($creator->image)
+                                        <img src="{{ url('storage/'.$creator->image) }}" alt="">
+                                    @else
+                                        <img src="{{ asset('front/theme/assets/images/default-avatar.jpg') }}">
+                                    @endif
+                                    <h4>
+                                        نام : {{ $creator->name }}
+                                        <hr>
+                                        نام کاربری :{{ $creator->username }}
+                                    </h4>
+                                </a>
+                                <ul>
+                                    <li>تعداد مقالات: ( {{ $creator->articleCount }} )</li>
+                                </ul>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-        </div>
 
-    </section>
+        </section>
+    @endif
 
     <section class="section-authors">
         <div class="container">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Journal;
 use App\Models\Publisher;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,10 +19,15 @@ class HomeController extends Controller
 
         $journals = $this->journals();
 
-        return view('front.index', compact('subjectCategories','publishers','journals'));
+        $creators = $this->creators();
+
+        return view('front.index', compact(
+            'subjectCategories','publishers',
+            'journals','creators'
+        ));
     }
 
-    public function categories()
+    protected function categories()
     {
         return Category::query()
             ->where('parent_id', '=', 0)
@@ -44,6 +50,15 @@ class HomeController extends Controller
             ->with(['publish'=>function($query){
                 $query->where('status',1);
             }])
+            ->limit(10)
+            ->get();
+    }
+
+    protected function creators()
+    {
+        return User::query()
+            ->withCount(['articles as articleCount'])
+            ->where('as_creator',1)
             ->limit(10)
             ->get();
     }
