@@ -208,49 +208,28 @@
 
         </section>
     @endif
-
-    <section class="section-authors">
-        <div class="container">
-            <div class="section-head">
-                <h3>همکاران</h3>
-                <a href="#">مشاهده بیشتر</a>
-            </div>
-            <div class="swiper-container slider-two" dir="rtl">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="./assets/images/icon/brand1.png" alt="">
-                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                        </a>
-
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="./assets/images/icon/brand2.png" alt="">
-                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                        </a>
-
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="./assets/images/icon/brand1.png" alt="">
-                            <h4>کتابخانه مرکزی پژوهشگاه</h4>
-                        </a>
-
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#">
-                            <img src="./assets/images/icon/brand2.png" alt="">
-                            <h4>پژوهشگاه علوم انسانی و مطالعات فرهنگی</h4>
-                        </a>
-
+    @if($cooperators->count())
+        <section class="section-authors">
+            <div class="container">
+                <div class="section-head">
+                    <h3>همکاران</h3>
+                </div>
+                <div class="swiper-container slider-two" dir="rtl">
+                    <div class="swiper-wrapper">
+                        @foreach($cooperators as $cooperator)
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="{{ url('storage/'.json_decode($cooperator->extra_value)->url) }}" alt="">
+                                    <h4>{{ $cooperator->value }}</h4>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-        </div>
 
-    </section>
-
+        </section>
+    @endif
 @endsection
 
 @section('front-script')

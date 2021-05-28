@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Baseinfo;
 use App\Models\Category;
 use App\Models\Journal;
 use App\Models\Publisher;
@@ -21,9 +22,11 @@ class HomeController extends Controller
 
         $creators = $this->creators();
 
+        $cooperators = $this->cooperators();
+
         return view('front.index', compact(
             'subjectCategories','publishers',
-            'journals','creators'
+            'journals','creators','cooperators'
         ));
     }
 
@@ -60,6 +63,15 @@ class HomeController extends Controller
             ->withCount(['articles as articleCount'])
             ->where('as_creator',1)
             ->limit(10)
+            ->get();
+    }
+
+    protected function cooperators()
+    {
+        return Baseinfo::query()
+            ->where('type','cooperators')
+            ->where('parent_id','<>',0)
+            ->limit(20)
             ->get();
     }
 }
