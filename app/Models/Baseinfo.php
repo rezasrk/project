@@ -12,4 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 class Baseinfo extends Model
 {
     use BaseinfoScope;
+
+    protected $guarded = [];
 }

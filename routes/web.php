@@ -95,4 +95,15 @@ Route::prefix('managerpanel')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::resource('tags', 'TagController');
     });
+
+    /*---------------------------------------------------------------------------------------------------------------------------
+     *                                         Cooperator Section
+     ----------------------------------------------------------------------------------------------------------------------------*/
+
+    Route::middleware('auth')->group(function(){
+        Route::get('cooperator','CooperatorController@index')->name('cooperator.index');
+        Route::get('cooperator/create','CooperatorController@create')->name('cooperator.create');
+        Route::post('cooperator','CooperatorController@store')->name('cooperator.store');
+        Route::post('cooperator/delete/{id}','CooperatorController@destroy')->name('cooperators.destroy');
+    });
 });

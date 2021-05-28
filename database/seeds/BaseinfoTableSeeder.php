@@ -259,6 +259,15 @@ class BaseinfoTableSeeder extends Seeder
                  'user_can_view' => 1,
                  'extra_value' => '',
              ],
+             [
+                 'id' => 32,
+                 'type' => 'cooperators',
+                 'value' => 'همکاران',
+                 'parent_id' => 0,
+                 'user_can_add' => 1,
+                 'user_can_view' => 1,
+                 'extra_value' => '',
+             ],
          ]);
         DB::unprepared("SET FOREIGN_KEY_CHECKS=1;");
         DB::unprepared("ALTER TABLE baseinfos AUTO_INCREMENT = 10000");
