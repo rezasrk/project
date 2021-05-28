@@ -44,5 +44,7 @@ Route::get('page/journals/{id}','Front\JournalController@show')->name('front.pag
 Route::get('page/articles','Front\ArticleController@index')->name('front.page.article');
 Route::get('page/articles/{id}','Front\ArticleController@show')->name('front.page.article.show');
 Route::get('page/article/download','Front\ArticleController@download')->name('article.download');
+Route::get('page/creators','Front\CreatorController@index')->name('front.creator.index');
+Route::get('page/creators/{id}','Front\CreatorController@show')->name('front.creator.show');
 
 

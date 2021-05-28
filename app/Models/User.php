@@ -29,4 +29,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Article::class,'article_writers','user_id','article_id');
     }
+
+    public function userDegree()
+    {
+        return $this->belongsTo(Baseinfo::class,'degree');
+    }
+
+    public function userScientificRank(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Baseinfo::class,'scientific_rank');
+    }
 }

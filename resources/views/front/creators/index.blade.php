@@ -29,7 +29,7 @@
 
                             <div class="col-8">
                                 <div class="head-main">
-                                    <h2 class="head-main__title">پدید آورندگان</h2>
+                                    <h2 class="head-main__title">پدیدآورندگان</h2>
                                     <span>
                                         <i class="fas fa-chevron-down"></i>
                                     </span>
@@ -41,17 +41,29 @@
                         </div>
 
                     </div>
-                    <div class="col-2">
-                        <aside class="side-right side">
+                    <div class="col-12 col-sm-6 col-lg-2 order_lg_1">
+                        <aside class="side-right side article-side">
                             <div class="side__options">
-                                <h3 class="side__options_title">حوزه های تخصصی</h3>
+                                <h3 class="side__options_title">حوضه های تخصصی</h3>
                                 <div class="side__options_items">
-
-                                    <div class="side__options_item">
-                                        <h5><a href="#">تاریخ</a></h5>
-                                        <span>1</span>
-                                    </div>
+                                    @foreach($categories as $category)
+                                        <div class="side__options_item">
+                                            <h5>
+                                                <a href="{{ request()->query() ? request()->fullUrl().'&category_id='.$category->id : request()->url().'?category_id='.$category->id }}">
+                                                    {{ $category->title }}
+                                                </a>
+                                            </h5>
+                                            <span>{{ $category->journalCount }}</span>
+                                        </div>
+                                    @endforeach
                                 </div>
+                                @if(!request()->query() || request()->query('limit_cat') == 10)
+                                    <a href="{{ request()->url().'?limit_cat=20' }}" class="side__options_get-all">نمایش
+                                        بیشتر</a>
+                                @else
+                                    <a href="{{ request()->url().'?limit_cat=10' }}" class="side__options_get-all">نمایش
+                                        کمتر</a>
+                                @endif
 
                             </div>
                         </aside>
@@ -62,9 +74,11 @@
                         <section class="main-section">
                             <div class="search-box-2">
                                 <form method="GET">
-                                    <input name="title" value='{{ request()->query('title') }}' type="text" placeholder="{{ $searchPlaceHolder }}" />
+                                    <input name="title" value='{{ request()->query('title') }}' type="text"
+                                           placeholder="{{ $searchPlaceHolder }}"/>
                                     <button>
-                                        <img src="{{ asset('front/theme/assets/images/icon/search-icon-white.svg') }}" alt="" srcset="">
+                                        <img src="{{ asset('front/theme/assets/images/icon/search-icon-white.svg') }}"
+                                             alt="" srcset="">
                                     </button>
                                 </form>
                                 <div class="search-box-2__grid">
@@ -78,8 +92,11 @@
                                         مورد
                                     </p>
                                     <div class="search-box-2__links">
-                                        <a href="{{ request()->url().'?sort=created_at-desc' }}" @if(request()->query('sort') == 'created_at-desc') class='active'  @endif >جدیدترین</a>|
-                                        <a href="{{ request()->url().'?sort=created_at-asc' }}" @if(request()->query('sort') == 'created_at-asc') class='active'  @endif>قدیمی ترین</a>
+                                        <a href="{{ request()->url().'?sort=created_at-desc' }}"
+                                           @if(request()->query('sort') == 'created_at-desc') class='active' @endif >جدیدترین</a>|
+                                        <a href="{{ request()->url().'?sort=created_at-asc' }}"
+                                           @if(request()->query('sort') == 'created_at-asc') class='active' @endif>قدیمی
+                                            ترین</a>
                                     </div>
                                 </div>
                             </div>
@@ -88,20 +105,30 @@
                                 <div class="col-12">
                                     <div class="articles">
                                         @foreach ($users as $user)
-                                        <div class="articles__item">
-                                            @if($user->image)
-                                                <img width="100px" height="100px" src="{{ url('storage/'.$user->image) }}" alt="" class="side__user-info_img">
-                                            @else
-                                                <img width="100px" height="100px" src='{{ asset("front/theme//assets/images/default-avatar.jpg") }}' alt="" class="side__user-info_img">
-                                            @endif
-                                            <h3 class="articles__item_title">
-                                                پدید آورنده : <strong>{{ $user->name }}</strong>
-                                            </h3>
-                                            <h4 class="articles__item_othors">
-                                                <strong>تعداد مقالات : </strong>
-                                            {{ $user->articleCount }}
-                                            </h4>
-                                        </div>
+                                            <div class="list-style__2_item">
+                                                @if($user->image)
+                                                    <img width="100px" height="100px"
+                                                         src="{{ url('storage/'.$user->image) }}" alt="">
+                                                @else
+                                                    <img
+                                                        src="{{ asset('front/theme/assets/images/default-avatar.jpg') }}"
+                                                        alt="">
+                                                @endif
+                                                <div class="list-style__2_item__detail">
+                                                    <div>
+                                                        <h4>عنوان پدید آورنده: </h4>
+                                                        <h5>
+                                                            <a class="text-green"
+                                                               href="{{ route('front.creator.show',$user->id) }}">
+                                                                {{ $user->name }}
+                                                            </a></h5>
+                                                    </div>
+                                                    <div>
+                                                        <h4>تعداد مقالات :</h4>
+                                                        <h5>  {{ $user->articleCount }}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endforeach
                                         {!! $users->appends(request()->query())->render() !!}
                                     </div>
@@ -111,40 +138,13 @@
                     </div>
 
                     <div class="col-2">
-                        <div class="side__options">
-                            <h3 class="side__options_title">درجه علمی</h3>
-                            <div class="side__options_items">
-
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی ترویجی</a></h5>
-                                    <span>3</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی (دانشگاه آزاد)</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی پژوهشی</a></h5>
-                                    <span>1</span>
-                                </div>
-                                <div class="side__options_item">
-                                    <h5><a href="#">علمی ترویجی</a></h5>
-                                    <span>3</span>
-                                </div>
-                            </div>
-
-                        </div>
-
+                        @include('front.advertising')
                     </div>
 
                 </div>
 
             </div>
-</div>
+        </div>
     </main>
 </section>
 @include('front.layouts.footer')

@@ -270,7 +270,7 @@
         </div>
 
     </section>
-    
+
 @endsection
 
 @section('front-script')
