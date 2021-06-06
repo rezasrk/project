@@ -69,6 +69,8 @@ Route::prefix('managerpanel')->group(function () {
     */
     Route::middleware('auth')->group(function () {
         Route::get('users', 'UserController@index')->name('users.index');
+        Route::get('users/{id}','UserController@edit')->name('users.edit');
+        Route::patch('users/{id}','UserController@update')->name('users.update');
     });
 
 
