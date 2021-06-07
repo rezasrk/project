@@ -74,7 +74,7 @@
 
             })
         });
-
+        CKEDITOR.replace( 'description' );
         $(document).on('click','.delete-guide',function(){
         swal({
             title: "آیا از درخواست خود اطمینان دارید ؟",
