@@ -24,7 +24,10 @@
                 </td>
                 <td>{{ $publisher->created_date }}</td>
                 <td>
-                    <a data-url="{{ route('publisher.show',$publisher->id) }}" class="fa fa-eye show-publisher-detail pointer"></a>
+                    <a data-url="{{ route('publisher.show',$publisher->id) }}"
+                       class="fa fa-eye show-publisher-detail pointer"></a>
+                    <a data-url="{{ route('publishers.edit',$publisher->id) }}"
+                       class="fa fa-pencil-alt edit-publisher pointer"></a>
                 </td>
             </tr>
         @endforeach

@@ -80,6 +80,8 @@ Route::prefix('managerpanel')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('publishers', 'PublisherController@index')->name('publisher.index');
         Route::get('publisher/{id}', 'PublisherController@show')->name('publisher.show');
+        Route::get('publishers/edit/{id}','PublisherController@edit')->name('publishers.edit');
+        Route::patch('publishers/update/{id}','PublisherController@update')->name('publisher.update');
         Route::get('publishers/accept', 'PublisherController@accept')->name('publisher.accept');
         Route::get('publishers/normal', 'PublisherController@normal')->name('publisher.normal');
     });

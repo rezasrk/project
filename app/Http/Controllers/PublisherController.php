@@ -47,6 +47,48 @@ class PublisherController extends Controller
         ]);
     }
 
+    public function edit($id)
+    {
+        $publisher = Publisher::query()->find($id);
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'data' => view('publishers.partials.edit', compact('publisher'))->render(),
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $publisher = Publisher::query()->find($id);
+
+        $publisher->update([
+            'title' => $request->input('title'),
+            'address' => $request->input('address'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'web_site' => $request->input('web_site'),
+            'about' => $request->input('about'),
+        ]);
+
+        if ($request->has('image')) {
+            $image_path = $request->file('image')->store('publisher', 'public');
+            $publisher->update(['image' => $image_path]);
+        }
+        if ($request->has('license')) {
+            $license_path = $request->file('license')->store('publisher', 'public');
+            $publisher->update(['license' => $license_path]);
+        }
+        if ($request->has('letter')) {
+            $letter_path = $request->file('letter')->store('publisher', 'public');
+            $publisher->update(['letter' => $letter_path]);
+        }
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('success-update')
+        ]);
+    }
+
     public function accept(Request $request)
     {
         DB::beginTransaction();
@@ -64,4 +106,6 @@ class PublisherController extends Controller
             ->update(['status' => 0]);
         DB::commit();
     }
+
+
 }
