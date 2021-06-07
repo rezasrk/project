@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                     @foreach($messages as $message)
-                        <tr>
+                        <tr @if($message->read_at)  class="table-active" @endif>
                             <td>{{ (($messages->currentPage() - 1) * $messages->perPage()) + $loop->iteration }}</td>
                             <td>{{ $message->name }}</td>
                             <td>{{ $message->email }}</td>
