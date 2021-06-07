@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Publisher;
+use App\Services\Morilog\Morilog;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PublisherController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, Morilog $morilog)
     {
         $publishers = Publisher::query();
 
@@ -18,8 +19,8 @@ class PublisherController extends Controller
         }
 
         if ($request->query('creator')) {
-            $publishers->whereHas('creator', function($query) use ($request){
-                $query->where('name','like', '%' . $request->query('creator') . '%');
+            $publishers->whereHas('creator', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->query('creator') . '%');
             });
         }
         if ($request->query('email')) {
@@ -27,6 +28,10 @@ class PublisherController extends Controller
         }
         if ($request->query('phone')) {
             $publishers->where('phone', 'like', '%' . $request->query('phone') . '%');
+        }
+
+        if ($request->query('created_at')) {
+            $publishers->whereDate('created_at', '=', $morilog->jalaliToGregorian($request->query('created_at')));
         }
         $publishers = $publishers->paginate(20);
 

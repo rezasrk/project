@@ -9,6 +9,13 @@
         </div>
         <div class="col-md">
             <div class="form-group">
+                <label>تاریخ ثبت</label>
+                <input autocomplete="off" type="text" class="form-control" name="created_at"
+                       value="{{ request()->query('created_at') }}">
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
                 <label>ثبت کننده</label>
                 <input type="text" class="form-control" name="creator"
                        value="{{ request()->query('creator') }}">
