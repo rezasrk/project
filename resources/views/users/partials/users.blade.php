@@ -8,6 +8,7 @@
         <th>نویسنده</th>
         <th>مدرک تحصیلی</th>
         <th>درجه ی علمی</th>
+        <th>عضو شورای بررسی متون</th>
         <th>پست الکترونیکی</th>
         <th>وب سایت شخصی</th>
         <th>مدیریت</th>
@@ -28,6 +29,9 @@
             </td>
             <td>{{ optional($user->userDegree)->value }}</td>
             <td>{{ optional($user->userScientificRank)->value }}</td>
+            <td>
+                <input @if($user->preview != '') checked @endif type="checkbox" class="preview-text" data-url="{{ route('preview',$user->id) }}">
+            </td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->website }}</td>
             <td>

@@ -53,5 +53,14 @@
                 removeModalLoading();
             })
         });
+
+        $(document).on('change','.preview-text',function(){
+            var elementCheck = $(this)
+            if(elementCheck.prop('checked') === true){
+                httpPostRequest(elementCheck.attr('data-url'),{preview:1})
+            }else{
+                httpPostRequest(elementCheck.attr('data-url'),{preview:0})
+            }
+        })
     </script>
 @endsection

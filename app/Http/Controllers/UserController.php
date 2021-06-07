@@ -33,13 +33,13 @@ class UserController extends Controller
             $users->where('scientific_rank', '=', $request->query('rank'));
         }
         if ($request->query('website')) {
-            $users->where('website', 'like', '%'.$request->query('website').'%');
+            $users->where('website', 'like', '%' . $request->query('website') . '%');
         }
         $degrees = Baseinfo::type('degree');
         $rank = Baseinfo::type('scientific_rank');
         $users = $users->paginate(20);
         return view('users.index', compact(
-            'users', 'degrees', 'rank'
+                'users', 'degrees', 'rank'
             )
         );
     }
@@ -84,5 +84,17 @@ class UserController extends Controller
             'status' => JsonResponse::HTTP_OK,
             'msg' => trans('message.success-update')
         ]);
+    }
+
+
+    public function preview($id, Request $request)
+    {
+        $user = User::query()->find($id);
+
+        if ($request->input('preview') == 1) {
+            $user->update(['preview' => now()]);
+        } else {
+            $user->update(['preview' => null]);
+        }
     }
 }
