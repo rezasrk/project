@@ -10,31 +10,37 @@
             </div>
             <div class="card-body">
                 <hr>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr class="table-info">
-                        <th>ردیف</th>
-                        <th>نام</th>
-                        <th>ایمیل</th>
-                        <th>تلفن</th>
-                        <th>موضوع</th>
-                        <th>پیام</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($messages as $message)
-                        <tr @if($message->read_at)  class="table-active" @endif>
-                            <td>{{ (($messages->currentPage() - 1) * $messages->perPage()) + $loop->iteration }}</td>
-                            <td>{{ $message->name }}</td>
-                            <td>{{ $message->email }}</td>
-                            <td>{{ $message->mobile }}</td>
-                            <td>{{ $message->subject }}</td>
-                            <td>{{ $message->message }}</td>
+                @if($messages->count())
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="table-info">
+                            <th>ردیف</th>
+                            <th>نام</th>
+                            <th>ایمیل</th>
+                            <th>تلفن</th>
+                            <th>موضوع</th>
+                            <th>پیام</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                {!! $messages->appends(request()->query())->render() !!}
+                        </thead>
+                        <tbody>
+                        @foreach($messages as $message)
+                            <tr @if($message->read_at)  class="table-active" @endif>
+                                <td>{{ (($messages->currentPage() - 1) * $messages->perPage()) + $loop->iteration }}</td>
+                                <td>{{ $message->name }}</td>
+                                <td>{{ $message->email }}</td>
+                                <td>{{ $message->mobile }}</td>
+                                <td>{{ $message->subject }}</td>
+                                <td>{{ $message->message }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    {!! $messages->appends(request()->query())->render() !!}
+                @else
+                <div class="col-md-12">
+                    @include('partials.empty_table')
+                </div>
+                @endif
             </div>
         </div>
     </section>
