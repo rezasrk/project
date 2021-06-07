@@ -26,9 +26,22 @@ class UserController extends Controller
         if ($request->query('username')) {
             $users->where('username', 'like', '%' . $request->query('username') . '%');
         }
-
+        if ($request->query('degree')) {
+            $users->where('degree', '=', $request->query('degree'));
+        }
+        if ($request->query('rank')) {
+            $users->where('scientific_rank', '=', $request->query('rank'));
+        }
+        if ($request->query('website')) {
+            $users->where('website', 'like', '%'.$request->query('website').'%');
+        }
+        $degrees = Baseinfo::type('degree');
+        $rank = Baseinfo::type('scientific_rank');
         $users = $users->paginate(20);
-        return view('users.index', compact('users'));
+        return view('users.index', compact(
+            'users', 'degrees', 'rank'
+            )
+        );
     }
 
     public function edit($id)
@@ -61,15 +74,15 @@ class UserController extends Controller
 
         if ($request->input('password')) {
             User::query()->find($id)->update([
-                'password'=>bcrypt($request->input('password'))
+                'password' => bcrypt($request->input('password'))
             ]);
         }
 
         DB::commit();
 
         return response()->json([
-            'status'=>JsonResponse::HTTP_OK,
-            'msg'=>trans('message.success-update')
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-update')
         ]);
     }
 }
