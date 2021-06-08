@@ -78,7 +78,7 @@
                 <div class="form-group">
                     <label class="text-input__label">نویسنده یا نویسندگان<span class="text-danger">*</span></label>
                 </div>
-                <select type="text" class="text-input__input" name="writers[]" multiple>
+                <select type="text" class="text-input__input select2" name="writers[]" multiple>
                     <option value>انتخاب نمایید...</option>
                     @foreach($writers as $writer)
                         <option value="{{ $writer->id }}">{{ $writer->name }}</option>
@@ -92,7 +92,7 @@
                 <div class="form-group">
                     <label class="text-input__label">کلید واژه<span class="text-danger">*</span></label>
                 </div>
-                <select type="text" class="text-input__input" name="key_word[]" multiple>
+                <select type="text" class="text-input__input select2" name="key_word[]" multiple>
                     <option value>انتخاب نمایید...</option>
                     @foreach($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->title }}</option>

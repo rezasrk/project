@@ -30,6 +30,9 @@
 @include('layouts.script')
 </body>
 <script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
     $(document).on('click', '.edit-profile', function () {
         targetElement = $(this);
         buttonLoading(targetElement);
