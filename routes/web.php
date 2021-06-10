@@ -69,6 +69,7 @@ Route::prefix('managerpanel')->group(function () {
     */
     Route::middleware('auth')->group(function () {
         Route::resource('users', 'UserController');
+        Route::post('confirm/user/{id}','UserController@confirm')->name('users.confirmed');
         Route::post('text_preview/{id}','UserController@preview')->name('preview');
     });
 

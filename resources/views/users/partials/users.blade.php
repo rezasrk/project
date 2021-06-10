@@ -11,6 +11,7 @@
         <th>عضو شورای بررسی متون</th>
         <th>پست الکترونیکی</th>
         <th>وب سایت شخصی</th>
+        <th>تایید</th>
         <th>مدیریت</th>
     </tr>
     </thead>
@@ -33,6 +34,9 @@
                 <input @if($user->preview != '') checked @endif type="checkbox" class="preview-text" data-url="{{ route('preview',$user->id) }}">
             </td>
             <td>{{ $user->email }}</td>
+            <td>
+                <input type="checkbox" class="confirmed"   data-url="{{ route('users.confirmed',$user->id) }}" @if($user->email_verified_at) checked @endif>
+            </td>
             <td>{{ $user->website }}</td>
             <td>
                 <a class="text-dark edit-user pointer" data-url="{{ route('users.edit',$user->id) }}">

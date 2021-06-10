@@ -82,5 +82,12 @@
                 removeContentLoading()
             });
         });
+
+        $(document).on('change', '.confirmed', function () {
+            var targetElement = $(this);
+            if (targetElement.prop('checked') === true) {
+                httpPostRequest(targetElement.attr('data-url'))
+            }
+        });
     </script>
 @endsection

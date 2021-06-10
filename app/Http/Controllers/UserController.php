@@ -66,7 +66,7 @@ class UserController extends Controller
             'website' => $request->input('website'),
             'degree' => $request->input('degree') ? $request->input('degree') : 1,
             'scientific_rank' => $request->input('rank') ? $request->input('rank') : 1,
-            'password'=>bcrypt($request->input('password',1234))
+            'password' => bcrypt($request->input('password', 1234))
         ]);
 
         return response()->json([
@@ -127,5 +127,16 @@ class UserController extends Controller
         } else {
             $user->update(['preview' => null]);
         }
+    }
+
+    public function confirm($id)
+    {
+        User::query()->findOrFail($id)
+            ->update(['email_verified_at' => now()]);
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-confirmed'),
+        ]);
     }
 }
