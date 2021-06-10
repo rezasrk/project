@@ -44,6 +44,37 @@ class UserController extends Controller
         );
     }
 
+    public function create()
+    {
+        $degrees = Baseinfo::type('degree');
+
+        $rank = Baseinfo::type('scientific_rank');
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'data' => view('users.partials.create', compact(
+                'rank', 'degrees'))->render(),
+        ]);
+    }
+
+    public function store(UserRequest $request)
+    {
+        User::query()->create([
+            'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'website' => $request->input('website'),
+            'degree' => $request->input('degree') ? $request->input('degree') : 1,
+            'scientific_rank' => $request->input('rank') ? $request->input('rank') : 1,
+            'password'=>bcrypt($request->input('password',1234))
+        ]);
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-store')
+        ]);
+    }
+
     public function edit($id)
     {
         $user = User::query()->find($id);
