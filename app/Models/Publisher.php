@@ -17,7 +17,6 @@ class Publisher extends Model
         'status' => 'bool'
     ];
 
-    
 
     public function creator(): BelongsTo
     {
@@ -34,16 +33,17 @@ class Publisher extends Model
         /** @var Morilog $jdate */
         $jdate = app(Morilog::class);
 
-        return $jdate->gregorianToJalali($this->attributes['created_at'], '( %A, %d %B %y ) H:i');
+        return $jdate->gregorianToJalali(
+            $this->attributes['created_at'], '( %A, %d %B %Y ) H:i');
     }
-    
+
     public function journalNumbers()
     {
-        return $this->hasManyThrough(JournalNumber::class,Journal::class,'publisher_id','journal_id','id','id');
+        return $this->hasManyThrough(JournalNumber::class, Journal::class, 'publisher_id', 'journal_id', 'id', 'id');
     }
 
     public function articles()
     {
-        return $this->hasManyThrough(Article::class,Journal::class,'publisher_id','journal_id','id','id');
+        return $this->hasManyThrough(Article::class, Journal::class, 'publisher_id', 'journal_id', 'id', 'id');
     }
 }

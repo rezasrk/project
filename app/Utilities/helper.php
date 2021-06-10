@@ -127,4 +127,11 @@ function setProjectInf($project)
 }
 
 
+function getContact()
+{
+    return \Illuminate\Support\Facades\DB::table('contacts')
+        ->whereNull('read_at')->get();
+}
+
+
 

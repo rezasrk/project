@@ -39,6 +39,9 @@
 @endsection
 @section('script')
     <script>
+        CKEDITOR.replace( 'about' );
+        CKEDITOR.replace( 'rule' );
+        CKEDITOR.replace( 'editor1' );
         $(document).on('click', '.store-info', function () {
             setContentLoading();
             httpFormPostRequest($(this)).done(function (response) {

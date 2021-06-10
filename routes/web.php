@@ -31,9 +31,9 @@ Route::prefix('managerpanel')->group(function () {
         Route::post('pages', 'PageController@store')->name('pages.store');
         Route::get('information', 'InformationController@index')->name('information');
         Route::post('information', 'InformationController@store')->name('information.store');
-        Route::get('guidance','GuidanceController@index')->name('guidance');
-        Route::post('guidance','GuidanceController@store')->name('guidance.store');
-        Route::delete('guidance/{id}','GuidanceController@destroy')->name('guidance.destroy');
+        Route::get('guidance', 'GuidanceController@index')->name('guidance');
+        Route::post('guidance', 'GuidanceController@store')->name('guidance.store');
+        Route::delete('guidance/{id}', 'GuidanceController@destroy')->name('guidance.destroy');
     });
 
     Route::get('simple/download', 'DownloadController@simpleDownload')->name('simple.download');
@@ -51,16 +51,16 @@ Route::prefix('managerpanel')->group(function () {
     *                                             Avertising Section
     *-----------------------------------------------------------------------------------------------------------------------------------
     */
-    Route::middleware('auth')->group(function(){
-        Route::resource('advertising','AdvertisingController');
+    Route::middleware('auth')->group(function () {
+        Route::resource('advertising', 'AdvertisingController');
     });
 
     /*--------------------------------------------------------------------------------------------------------------------------------
     *                                         Contact Us Section
     * --------------------------------------------------------------------------------------------------------------------------------
     */
-    Route::middleware('auth')->group(function(){
-        Route::get('contact','ContactController@index')->name('contact.index');
+    Route::middleware('auth')->group(function () {
+        Route::get('contact', 'ContactController@index')->name('contact.index');
     });
 
     /*---------------------------------------------------------------------------------------------------------------------------------
@@ -69,6 +69,9 @@ Route::prefix('managerpanel')->group(function () {
     */
     Route::middleware('auth')->group(function () {
         Route::get('users', 'UserController@index')->name('users.index');
+        Route::get('users/{id}', 'UserController@edit')->name('users.edit');
+        Route::patch('users/{id}', 'UserController@update')->name('users.update');
+        Route::post('text_preview/{id}','UserController@preview')->name('preview');
     });
 
 
@@ -77,6 +80,9 @@ Route::prefix('managerpanel')->group(function () {
      ------------------------------------------------------------------------------------------------------------------------------*/
     Route::middleware('auth')->group(function () {
         Route::get('publishers', 'PublisherController@index')->name('publisher.index');
+        Route::get('publisher/{id}', 'PublisherController@show')->name('publisher.show');
+        Route::get('publishers/edit/{id}','PublisherController@edit')->name('publishers.edit');
+        Route::patch('publishers/update/{id}','PublisherController@update')->name('publisher.update');
         Route::get('publishers/accept', 'PublisherController@accept')->name('publisher.accept');
         Route::get('publishers/normal', 'PublisherController@normal')->name('publisher.normal');
     });
@@ -100,10 +106,10 @@ Route::prefix('managerpanel')->group(function () {
      *                                         Cooperator Section
      ----------------------------------------------------------------------------------------------------------------------------*/
 
-    Route::middleware('auth')->group(function(){
-        Route::get('cooperator','CooperatorController@index')->name('cooperator.index');
-        Route::get('cooperator/create','CooperatorController@create')->name('cooperator.create');
-        Route::post('cooperator','CooperatorController@store')->name('cooperator.store');
-        Route::post('cooperator/delete/{id}','CooperatorController@destroy')->name('cooperators.destroy');
+    Route::middleware('auth')->group(function () {
+        Route::get('cooperator', 'CooperatorController@index')->name('cooperator.index');
+        Route::get('cooperator/create', 'CooperatorController@create')->name('cooperator.create');
+        Route::post('cooperator', 'CooperatorController@store')->name('cooperator.store');
+        Route::post('cooperator/delete/{id}', 'CooperatorController@destroy')->name('cooperators.destroy');
     });
 });

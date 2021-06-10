@@ -9,8 +9,18 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $messages = DB::table('contacts')->paginate(20);
+        $messages = DB::table('contacts')
+            ->latest()
+            ->paginate(20);
 
-        return view('contacts.index',compact('messages'));
+        $msg = DB::table('contacts')->latest()->limit(20)->get();
+
+        foreach ($msg as $m) {
+            DB::table('contacts')
+                ->where('id', $m->id)
+                ->update(['read_at' => now()]);
+        }
+
+        return view('contacts.index', compact('messages'));
     }
 }

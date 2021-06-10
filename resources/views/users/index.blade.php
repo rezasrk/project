@@ -29,3 +29,38 @@
         </div>
     </section>
 @endsection
+@section('script')
+    <script>
+        $(document).on('click','.edit-user',function(){
+            httpGetRequest($(this).attr('data-url')).done(function(response){
+                if(response.status === 200){
+                    showModal({
+                        title:'ویرایش کاربر',
+                        body:response.data
+                    });
+                }
+                removeContentLoading();
+            })
+        });
+
+        $(document).on('click','.update-user',function(){
+            setModalLoading();
+            httpFormPostRequest($(this)).done(function(response){
+                if(response.status === 200){
+                    successAlert(response.msg);
+                    setTimeout(function(){window.location.reload()},2000)
+                }
+                removeModalLoading();
+            })
+        });
+
+        $(document).on('change','.preview-text',function(){
+            var elementCheck = $(this)
+            if(elementCheck.prop('checked') === true){
+                httpPostRequest(elementCheck.attr('data-url'),{preview:1})
+            }else{
+                httpPostRequest(elementCheck.attr('data-url'),{preview:0})
+            }
+        })
+    </script>
+@endsection

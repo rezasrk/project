@@ -109,7 +109,7 @@ class BaseinfoTableSeeder extends Seeder
              [
                  'id' => 11,
                  'type' => 'scientific_rank',
-                 'value' => 'رتبه ی شماره 1',
+                 'value' => 'استاد یار',
                  'parent_id' => 10,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
@@ -118,7 +118,7 @@ class BaseinfoTableSeeder extends Seeder
              [
                  'id' => 12,
                  'type' => 'scientific_rank',
-                 'value' => 'رتبه ی شماره 2',
+                 'value' => 'دانشیار',
                  'parent_id' => 10,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
@@ -163,7 +163,7 @@ class BaseinfoTableSeeder extends Seeder
              [
                  'id' => 17,
                  'type' => 'degree_publisher',
-                 'value' => 'درجه ی علمی 1 ( نشریه )',
+                 'value' => 'علمی  - پژوهشی',
                  'parent_id' => 16,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
@@ -172,7 +172,7 @@ class BaseinfoTableSeeder extends Seeder
              [
                  'id' => 18,
                  'type' => 'degree_publisher',
-                 'value' => 'درجه ی علمی 2 ( نشریه )',
+                 'value' => 'علمی - ترویجی',
                  'parent_id' => 16,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
@@ -217,7 +217,7 @@ class BaseinfoTableSeeder extends Seeder
              [
                  'id' => 27,
                  'type' => 'period_publisher',
-                 'value' => 'دوره ی انتشار 1',
+                 'value' => 'هفته نامه',
                  'parent_id' => 26,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
@@ -226,7 +226,7 @@ class BaseinfoTableSeeder extends Seeder
              [
                  'id' => 28,
                  'type' => 'period_publisher',
-                 'value' => 'دوره ی انتشار 2',
+                 'value' => 'ماهنامه',
                  'parent_id' => 26,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
@@ -244,7 +244,7 @@ class BaseinfoTableSeeder extends Seeder
              [
                  'id' => 30,
                  'type' => 'degree_article',
-                 'value' => 'درجه ی علمی شماره 1 (مقاله)',
+                 'value' => 'علمی - پژوهشی',
                  'parent_id' => 29,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
@@ -253,7 +253,7 @@ class BaseinfoTableSeeder extends Seeder
              [
                  'id' => 31,
                  'type' => 'degree_article',
-                 'value' => 'درجه ی علمی شماره 2 (مقاله)',
+                 'value' => 'علمی - ترویجی',
                  'parent_id' => 29,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
@@ -264,6 +264,24 @@ class BaseinfoTableSeeder extends Seeder
                  'type' => 'cooperators',
                  'value' => 'همکاران',
                  'parent_id' => 0,
+                 'user_can_add' => 1,
+                 'user_can_view' => 1,
+                 'extra_value' => '',
+             ],
+             [
+                 'id' => 33,
+                 'type' => 'period_publisher',
+                 'value' => 'فصل نامه',
+                 'parent_id' => 26,
+                 'user_can_add' => 1,
+                 'user_can_view' => 1,
+                 'extra_value' => '',
+             ],
+             [
+                 'id' => 34,
+                 'type' => 'period_publisher',
+                 'value' => 'سال نامه',
+                 'parent_id' => 26,
                  'user_can_add' => 1,
                  'user_can_view' => 1,
                  'extra_value' => '',

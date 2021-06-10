@@ -27,6 +27,42 @@
             httpGetRequest($(this).attr('data-url'));
             removeContentLoading();
         });
+
+        $(document).on('click', '.show-publisher-detail', function () {
+            httpGetRequest($(this).attr('data-url')).done(function (response) {
+                if (response.status === 200) {
+                    showModal({
+                        title: 'اطلاعات نشریه ',
+                        body: response.data
+                    });
+                }
+                removeContentLoading();
+            })
+        });
+
+        $(document).on('click', '.edit-publisher', function () {
+
+            httpGetRequest($(this).attr('data-url')).done(function (response) {
+                showModal({
+                    title: 'ویرایش',
+                    body: response.data
+                })
+                removeContentLoading();
+            });
+        });
+
+        $(document).on('click', '.update-publisher', function () {
+            setModalLoading();
+            httpFormPostRequest($(this)).done(function (response) {
+                if (response.status === 200) {
+                    successAlert(response.msg);
+                    setTimeout(function () {
+                        window.location.reload()
+                    },2000)
+                }
+                removeModalLoading();
+            })
+        });
     </script>
 @endsection
 
