@@ -69,8 +69,8 @@ Route::prefix('managerpanel')->group(function () {
     */
     Route::middleware('auth')->group(function () {
         Route::resource('users', 'UserController');
-        Route::post('confirm/user/{id}','UserController@confirm')->name('users.confirmed');
-        Route::post('text_preview/{id}','UserController@preview')->name('preview');
+        Route::post('confirm/user/{id}', 'UserController@confirm')->name('users.confirmed');
+        Route::post('text_preview/{id}', 'UserController@preview')->name('preview');
     });
 
 
@@ -80,10 +80,11 @@ Route::prefix('managerpanel')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('publishers', 'PublisherController@index')->name('publisher.index');
         Route::get('publisher/{id}', 'PublisherController@show')->name('publisher.show');
-        Route::get('publishers/edit/{id}','PublisherController@edit')->name('publishers.edit');
-        Route::patch('publishers/update/{id}','PublisherController@update')->name('publisher.update');
+        Route::get('publishers/edit/{id}', 'PublisherController@edit')->name('publishers.edit');
+        Route::patch('publishers/update/{id}', 'PublisherController@update')->name('publisher.update');
         Route::get('publishers/accept', 'PublisherController@accept')->name('publisher.accept');
         Route::get('publishers/normal', 'PublisherController@normal')->name('publisher.normal');
+        Route::delete('publishers/delete/{id}','PublisherController@destroy')->name('publishers.destroy');
     });
 
     /*----------------------------------------------------------------------------------------------------------------------------

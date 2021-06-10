@@ -58,10 +58,35 @@
                     successAlert(response.msg);
                     setTimeout(function () {
                         window.location.reload()
-                    },2000)
+                    }, 2000)
                 }
                 removeModalLoading();
             })
+        });
+
+        $(document).on('click', '.delete-publisher', function () {
+            swal({
+                title: "آیا از درخواست خود اطمینان دارید؟",
+                text: "در صورت حذف این مورد دیگر به ان دسترس نخواهید داشت",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    setContentLoading();
+                    if (willDelete) {
+                        httpPostRequest($(this).attr('data-url'), {_method: 'delete'}).done(function (response) {
+                            if (response.status === 200) {
+                                successAlert(response.msg)
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 2000)
+                            }
+                            removeContentLoading();
+                        })
+                    }
+                });
+
         });
     </script>
 @endsection

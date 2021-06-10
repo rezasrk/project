@@ -107,5 +107,14 @@ class PublisherController extends Controller
         DB::commit();
     }
 
+    public function destroy($id)
+    {
+        $result = Publisher::query()->find($id)->delete();
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-delete')
+        ]);
+    }
+
 
 }

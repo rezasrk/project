@@ -28,12 +28,16 @@
         <td>تصویر مجوز انتشار</td>
         <td>
             <img width="100px" height="100px" src="{{ url('storage/'.$publisher->license) }}">
+            <hr>
+            <a target="_blank" href="{{ route('simple.download')."?path=".$publisher->license }}">لینک دانلود</a>
         </td>
     </tr>
     <tr>
         <td>تصویر نامه ی درخواست</td>
         <td>
             <img width="100px" height="100px" src="{{ url('storage/'.$publisher->letter) }}">
+            <hr>
+            <a target="_blank" href="{{ route('simple.download')."?path=".$publisher->letter }}">لینک دانلود</a>
         </td>
     </tr>
     @if($publisher->image)
@@ -41,6 +45,8 @@
             <td>لوگو</td>
             <td>
                 <img width="100px" height="100px" src="{{ url('storage/'.$publisher->image) }}">
+                <hr>
+                <a target="_blank" href="{{ route('simple.download')."?path=".$publisher->image }}">لینک دانلود</a>
             </td>
         </tr>
     @endif
