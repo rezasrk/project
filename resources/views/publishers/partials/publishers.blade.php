@@ -30,7 +30,9 @@
                        class="fa fa-eye show-publisher-detail pointer"></a>
                     <a data-url="{{ route('publishers.edit',$publisher->id) }}"
                        class="fa fa-pencil-alt edit-publisher pointer"></a>
-                    <a class="delete-publisher" data-url="{{ route('publishers.destroy',$publisher->id) }}"><i class="fa fa-trash"></i></a>
+                    <a class="delete-publisher" data-url="{{ route('publishers.destroy',$publisher->id) }}">
+                        <i class="fa fa-trash"></i>
+                    </a>
                 </td>
             </tr>
         @endforeach

@@ -160,7 +160,7 @@
                                     </a>
                                 </h4>
                                 <ul class="publishers__card_options">
-                                    <li>ناشر: {{ $journal->publish->title }}</li>
+                                    <li>ناشر: {{ optional($journal->publish)->title }}</li>
                                     <li>اخرین شماره: {{ $journal->journalNumbers()->first()->title }}</li>
                                 </ul>
                             </div>

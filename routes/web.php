@@ -92,6 +92,7 @@ Route::prefix('managerpanel')->group(function () {
      ---------------------------------------------------------------------------------------------------------------------------*/
     Route::middleware('auth')->group(function () {
         Route::get('journals', 'JournalController@index')->name('journal.index');
+        Route::delete('journals/{id}','JournalController@destroy')->name('journal.destroy');
     });
 
 

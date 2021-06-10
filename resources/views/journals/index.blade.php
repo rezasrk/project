@@ -16,3 +16,31 @@
         </div>
     </section>
 @endsection
+
+@section('script')
+    <script>
+        $(document).on('click', '.delete-journal', function () {
+            var elementClick = $(this);
+            swal({
+                title: "‌آیا از این درخواست اطمینان دارید ؟",
+                text: "با حذف این مورد دیگر به این مورد دسترسی نخواهید داشت ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        httpPostRequest(elementClick.attr('data-url'), {_method: 'delete'}).done(function (response) {
+                            if (response.status === 200) {
+                                successAlert(response.msg);
+                                setTimeout(function () {
+                                    window.location.reload()
+                                }, 2000)
+                            }
+                        });
+                    }
+                });
+
+        });
+    </script>
+@endsection
