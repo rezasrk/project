@@ -41,8 +41,18 @@ class TagController extends Controller
         Tag::query()->find($id)->update(['title' => $request->input('title')]);
 
         return response()->json([
-            'status'=>JsonResponse::HTTP_OK,
-            'msg'=>trans('message.success-update')
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-update')
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        Tag::query()->find($id)->delete();
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'msg' => trans('message.success-delete')
         ]);
     }
 }

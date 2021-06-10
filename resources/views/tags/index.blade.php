@@ -43,6 +43,9 @@
                                         <td>
                                             <a data-url="{{ route('tags.edit',$tag->id) }}"
                                                class="pointer fa fa-pencil-alt text-dark edit-tags"></a>
+
+                                            <a data-url="{{ route('tags.destroy',$tag->id) }}"
+                                               class="pointer fa fa-trash text-dark delete-tag"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -81,15 +84,42 @@
             });
         });
 
-        $(document).on('click','.update-tag',function(){
-            httpFormPostRequest($(this)).done(function(response){
+        $(document).on('click', '.update-tag', function () {
+            httpFormPostRequest($(this)).done(function (response) {
                 setModalLoading();
-                if(response.status === 200){
+                if (response.status === 200) {
                     successAlert(response.msg)
-                    setTimeout(function(){window.location.reload()},2000) ;
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
                 }
                 removeModalLoading();
             })
+        });
+
+
+        $(document).on('click', '.delete-tag', function () {
+            swal({
+                title: "از درخواست خود اطمینان دارید؟",
+                text: "در صورت حذف شما دیگر به این مورد دسترسی نخواهید داشت",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        httpPostRequest($(this).attr('data-url'), {_method: 'delete'}).done(function (response) {
+                            if (response.status === 200) {
+                                successAlert(response.msg);
+                                setTimeout(function () {
+                                    window.location.reload()
+                                }, 2000)
+                            }
+                            removeContentLoading();
+                        })
+                    }
+                });
+
         });
     </script>
 @endsection
