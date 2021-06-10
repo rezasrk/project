@@ -36,7 +36,8 @@ class CooperatorController extends Controller
             'type' => 'cooperators',
             'parent_id' => 32,
             'extra_value' => json_encode([
-                'url' => $file
+                'url' => $file,
+                'link'=>$request->link
             ])
         ]);
 

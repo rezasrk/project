@@ -218,7 +218,7 @@
                     <div class="swiper-wrapper">
                         @foreach($cooperators as $cooperator)
                             <div class="swiper-slide">
-                                <a href="#">
+                                <a href="{{ isset(json_decode($cooperator->extra_value)->link) ? json_decode($cooperator->extra_value)->link : '' }}">
                                     <img src="{{ url('storage/'.json_decode($cooperator->extra_value)->url) }}" alt="">
                                     <h4>{{ $cooperator->value }}</h4>
                                 </a>

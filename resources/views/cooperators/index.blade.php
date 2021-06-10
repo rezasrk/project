@@ -24,6 +24,7 @@
                             <tr class="table-info">
                                 <th>ردیف</th>
                                 <th>نام همکار</th>
+                                <th>لینک</th>
                                 <th>عکس</th>
                                 <th>مدیریت</th>
                             </tr>
@@ -33,6 +34,11 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $cooperator->value }}</td>
+                                    <td>
+                                        @if(isset(json_decode($cooperator->extra_value)->link))
+                                            <a href="{{ json_decode($cooperator->extra_value)->link }}">لینک</a>
+                                        @endif
+                                    </td>
                                     <td>
                                         <img width="100px" height="100px"
                                              src="{{ url('storage/'.json_decode($cooperator->extra_value)->url) }}">
@@ -101,8 +107,6 @@
                         })
                     }
                 });
-
-
         });
     </script>
 @endsection

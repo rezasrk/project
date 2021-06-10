@@ -25,7 +25,8 @@ class CooperatorRequest extends FormRequest
     {
         return [
             'cooperator' => ['required'],
-            'file' => ['required']
+            'file' => ['required'],
+            'link' => ['required'],
         ];
     }
 }
