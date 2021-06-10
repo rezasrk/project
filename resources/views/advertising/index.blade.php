@@ -64,7 +64,7 @@
                         title:'ثبت تبلیغات',
                         body:response.data
                     });
-                    setTimeout(function(){ window.location.reload() },2000);
+
                 }
                 removeContentLoading();
             })
@@ -75,6 +75,7 @@
             httpFormPostRequest($(this)).done(function(response){
                 if(response.status === 200){
                     successAlert(response.msg)
+                    setTimeout(function(){ window.location.reload() },2000);
                 }
                 removeModalLoading();
             })
@@ -88,6 +89,6 @@
                 }
 
             });
-        }); 
+        });
     </script>
 @endsection
