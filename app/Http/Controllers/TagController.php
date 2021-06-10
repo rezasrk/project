@@ -25,4 +25,24 @@ class TagController extends Controller
             'msg' => trans('message.success-store')
         ]);
     }
+
+    public function edit($id)
+    {
+        $tag = Tag::query()->findOrFail($id);
+
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'data' => view('tags.partials.edit', compact('tag'))->render(),
+        ]);
+    }
+
+    public function update($id, TagRequest $request)
+    {
+        Tag::query()->find($id)->update(['title' => $request->input('title')]);
+
+        return response()->json([
+            'status'=>JsonResponse::HTTP_OK,
+            'msg'=>trans('message.success-update')
+        ]);
+    }
 }

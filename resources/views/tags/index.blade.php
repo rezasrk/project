@@ -41,8 +41,8 @@
                                         <td>{{ ($tags->currentPage() - 1) * $tags->currentPage() + $loop->iteration }}</td>
                                         <td>{{ $tag->title }}</td>
                                         <td>
-                                            <a href="{{ route('tags.edit',$tag->id) }}"
-                                               class="fa fa-pencil-alt text-dark"></a>
+                                            <a data-url="{{ route('tags.edit',$tag->id) }}"
+                                               class="pointer fa fa-pencil-alt text-dark edit-tags"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -66,6 +66,29 @@
                         window.location.reload()
                     }, 2000)
                 }
+            })
+        });
+
+        $(document).on('click', '.edit-tags', function () {
+            httpGetRequest($(this).attr('data-url')).done(function (response) {
+                if (response.status === 200) {
+                    showModal({
+                        title: 'ویرایش برچسب ',
+                        body: response.data
+                    })
+                    removeContentLoading();
+                }
+            });
+        });
+
+        $(document).on('click','.update-tag',function(){
+            httpFormPostRequest($(this)).done(function(response){
+                setModalLoading();
+                if(response.status === 200){
+                    successAlert(response.msg)
+                    setTimeout(function(){window.location.reload()},2000) ;
+                }
+                removeModalLoading();
             })
         });
     </script>
