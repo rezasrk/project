@@ -148,6 +148,24 @@
                         </ul>
                     </li>
                 @endcan
+                <li class="nav-item {{ request()->is('managerpanel/articles*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-tablet-alt"></i>
+                        <p>
+                            مقاله
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('articles.index') }}"
+                               class="nav-link {{ request()->url() == route('articles.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>لیست مقاله ها</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item {{ request()->is('managerpanel/cooperator*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="fa fa-file"></i>
